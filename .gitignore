@@ -1,0 +1,12 @@
+# IntelliJ related
+*.iml
+.idea/
+
+# Flutter/Dart/Pub related
+.dart_tool/
+
+# FVM related
+**/.fvm/flutter_sdk
+
+# mason
+.mason
