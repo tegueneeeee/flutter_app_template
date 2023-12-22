@@ -3,7 +3,8 @@ repository: https://github.com/tegueneeeee/flutter_app_template
 sdkPath: .fvm/flutter_sdk
 
 packages:
-  - "packages/*"
+  - apps/*
+  - packages/*
 
 command:
   bootstrap:
