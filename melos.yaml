@@ -17,7 +17,6 @@ command:
       post: |
         melos exec --flutter -- "flutter clean"
         melos exec --flutter --file-exists="ios/Podfile.lock" -- "cd ios && rm Podfile.lock"
-        melos exec --flutter --file-exists="macos/Podfile.lock" -- "cd macos && rm Podfile.lock"
   version:
     branch: main
 
@@ -132,7 +131,6 @@ scripts:
   pod:
     run: |
       melos run pod:ios --no-select
-      melos run pod:macos --no-select
     description: Run all pod install.
 
   pod:ios:
@@ -143,15 +141,6 @@ scripts:
     packageFilters:
       dirExists: [lib, ios]
       fileExists: ios/Podfile
-
-  pod:macos:
-    run: |
-      melos exec -- \
-        cd macos && pod install
-    description: Run pod install for macos.
-    packageFilters:
-      dirExists: [lib, macos]
-      fileExists: macos/Podfile
 
   build:android:prod:
     run: |
