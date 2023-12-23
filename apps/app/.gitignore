@@ -48,3 +48,8 @@ app.*.map.json
 **/firebase_options_dev.dart
 **/firebase_options_stg.dart
 **/firebase_options_prod.dart
+
+# Flavor related
+**/android/app/src/main/res/mipmap*/
+**/android/app/google-services.json
+**/ios/GoogleService-Info.plist

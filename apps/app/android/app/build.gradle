@@ -22,8 +22,25 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+task selectGoogleServicesJson(type: Copy) {
+    from "src/$flavor/google-services.json"
+    into './'
+}
+
+task copySources(type: Copy) {
+    from "src/$flavor/res"
+    into 'src/main/res'
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == 'processDebugGoogleServices' || task.name == 'processReleaseGoogleServices') {
+        task.dependsOn selectGoogleServicesJson
+    }
+    task.dependsOn copySources
+}
+
 android {
-    namespace "jp.co.meowthegreatest.flutter_app"
+    namespace "jp.co.meowthegreatest.meow"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -42,13 +59,15 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "jp.co.meowthegreatest.flutter_app"
+        applicationId "jp.co.meowthegreatest.meow"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        applicationIdSuffix appIdSuffix
+        resValue "string", "app_name", appName
     }
 
     buildTypes {
