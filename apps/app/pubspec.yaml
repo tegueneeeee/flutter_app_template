@@ -39,7 +39,7 @@ flutter_gen:
     output:
       style: dot-delimiter
 
-flutter_icons:
+flutter_launcher_icons:
   android: true
   ios: true
 
