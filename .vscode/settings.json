@@ -42,9 +42,7 @@
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "editor.formatOnPaste": true,
-  "editor.rulers": [
-    80
-  ],
+  "editor.rulers": [80],
   "editor.renderWhitespace": "all",
   "editor.renderControlCharacters": true,
   "editor.minimap.enabled": false,
@@ -93,9 +91,26 @@
     "**/*.freezed": true,
     "**/*.g.dart": true,
     "**/*.symlinks": true,
-    "**/.fvm/flutter_sdk": true,
+    "**/.fvm": true,
     "**/build": true,
     "**/node_modules": true,
     "**/Pods": true
+  },
+  "github.copilot.enable": {
+    "*": false,
+    "markdown": true,
+    "dart": true,
+    "json": true,
+    "yaml": true
+  },
+  "github.copilot.editor.enableCodeActions": true,
+  "github.copilot.editor.enableAutoCompletions": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.associations": {
+    "*.json": "json"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
