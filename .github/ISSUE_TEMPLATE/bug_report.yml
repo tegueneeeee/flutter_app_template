@@ -1,0 +1,37 @@
+name: Bug Report
+description: Create a report to help us improve
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: checkboxes
+    attributes:
+      label: "🔍 Issue check"
+      options:
+        - label: "I have searched open and closed issues for duplicates"
+          required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: "😧 Current behavior"
+      description: "A clear and concise description of what the bug is."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: "😆 Expected behavior"
+      description: "A clear and concise description of what you expected to happen."
+    validations:
+      required: false
+  - type: textarea
+    id: env
+    attributes:
+      label: "🌍 Environment"
+      description: "Please provide details about the environment you experienced the bug in."
+      value: |
+        - Commit Hash: ''
+        - Platform: iOS 17.2.1, Android 14 Api level 34
+        - Version: 1.0.0
+      render: Markdown
+    validations:
+      required: true
