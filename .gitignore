@@ -5,8 +5,8 @@
 # Flutter/Dart/Pub related
 .dart_tool/
 
-# FVM related
-**/.fvm/flutter_sdk
-
 # mason
 .mason
+
+# FVM Version Cache
+.fvm/
