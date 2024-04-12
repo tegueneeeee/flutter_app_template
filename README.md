@@ -32,6 +32,11 @@ flutterfire configure --yes \
 --android-package-name jp.co.{OrganizationName}.{AppName}.dev \
 --ios-bundle-id jp.co.{OrganizationName}.{AppName}.dev
 
+mkdir ios/dev
+mv ios/firebase_app_id_file.json ios/dev
+mv ios/Runner/GoogleService-Info.plist ios/dev
+mv android/app/google-services.json android/app/src/dev
+
 # Stg
 flutterfire configure --yes \
 --project {Stg Project ID} \
