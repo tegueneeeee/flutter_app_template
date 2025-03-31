@@ -1,0 +1,24 @@
+name: Auto Assign
+
+on:
+  pull_request:
+    types: [ opened, ready_for_review ]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  count-reviewers:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    outputs:
+      count: ${{ steps.extract.outputs.count }}
+    steps:
+      - name: Extract the number of reviewers
+        id: extract
+        run: |
+          # https://docs.github.com/en/webhooks/webhook-events-and-payloads?actionType=opened#pull_request
+          # https://docs.github.com/en/webhooks/webhook-events-and-payloads?actionType=ready_for_review#pull_request
+          reviewers_count=$(jq '.pull_request.requested_reviewers | length' < "${{ github.event_path }}")
+          echo "count=${reviewers_count}" >> "$GITHUB_OUTPUT"

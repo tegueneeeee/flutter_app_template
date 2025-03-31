@@ -1,0 +1,17 @@
+name: Create issues at initialization
+description: Create Github issues based on initialization
+
+inputs:
+  language:
+    description: The language of the issue to create.
+    default: en
+
+runs:
+  using: composite
+  steps:
+    # https://github.com/marketplace/actions/create-issue-from-file
+    - uses: peter-evans/create-issue-from-file@v5.0.1
+      with:
+        title: "[Initial Setup] Configure Automatic Reviewer Assignment for Pull Requests"
+        content-filepath: .github/initialization/${{ inputs.language }}/GITHUB_AUTO_ASSIGNMENT.md
+        labels: initialization
