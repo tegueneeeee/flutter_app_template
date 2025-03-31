@@ -1,0 +1,36 @@
+name: Initialization
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  condition:
+    runs-on: ubuntu-22.04
+    outputs:
+      execute: ${{ steps.condition.outputs.execute }}
+    steps:
+      - id: condition
+        run: |
+          if [[ "${{ github.event.repository.name }}" != "flutter_app_template" ]]; then
+            echo "execute=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "execute=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  create-issues:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      issues: write
+    needs: condition
+    if: needs.condition.outputs.execute == 'true'
+    timeout-minutes: 10
+    steps:
+      # https://github.com/actions/checkout
+      - name: Fetch sources
+        uses: actions/checkout@v4.2.2
+
+      - name: Create Issues at Initialization
+        uses: ./.github/actions/create-issue-at-initialization

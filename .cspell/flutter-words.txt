@@ -2,9 +2,12 @@ appbundle
 bools
 combinators
 cupertino
+fvmrc
 ints
 mocktail
 Podfile
+pubspec
 redeclares
+riverpod
 todos
 unawaited

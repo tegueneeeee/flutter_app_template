@@ -1,5 +1,42 @@
-# Examples app of Flutter App Template
+## Get Started
 
+### Advance preparation
+
+- Install the [fvm].
+- Install the [yq].
+  
+  ```shell
+  fvm use --force
+  FLUTTER_VERSION=$(cat .fvmrc | yq ".flutter" -r) && fvm global $FLUTTER_VERSION
+  ```
+
+  ```shell
+  MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r) && dart pub global activate melos $MELOS_VERSION
+  ```
+
+  ```shell
+  MASON_VERSION=$(cat pubspec.lock | yq ".packages.mason_cli.version" -r) && dart pub global activate mason_cli $MASON_VERSION
+  ```
+
+  ```shell
+  mason get
+  ```
+
+### Set up the IDEs to use fvm
+
+reload the SDK by reloading the window.
+
+### Install dependencies
+
+```shell
+melos bootstrap
+```
+
+### Run app
+
+- `.vscode/launch.json`
+
+<!-- 
 ## Flutter app (path: apps/app)
 
 ### Flavor App ID
@@ -52,4 +89,10 @@ flutterfire configure --yes \
 --platforms android,ios,web \
 --android-package-name jp.co.{OrganizationName}.{AppName} \
 --ios-bundle-id jp.co.{OrganizationName}.{AppName}
-```
+``` -->
+
+<!-- Links -->
+
+[fvm]: https://fvm.app/
+
+[yq]: https://github.com/mikefarah/yq
