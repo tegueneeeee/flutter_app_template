@@ -1,41 +1,35 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "flutter_app dev-debug",
-            "cwd": "apps/app",
-            "program": "lib/main.dart",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "debug",
-            "args": [
-                "--dart-define-from-file=dart_defines/dev.env"
-            ]
-        },
-        {
-            "name": "flutter_app stg-debug",
-            "cwd": "apps/app",
-            "program": "lib/main.dart",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "debug",
-            "args": [
-                "--dart-define-from-file=dart_defines/stg.env"
-            ]
-        },
-        {
-            "name": "flutter_app prod-debug",
-            "cwd": "apps/app",
-            "program": "lib/main.dart",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "debug",
-            "args": [
-                "--dart-define-from-file=dart_defines/prod.env"
-            ]
-        }
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "flutter_app dev-debug",
+      "cwd": "apps/app",
+      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "args": ["--dart-define-from-file=flavor/dev.env"]
+    },
+    {
+      "name": "flutter_app stg-debug",
+      "cwd": "apps/app",
+      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "args": ["--dart-define-from-file=flavor/stg.env"]
+    },
+    {
+      "name": "flutter_app prod-debug",
+      "cwd": "apps/app",
+      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "args": ["--dart-define-from-file=flavor/prod.env"]
+    }
+  ]
 }

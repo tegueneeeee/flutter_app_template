@@ -1,6 +1,9 @@
 designsystem
 hkusu
+kuhnroyal
+mikefarah
 preconfigured
 roboto
+subosito
 toplevel
 wakuwakulink

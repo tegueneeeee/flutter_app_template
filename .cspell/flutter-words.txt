@@ -2,6 +2,7 @@ appbundle
 bools
 combinators
 cupertino
+firebaserc
 fvmrc
 ints
 mocktail
@@ -11,3 +12,4 @@ redeclares
 riverpod
 todos
 unawaited
+widgetbook

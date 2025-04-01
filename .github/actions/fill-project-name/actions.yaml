@@ -1,0 +1,27 @@
+name: Fill project name
+description: Fill project name of pubspec.yaml with the repository name
+
+runs:
+  using: composite
+  steps:
+    - name: Convert repository name to snake_case
+      id: convert_name
+      run: |
+        SNAKE_CASE=$(echo "${{ github.event.repository.name }}" | sed -r 's/([a-z0-9])([A-Z])/\1_\L\2/g' | tr '-' '_' | tr '[:upper:]' '[:lower:]')
+        echo "repository_name=$SNAKE_CASE" >> $GITHUB_OUTPUT
+      shell: bash
+
+      # https://github.com/mikefarah/yq
+    - name: Fill the project name
+      uses: mikefarah/yq@v4.45.1
+      with:
+       cmd: |
+         yq '.name = "${{ steps.convert_name.outputs.repository_name }}"' pubspec.yaml > pubspec.yaml.new
+
+    - name: Keep empty lines
+      # NOTE: https://github.com/mikefarah/yq/issues/515
+      run: |
+        diff -U0 -w -b --ignore-blank-lines pubspec.yaml pubspec.yaml.new > pubspec.yaml.diff || true
+        patch pubspec.yaml < pubspec.yaml.diff
+        rm pubspec.yaml.{new,diff}
+      shell: bash

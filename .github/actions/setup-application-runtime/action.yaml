@@ -1,0 +1,27 @@
+name: Setup Application Runtime
+description: Setup application runtime for Flutter
+
+runs:
+  using: composite
+  steps:
+    # https://github.com/kuhnroyal/flutter-fvm-config-action
+    - name: Fetch flutter config
+      uses: kuhnroyal/flutter-fvm-config-action@v3.1
+      id: fvm-config-action
+
+    # https://github.com/subosito/flutter-action
+    - name: Setup flutter
+      uses: subosito/flutter-action@v2.19.0
+      with:
+        flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+        channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
+        cache: true
+
+    - name: Setup melos
+      run: |
+        mkdir -p .fvm
+        ln -s $FLUTTER_ROOT .fvm/flutter_sdk
+        MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r)
+        dart pub global activate melos $MELOS_VERSION
+        melos bootstrap
+      shell: bash

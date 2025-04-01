@@ -28,4 +28,23 @@ runs:
       with:
         title: "[Initial Setup] Rename Application ID"
         content-filepath: .github/initialization/${{ inputs.language }}/RENAME_APPLICATION_ID.md
-        
+        labels: initialization
+
+    # https://github.com/marketplace/actions/create-issue-from-file
+    - uses: peter-evans/create-issue-from-file@v5.0.1
+      with:
+        title: "[Optional Initial Setup] Splash Screen Configuration"
+        content-filepath: .github/initialization/${{ inputs.language }}/SPLASH_SCREEN.md
+        labels: | 
+          initialization
+          optional
+
+
+    # https://github.com/marketplace/actions/create-issue-from-file
+    - uses: peter-evans/create-issue-from-file@v5.0.1
+      with:
+        title: "[Optional Initial Setup] Configure Deployment Workflow in Pull Requests"
+        content-filepath: .github/initialization/${{ inputs.language }}/FIREBASE_HOSTING_PREVIEW.md
+        labels: |
+          initialization
+          optional

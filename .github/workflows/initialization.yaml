@@ -34,3 +34,44 @@ jobs:
 
       - name: Create Issues at Initialization
         uses: ./.github/actions/create-issue-at-initialization
+
+  cleanup:
+    run-on: ubuntu-22.04
+    permissions:
+      contents: write
+    needs:
+      - condition
+      - create-issues
+    if: needs.condition.outputs.execute == 'true'
+    timeout-minutes: 10
+    steps:
+      # https://github.com/actions/checkout
+      - name: Fetch sources
+        uses: actions/checkout@v4.2.2
+
+      - name: Remove unnecessary files
+        uses: ./.github/actions/remove-unnecessary-files
+
+      - name: Fill project name
+        uses: ./.github/actions/fill-project-name
+
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
+
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Template cleanup"
+
+      # https://github.com/ad-m/github-push-action
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      # https://github.com/actions/checkout
+      - name: Check out latest state of original repository
+        uses: actions/checkout@v4.2.2
