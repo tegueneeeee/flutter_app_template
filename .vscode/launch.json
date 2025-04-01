@@ -11,7 +11,7 @@
       "request": "launch",
       "type": "dart",
       "flutterMode": "debug",
-      "args": ["--dart-define-from-file=flavor/dev.env"]
+      "args": ["--dart-define-from-file=flavor/dev.json"]
     },
     {
       "name": "flutter_app stg-debug",
@@ -20,7 +20,7 @@
       "request": "launch",
       "type": "dart",
       "flutterMode": "debug",
-      "args": ["--dart-define-from-file=flavor/stg.env"]
+      "args": ["--dart-define-from-file=flavor/stg.json"]
     },
     {
       "name": "flutter_app prod-debug",
@@ -29,7 +29,7 @@
       "request": "launch",
       "type": "dart",
       "flutterMode": "debug",
-      "args": ["--dart-define-from-file=flavor/prod.env"]
+      "args": ["--dart-define-from-file=flavor/prod.json"]
     }
   ]
 }

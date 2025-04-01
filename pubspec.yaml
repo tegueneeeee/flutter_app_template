@@ -5,17 +5,17 @@ environment:
 workspace:
   # apps
   - apps/app
-  - apps/catalog
+  # - apps/catalog
   # cores
-  - packages/cores/core
-  - packages/cores/data
-  - packages/cores/designsystem
-  - packages/cores/model
-  - packages/cores/ui
+  # - packages/cores/core
+  # - packages/cores/data
+  # - packages/cores/designsystem
+  # - packages/cores/model
+  # - packages/cores/ui
   # features
-  - packages/features/authentication
+  # - packages/features/authentication
   # utils
-  - packages/utils/pagination
+  # - packages/utils/pagination
 
 dev_dependencies:
   mason_cli: ^0.1.2
@@ -47,7 +47,7 @@ melos:
         test: ^1.25.15
         flutter_gen_runner: ^5.10.0
       hooks:
-       post: melos run bootstrap:post
+      #  post: melos run bootstrap:post
 
   scripts:
    bootstrap:post:
