@@ -1,0 +1,7 @@
+{
+  "flavor": "stg",
+  "appName": "stg-Template",
+  "appIdAndroid": "com.organization.template",
+  "appIdIOS": "com.organization.template",
+  "appIdSuffix": ".stg"
+}

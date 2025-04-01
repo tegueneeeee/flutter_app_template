@@ -1,0 +1,7 @@
+{
+  "flavor": "prod",
+  "appName": "prod-Template",
+  "appIdAndroid": "com.organization.template",
+  "appIdIOS": "com.organization.template",
+  "appIdSuffix": ".prod"
+}

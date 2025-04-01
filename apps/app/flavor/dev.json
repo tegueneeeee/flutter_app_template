@@ -1,0 +1,7 @@
+{
+  "flavor": "dev",
+  "appName": "dev-Template",
+  "appIdAndroid": "com.organization.template",
+  "appIdIOS": "com.organization.template",
+  "appIdSuffix": ".dev"
+}

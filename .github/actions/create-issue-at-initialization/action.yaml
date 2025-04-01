@@ -15,3 +15,17 @@ runs:
         title: "[Initial Setup] Configure Automatic Reviewer Assignment for Pull Requests"
         content-filepath: .github/initialization/${{ inputs.language }}/GITHUB_AUTO_ASSIGNMENT.md
         labels: initialization
+
+    # https://github.com/marketplace/actions/create-issue-from-file
+    - uses: peter-evans/create-issue-from-file@v5.0.1
+      with:
+        title: "[Initial Setup] Icon Configuration"
+        content-filepath: .github/initialization/${{ inputs.language }}/ABOUT_ICON.md
+        labels: initialization
+
+    # https://github.com/marketplace/actions/create-issue-from-file
+    - uses: peter-evans/create-issue-from-file@v5.0.1
+      with:
+        title: "[Initial Setup] Rename Application ID"
+        content-filepath: .github/initialization/${{ inputs.language }}/RENAME_APPLICATION_ID.md
+        

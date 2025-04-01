@@ -40,7 +40,7 @@ tasks.whenTaskAdded { task ->
 }
 
 android {
-    namespace "jp.co.meowthegreatest.meow"
+    namespace "com.organization.flutter_app"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
