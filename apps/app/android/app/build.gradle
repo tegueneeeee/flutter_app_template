@@ -1,47 +1,33 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
 }
 
-def localProperties = new Properties()
-def localPropertiesFile = rootProject.file('local.properties')
-if (localPropertiesFile.exists()) {
-    localPropertiesFile.withReader('UTF-8') { reader ->
-        localProperties.load(reader)
-    }
-}
-
-def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
-if (flutterVersionCode == null) {
-    flutterVersionCode = '1'
-}
-
-def flutterVersionName = localProperties.getProperty('flutter.versionName')
-if (flutterVersionName == null) {
-    flutterVersionName = '1.0'
-}
-
-task selectGoogleServicesJson(type: Copy) {
-    from "src/$flavor/google-services.json"
-    into './'
+def dartDefines = [];
+if (project.hasProperty('dart-defines')) {
+    dartDefines = project.property('dart-defines')
+            .split(',')
+            .collectEntries { entry ->
+                def pair = new String(entry.decodeBase64(), 'UTF-8').split('=')
+                // valueがemptyの時にlastがkeyになるので、lengthが2でなければ空のmapにする
+                pair.length == 2 ? [(pair.first()): pair.last()] : [:]
+            }
 }
 
 task copySources(type: Copy) {
-    from "src/$flavor/res"
+    from "src/${dartDefines.flavor}/res"
     into 'src/main/res'
 }
 
 tasks.whenTaskAdded { task ->
-    if (task.name == 'processDebugGoogleServices' || task.name == 'processReleaseGoogleServices') {
-        task.dependsOn selectGoogleServicesJson
-    }
     task.dependsOn copySources
 }
 
 android {
     namespace "com.organization.flutter_app"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -53,21 +39,24 @@ android {
         jvmTarget = '1.8'
     }
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
-
     defaultConfig {
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
-        applicationIdSuffix appIdSuffix
-        resValue "string", "app_name", appName
+        applicationId = "${dartDefines.appIdAndroid}"
+        if (dartDefines.appIdSuffix != null) {
+            applicationIdSuffix = "${dartDefines.appIdSuffix}"
+        }
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+        resValue "string", "app_name", "${dartDefines.appName}"
     }
 
     buildTypes {
         release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
         }
     }
@@ -76,5 +65,3 @@ android {
 flutter {
     source '../..'
 }
-
-dependencies {}

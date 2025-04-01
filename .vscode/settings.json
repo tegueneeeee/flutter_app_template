@@ -36,15 +36,14 @@
     "**/.pub-cache",
     ".git/objects",
     ".vscode",
-    ".vscode-insiders"
+    ".vscode-insiders",
+    "project.pbxproj"
   ],
   "debug.openDebug": "openOnDebugBreak",
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "editor.formatOnPaste": true,
-  "editor.rulers": [
-    80
-  ],
+  "editor.rulers": [80],
   "editor.renderWhitespace": "all",
   "editor.renderControlCharacters": true,
   "editor.minimap.enabled": false,
