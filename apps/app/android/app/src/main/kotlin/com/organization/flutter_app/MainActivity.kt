@@ -1,4 +1,4 @@
-package jp.co.meowthegreatest.meow
+package com.organization.flutter_app
 
 import io.flutter.embedding.android.FlutterActivity
 
