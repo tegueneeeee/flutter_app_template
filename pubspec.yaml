@@ -50,8 +50,22 @@ melos:
       #  post: melos run bootstrap:post
 
   scripts:
-   bootstrap:post:
-    description: bootstrap post hooks
-    steps:
-      - gen:labeler
-      - gen:labels
+    bootstrap:post:
+      description: bootstrap post hooks
+      steps:
+        - gen:labeler
+        - gen:labels
+
+    fix:
+      description:
+
+    fix:custom:
+      description:
+
+    gen:
+      description: Code generation using build_runner
+      run: dart run build_runner build -d
+      exec:
+        oderDependents: true
+      packageFilters:
+        dependsOn: build_runner

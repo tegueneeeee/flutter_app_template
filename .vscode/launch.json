@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "flutter_app dev-debug",
+      "name": "dev-debug",
       "cwd": "apps/app",
       "program": "lib/main.dart",
       "request": "launch",
@@ -14,7 +14,7 @@
       "args": ["--dart-define-from-file=flavor/dev.json"]
     },
     {
-      "name": "flutter_app stg-debug",
+      "name": "stg-debug",
       "cwd": "apps/app",
       "program": "lib/main.dart",
       "request": "launch",
@@ -23,7 +23,7 @@
       "args": ["--dart-define-from-file=flavor/stg.json"]
     },
     {
-      "name": "flutter_app prod-debug",
+      "name": "prod-debug",
       "cwd": "apps/app",
       "program": "lib/main.dart",
       "request": "launch",

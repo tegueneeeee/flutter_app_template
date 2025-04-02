@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/src/app.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_app/app_initializer.dart';
+import 'package:flutter_app/router/router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final (overrideProviders: overrideProviders) =
+      await AppInitializer.initialize();
+  runApp(
+    ProviderScope(overrides: [...overrideProviders], child: const MainApp()),
+  );
+}
 
-  runApp(const ProviderScope(child: App()));
+class MainApp extends ConsumerWidget {
+  const MainApp({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(routerProvider);
+    return MaterialApp.router(routerConfig: router);
+  }
 }

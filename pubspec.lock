@@ -209,14 +209,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.19.1"
-  color:
-    dependency: transitive
-    description:
-      name: color
-      sha256: ddcdf1b3badd7008233f5acffaf20ca9f5dc2cd0172b75f68f24526a5f5725cb
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.0"
   conventional_commit:
     dependency: transitive
     description:
@@ -281,14 +273,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
-  dartx:
-    dependency: transitive
-    description:
-      name: dartx
-      sha256: "8b25435617027257d43e6508b5fe061012880ddfdaa75a71d607c3de2a13d244"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.2.0"
   equatable:
     dependency: transitive
     description:
@@ -334,22 +318,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_gen_core:
-    dependency: transitive
-    description:
-      name: flutter_gen_core
-      sha256: "3eaa2d3d8be58267ac4cd5e215ac965dd23cae0410dc073de2e82e227be32bfc"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.10.0"
-  flutter_gen_runner:
-    dependency: transitive
-    description:
-      name: flutter_gen_runner
-      sha256: e74b4ead01df3e8f02e73a26ca856759dbbe8cb3fd60941ba9f4005cd0cd19c9
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.10.0"
   flutter_hooks:
     dependency: transitive
     description:
@@ -366,14 +334,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.1"
-  flutter_lints:
-    dependency: transitive
-    description:
-      name: flutter_lints
-      sha256: "5398f14efa795ffb7a33e9b6a08798b26a180edac4ad7db3f231e40f82ce11e1"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.0.0"
   flutter_riverpod:
     dependency: transitive
     description:
@@ -448,22 +408,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
-  hashcodes:
-    dependency: transitive
-    description:
-      name: hashcodes
-      sha256: "80f9410a5b3c8e110c4b7604546034749259f5d6dcca63e0d3c17c9258f1a651"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
-  hooks_riverpod:
-    dependency: transitive
-    description:
-      name: hooks_riverpod
-      sha256: "70bba33cfc5670c84b796e6929c54b8bc5be7d0fe15bb28c2560500b9ad06966"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.6.1"
   hotreloader:
     dependency: transitive
     description:
@@ -504,14 +448,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.5.4"
-  image_size_getter:
-    dependency: transitive
-    description:
-      name: image_size_getter
-      sha256: "9a299e3af2ebbcfd1baf21456c3c884037ff524316c97d8e56035ea8fdf35653"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.4.0"
   intl:
     dependency: transitive
     description:
@@ -568,14 +504,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
-  lints:
-    dependency: transitive
-    description:
-      name: lints
-      sha256: c35bb79562d980e9a453fc715854e1ed39e24e7d0297a880ef54e17f9874a9d7
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.1.1"
   logging:
     dependency: transitive
     description:
@@ -688,22 +616,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
-  path_parsing:
-    dependency: transitive
-    description:
-      name: path_parsing
-      sha256: "883402936929eac138ee0a45da5b0f2c80f89913e6dc3bf77eb65b84b409c6ca"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.0"
-  pedantic_mono:
-    dependency: transitive
-    description:
-      name: pedantic_mono
-      sha256: "23b8ce74610b7397363c314cd0dc0f21d175f44f4429b3b2bcc9305c3549bb19"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.29.0"
   petitparser:
     dependency: transitive
     description:
@@ -933,14 +845,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.4"
-  time:
-    dependency: transitive
-    description:
-      name: time
-      sha256: "370572cf5d1e58adcb3e354c47515da3f7469dac3a95b447117e728e7be6f461"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.5"
   timing:
     dependency: transitive
     description:
@@ -965,22 +869,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.5.1"
-  vector_graphics_codec:
-    dependency: transitive
-    description:
-      name: vector_graphics_codec
-      sha256: "99fd9fbd34d9f9a32efd7b6a6aae14125d8237b10403b422a6a6dfeac2806146"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.13"
-  vector_graphics_compiler:
-    dependency: transitive
-    description:
-      name: vector_graphics_compiler
-      sha256: "1b4b9e706a10294258727674a340ae0d6e64a7231980f9f9a3d12e4b42407aad"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.16"
   vector_math:
     dependency: transitive
     description:
@@ -989,6 +877,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  very_good_analysis:
+    dependency: transitive
+    description:
+      name: very_good_analysis
+      sha256: "62d2b86d183fb81b2edc22913d9f155d26eb5cf3855173adb1f59fac85035c63"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.0.0"
   vm_service:
     dependency: transitive
     description:

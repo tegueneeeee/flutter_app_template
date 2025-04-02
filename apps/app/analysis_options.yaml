@@ -1,7 +1,12 @@
-include: package:pedantic_mono/analysis_options.yaml
+include: package:very_good_analysis/analysis_options.7.0.0.yaml
 
 analyzer:
   plugins:
+    # https://riverpod.dev/docs/introduction/getting_started#enabling-riverpod_lintcustom_lint
     - custom_lint
   exclude:
     - "**/firebase_options_*.dart"
+  errors:
+    # https://pub.dev/packages/freezed#install
+    invalid_annotation_target: ignore
+    public_member_api_docs: ignore
