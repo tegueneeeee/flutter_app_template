@@ -30,6 +30,9 @@ class MainApp extends ConsumerWidget {
       }
     });
 
-    return MaterialApp.router(routerConfig: router);
+    return MaterialApp.router(
+      routerConfig: router,
+      scaffoldMessengerKey: SnackBarManager.rootScaffoldMessengerKey,
+    );
   }
 }
