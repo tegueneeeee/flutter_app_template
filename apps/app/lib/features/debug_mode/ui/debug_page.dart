@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/features/debug_mode/data/provider/exception_generator_notifier.dart';
+import 'package:flutter_app/features/debug_mode/data/exception_generator_notifier.dart';
+import 'package:flutter_app/features/maintenance/data/maintenance_mode_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DebugPage extends ConsumerWidget {
@@ -20,7 +21,11 @@ class DebugPage extends ConsumerWidget {
             ),
             _FixSizedElevatedButton(
               title: 'Enable maintenance mode',
-              onPressed: () {},
+              onPressed: () {
+                ref
+                    .read(maintenanceModeNotifierProvider.notifier)
+                    .update(enabled: true);
+              },
             ),
             _FixSizedElevatedButton(
               title: 'Enable force update',

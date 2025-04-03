@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_app/core/data/network/dio.dart';
 import 'package:flutter_app/core/exception/app_exception.dart';
 import 'package:flutter_app/core/exception/app_exception_notifier.dart';
-import 'package:flutter_app/core/extesion/dio_extension.dart';
+import 'package:flutter_app/core/extension/dio_extension.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'exception_generator_notifier.g.dart';
@@ -23,7 +23,7 @@ class ExceptionGeneratorNotifier extends _$ExceptionGeneratorNotifier {
           request: () {
             throw DioException(
               response: Response(
-                statusCode: 400,
+                statusCode: 500,
                 requestOptions: RequestOptions(path: 'Test'),
               ),
               requestOptions: RequestOptions(path: 'Test'),

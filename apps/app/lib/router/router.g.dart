@@ -6,7 +6,11 @@ part of 'router.dart';
 // GoRouterGenerator
 // **************************************************************************
 
-List<RouteBase> get $appRoutes => [$debugPageRoute, $mainPageShellRoute];
+List<RouteBase> get $appRoutes => [
+  $debugPageRoute,
+  $mainPageShellRoute,
+  $maintenancePageRoute,
+];
 
 RouteBase get $debugPageRoute => GoRouteData.$route(
   path: '/debug',
@@ -92,11 +96,33 @@ extension $SettingPageRouteExtension on SettingPageRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
+RouteBase get $maintenancePageRoute => GoRouteData.$route(
+  path: '/maintenance',
+
+  factory: $MaintenancePageRouteExtension._fromState,
+);
+
+extension $MaintenancePageRouteExtension on MaintenancePageRoute {
+  static MaintenancePageRoute _fromState(GoRouterState state) =>
+      const MaintenancePageRoute();
+
+  String get location => GoRouteData.$location('/maintenance');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'fad29cc0994d6675484751825a2e2008d94ba828';
+String _$routerHash() => r'694662a324b06655bd64cc4744cfbe90b9d5e681';
 
 /// See also [router].
 @ProviderFor(router)
