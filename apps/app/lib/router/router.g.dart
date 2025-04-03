@@ -72,7 +72,7 @@ extension $SettingPageRouteExtension on SettingPageRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'aa9532d590a665c9d552df259e11bfef17b5f32f';
+String _$routerHash() => r'9be51af90625b0e280ccc4a0628edc4f5133d397';
 
 /// See also [router].
 @ProviderFor(router)

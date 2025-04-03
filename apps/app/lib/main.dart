@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app_initializer.dart';
+import 'package:flutter_app/core/provider/app_exception_notifier_provider.dart';
 import 'package:flutter_app/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,6 +19,14 @@ class MainApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
+
+    ref.listen(appExceptionNotifierProvider, (_, appException) {
+      if (appException != null) {
+        // ScaffoldMessenger.of(context).showSnackBar();
+        ref.read(appExceptionNotifierProvider.notifier).consume();
+      }
+    });
+
     return MaterialApp.router(routerConfig: router);
   }
 }
