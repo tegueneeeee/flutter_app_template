@@ -6,7 +6,31 @@ part of 'router.dart';
 // GoRouterGenerator
 // **************************************************************************
 
-List<RouteBase> get $appRoutes => [$mainPageShellRoute];
+List<RouteBase> get $appRoutes => [$debugPageRoute, $mainPageShellRoute];
+
+RouteBase get $debugPageRoute => GoRouteData.$route(
+  path: '/debug',
+
+  parentNavigatorKey: DebugPageRoute.$parentNavigatorKey,
+
+  factory: $DebugPageRouteExtension._fromState,
+);
+
+extension $DebugPageRouteExtension on DebugPageRoute {
+  static DebugPageRoute _fromState(GoRouterState state) =>
+      const DebugPageRoute();
+
+  String get location => GoRouteData.$location('/debug');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
 
 RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
   factory: $MainPageShellRouteExtension._fromState,

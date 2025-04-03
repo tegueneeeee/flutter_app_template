@@ -1,0 +1,50 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+class DebugPage extends ConsumerWidget {
+  const DebugPage({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Debug Mode')),
+      body: Center(
+        child: Column(
+          children: [
+            _FixSizedElevatedButton(
+              title: 'Show error SnackBar ',
+              onPressed: () {},
+            ),
+            _FixSizedElevatedButton(
+              title: 'Enable maintenance mode',
+              onPressed: () {},
+            ),
+            _FixSizedElevatedButton(
+              title: 'Enable force update',
+              onPressed: () {},
+            ),
+            _FixSizedElevatedButton(
+              title: 'Go navigation debug page',
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _FixSizedElevatedButton extends StatelessWidget {
+  const _FixSizedElevatedButton({required this.title, required this.onPressed});
+
+  final String title;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return FractionallySizedBox(
+      widthFactor: 0.8,
+      child: ElevatedButton(onPressed: onPressed, child: Text(title)),
+    );
+  }
+}

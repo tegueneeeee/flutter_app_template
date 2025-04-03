@@ -17,6 +17,6 @@ class SettingPageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const ProviderScope(child: Scaffold());
+    return const Scaffold();
   }
 }
