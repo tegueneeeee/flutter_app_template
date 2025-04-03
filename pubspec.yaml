@@ -6,10 +6,10 @@ workspace:
   # apps
   - apps/app
   # - apps/catalog
-  # cores
+  # packages
   # - packages/cores/core
   # - packages/cores/data
-  # - packages/cores/designsystem
+  - packages/designsystem
   # - packages/cores/model
   # - packages/cores/ui
   # features

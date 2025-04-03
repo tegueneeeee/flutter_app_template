@@ -10,7 +10,8 @@ environment:
 resolution: workspace
 
 dependencies:
-  equatable: ^2.0.5
+  designsystem:
+    path: ../../packages/designsystem
   flutter:
     sdk: flutter
   flutter_hooks: ^0.21.2
