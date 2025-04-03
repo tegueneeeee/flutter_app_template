@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app_initializer.dart';
 import 'package:flutter_app/core/provider/app_exception_notifier_provider.dart';
+import 'package:flutter_app/core/util/snack_bar_manager.dart';
 import 'package:flutter_app/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -22,7 +23,9 @@ class MainApp extends ConsumerWidget {
 
     ref.listen(appExceptionNotifierProvider, (_, appException) {
       if (appException != null) {
-        // ScaffoldMessenger.of(context).showSnackBar();
+        SnackBarManager.showSnackBar(
+          'An error occurred: ${appException.message}',
+        );
         ref.read(appExceptionNotifierProvider.notifier).consume();
       }
     });
