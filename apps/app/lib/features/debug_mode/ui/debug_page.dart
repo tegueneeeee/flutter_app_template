@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/features/debug_mode/data/exception_generator_notifier.dart';
-import 'package:flutter_app/features/maintenance/data/maintenance_mode_notifier.dart';
+import 'package:flutter_app/features/debug_mode/state/exception_generator_notifier.dart';
+import 'package:flutter_app/features/force_update/model/version_string.dart';
+import 'package:flutter_app/features/force_update/state/force_update_target_version_notifier.dart';
+import 'package:flutter_app/features/maintenance/state/maintenance_mode_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DebugPage extends ConsumerWidget {
@@ -29,7 +31,14 @@ class DebugPage extends ConsumerWidget {
             ),
             _FixSizedElevatedButton(
               title: 'Enable force update',
-              onPressed: () {},
+              onPressed: () {
+                ref
+                    .read(forceUpdateTargetVersionNotifierProvider.notifier)
+                    .update(
+                      androidTargetVersion: VersionString('9.9.9'),
+                      iosTargetVersion: VersionString('9.9.9'),
+                    );
+              },
             ),
             _FixSizedElevatedButton(
               title: 'Go navigation debug page',

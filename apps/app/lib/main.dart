@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_app/app_initializer.dart';
 import 'package:flutter_app/core/exception/app_exception_notifier.dart';
 import 'package:flutter_app/core/util/snack_bar_manager.dart';
+import 'package:flutter_app/features/force_update/state/force_update_mode_notifier.dart';
 import 'package:flutter_app/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,14 +26,22 @@ class MainApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
 
-    ref.listen(appExceptionNotifierProvider, (_, appException) {
-      if (appException != null) {
-        SnackBarManager.showSnackBar(
-          'An error occurred: ${appException.message}',
-        );
-        ref.read(appExceptionNotifierProvider.notifier).consume();
-      }
-    });
+    ref
+      ..listen(appExceptionNotifierProvider, (_, appException) {
+        if (appException != null) {
+          SnackBarManager.showSnackBar(
+            'An error occurred: ${appException.message}',
+          );
+          ref.read(appExceptionNotifierProvider.notifier).consume();
+        }
+      })
+      ..listen(forceUpdateModeNotifierProvider, (_, forceUpdateMode) {
+        final forceUpdateModeEnabled = forceUpdateMode.enabled;
+        if (forceUpdateModeEnabled) {
+          SnackBarManager.showSnackBar('Force Update is required.');
+          ref.read(forceUpdateModeNotifierProvider.notifier).disable();
+        }
+      });
 
     return MaterialApp.router(
       routerConfig: router,
