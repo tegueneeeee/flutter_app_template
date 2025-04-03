@@ -1,6 +1,6 @@
 import 'package:flutter_app/app_build_config.dart';
-import 'package:flutter_app/core/provider/build_config_provider.dart';
-import 'package:flutter_app/core/provider/shared_preferences_provider.dart';
+import 'package:flutter_app/core/data/shared_preferences/shared_preferences.dart';
+import 'package:flutter_app/core/model/build_config.dart';
 import 'package:flutter_app/core/util/logger.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

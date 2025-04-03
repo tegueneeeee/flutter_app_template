@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'build_config_provider.dart';
+part of 'dio.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$buildConfigHash() => r'2d81398cb4435e6baf6efb522105d54ca71179f7';
+String _$dioHash() => r'ddf2cef703f18b283dbab03056d64c848c5c532c';
 
-/// See also [buildConfig].
-@ProviderFor(buildConfig)
-final buildConfigProvider = Provider<BuildConfig>.internal(
-  buildConfig,
-  name: r'buildConfigProvider',
+/// See also [dio].
+@ProviderFor(dio)
+final dioProvider = AutoDisposeProvider<Dio>.internal(
+  dio,
+  name: r'dioProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$buildConfigHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$dioHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef BuildConfigRef = ProviderRef<BuildConfig>;
+typedef DioRef = AutoDisposeProviderRef<Dio>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

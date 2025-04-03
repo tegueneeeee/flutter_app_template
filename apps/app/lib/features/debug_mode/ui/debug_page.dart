@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/features/debug_mode/data/provider/exception_generator_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DebugPage extends ConsumerWidget {
@@ -13,7 +14,9 @@ class DebugPage extends ConsumerWidget {
           children: [
             _FixSizedElevatedButton(
               title: 'Show error SnackBar ',
-              onPressed: () {},
+              onPressed: () {
+                ref.read(exceptionGeneratorNotifierProvider.notifier).request();
+              },
             ),
             _FixSizedElevatedButton(
               title: 'Enable maintenance mode',

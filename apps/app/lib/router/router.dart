@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/features/debug_mode/ui/debug_page.dart';
+import 'package:flutter_app/features/home/ui/home_page.dart';
 import 'package:flutter_app/main_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';

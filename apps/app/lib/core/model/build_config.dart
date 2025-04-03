@@ -1,3 +1,11 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'build_config.g.dart';
+
+@Riverpod(keepAlive: true)
+BuildConfig buildConfig(Ref ref) => throw UnimplementedError();
+
 /// Product Flavor
 enum Flavor { dev, stg, prod }
 

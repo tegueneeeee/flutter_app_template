@@ -12,6 +12,7 @@ resolution: workspace
 dependencies:
   designsystem:
     path: ../../packages/designsystem
+  dio: 5.8.0+1 
   flutter:
     sdk: flutter
   flutter_hooks: ^0.21.2

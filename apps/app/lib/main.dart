@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/app_initializer.dart';
-import 'package:flutter_app/core/provider/app_exception_notifier.dart';
+import 'package:flutter_app/core/exception/app_exception_notifier.dart';
 import 'package:flutter_app/core/util/snack_bar_manager.dart';
 import 'package:flutter_app/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
