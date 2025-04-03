@@ -10,27 +10,24 @@
 import 'package:flutter/widgets.dart';
 
 class Assets {
-  Assets._();
+  const Assets._();
 
-  static const String package = 'cores_designsystem';
+  static const String package = 'designsystem';
 
-  static const AssetGenImage yumemiLogo =
-      AssetGenImage('assets/yumemi_logo.png');
+  static const AssetGenImage yumemiLogo = AssetGenImage(
+    'assets/yumemi_logo.png',
+  );
 
   /// List of all assets
   static List<AssetGenImage> get values => [yumemiLogo];
 }
 
 class AssetGenImage {
-  const AssetGenImage(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  });
+  const AssetGenImage(this._assetName, {this.size, this.flavors = const {}});
 
   final String _assetName;
 
-  static const String package = 'cores_designsystem';
+  static const String package = 'designsystem';
 
   final Size? size;
   final Set<String> flavors;
@@ -57,7 +54,7 @@ class AssetGenImage {
     bool isAntiAlias = false,
     @Deprecated('Do not specify package for a generated library asset')
     String? package = package,
-    FilterQuality filterQuality = FilterQuality.low,
+    FilterQuality filterQuality = FilterQuality.medium,
     int? cacheWidth,
     int? cacheHeight,
   }) {
@@ -94,14 +91,10 @@ class AssetGenImage {
     @Deprecated('Do not specify package for a generated library asset')
     String? package = package,
   }) {
-    return AssetImage(
-      _assetName,
-      bundle: bundle,
-      package: package,
-    );
+    return AssetImage(_assetName, bundle: bundle, package: package);
   }
 
   String get path => _assetName;
 
-  String get keyName => 'packages/cores_designsystem/$_assetName';
+  String get keyName => 'packages/designsystem/$_assetName';
 }

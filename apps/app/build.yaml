@@ -18,5 +18,5 @@ targets:
         generate_for:
           include:
             - lib/{core,**/core}/**.dart
-            - lib/{data,**/data}/**.dart
+            - lib/{state,**/state}/**.dart
             - lib/router/router.dart
