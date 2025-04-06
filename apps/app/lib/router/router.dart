@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/features/debug_mode/ui/debug_page.dart';
+import 'package:flutter_app/features/debug_mode/ui/navigation_debug_page.dart';
 import 'package:flutter_app/features/home/ui/home_page.dart';
 import 'package:flutter_app/features/maintenance/state/maintenance_mode_notifier.dart';
 import 'package:flutter_app/features/maintenance/ui/maintenance_page.dart';

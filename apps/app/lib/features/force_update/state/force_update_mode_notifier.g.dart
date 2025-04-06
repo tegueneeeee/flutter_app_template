@@ -7,7 +7,7 @@ part of 'force_update_mode_notifier.dart';
 // **************************************************************************
 
 String _$forceUpdateModeNotifierHash() =>
-    r'c771b24b011e053e38a8280e468463bd965de4ab';
+    r'ca5e970617b367000b1d41f27d1109a5ccf07736';
 
 /// See also [ForceUpdateModeNotifier].
 @ProviderFor(ForceUpdateModeNotifier)

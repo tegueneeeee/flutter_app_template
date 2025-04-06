@@ -3,6 +3,7 @@ import 'package:flutter_app/features/debug_mode/state/exception_generator_notifi
 import 'package:flutter_app/features/force_update/model/version_string.dart';
 import 'package:flutter_app/features/force_update/state/force_update_target_version_notifier.dart';
 import 'package:flutter_app/features/maintenance/state/maintenance_mode_notifier.dart';
+import 'package:flutter_app/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DebugPage extends ConsumerWidget {
@@ -42,7 +43,9 @@ class DebugPage extends ConsumerWidget {
             ),
             _FixSizedElevatedButton(
               title: 'Go navigation debug page',
-              onPressed: () {},
+              onPressed: () {
+                const NavigationDebugPageRoute().push<void>(context);
+              },
             ),
           ],
         ),

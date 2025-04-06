@@ -7,7 +7,7 @@ part of 'force_update_target_version_notifier.dart';
 // **************************************************************************
 
 String _$forceUpdateTargetVersionNotifierHash() =>
-    r'15437cc7e4fd391c7f0543fc7080fae42194ddbe';
+    r'0efe4afd2b047c0005c330bd1622bfe5abe01a47';
 
 /// See also [ForceUpdateTargetVersionNotifier].
 @ProviderFor(ForceUpdateTargetVersionNotifier)
