@@ -1,0 +1,23 @@
+name: features_{{feature_name.snakeCase()}}
+description: "This package provides {{feature_name.snakeCase()}} features."
+publish_to: 'none'
+version: 0.0.1
+
+environment:
+  sdk: ^3.7.2
+  flutter: ^3.29.2
+
+resolution: workspace
+
+dependencies:
+  designsystem:
+    path: ../../designsystem
+  flutter:
+    sdk: flutter
+  intl: ^0.20.2
+
+dev_dependencies:
+  build_runner: ^2.4.15
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^7.0.0

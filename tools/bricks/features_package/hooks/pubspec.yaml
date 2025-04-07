@@ -1,0 +1,7 @@
+name: features_package_hooks
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  mason: ^0.1.1
