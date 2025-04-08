@@ -14,7 +14,7 @@ abstract class ForceUpdateMode with _$ForceUpdateMode {
     required ForceUpdateTargetVersion forceUpdateTargetVersion,
   }) {
     final targetVersion = forceUpdateTargetVersion.defaultTargetPlatformVersion;
-    if (targetVersion == null) {
+    if (targetVersion == null || targetVersion.value.isEmpty) {
       return false;
     }
 
