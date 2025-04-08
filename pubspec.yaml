@@ -7,14 +7,9 @@ workspace:
   - apps/app
   # - apps/catalog
   # packages
-  # - packages/cores/core
-  # - packages/cores/data
+  - packages/core
   - packages/designsystem
-  # - packages/cores/model
-  # - packages/cores/ui
   # features
-  # utils
-  # - packages/utils/pagination
 
 dev_dependencies:
   mason_cli: ^0.1.2

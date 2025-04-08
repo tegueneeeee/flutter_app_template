@@ -1,4 +1,4 @@
-import 'package:flutter_app/core/util/logger.dart';
+import 'package:core/monitoring.dart';
 
 extension type VersionString(String value) {
   static final empty = VersionString('');

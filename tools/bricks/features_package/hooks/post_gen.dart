@@ -133,7 +133,6 @@ targets:
         generate_for:
           include:
             - lib/{provider,**/provider}/**.dart
-            # ページファイル内で navigatorProvider を定義できるようにする
             - lib/**/*_page.dart
 ''');
   }

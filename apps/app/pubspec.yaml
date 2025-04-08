@@ -10,6 +10,8 @@ environment:
 resolution: workspace
 
 dependencies:
+  core:
+    path: ../../packages/core
   designsystem:
     path: ../../packages/designsystem
   dio: 5.8.0+1

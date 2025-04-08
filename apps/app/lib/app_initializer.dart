@@ -1,7 +1,7 @@
+import 'package:core/monitoring.dart';
+import 'package:core/state.dart';
 import 'package:flutter_app/app_build_config.dart';
 import 'package:flutter_app/core/data/shared_preferences/shared_preferences.dart';
-import 'package:flutter_app/core/model/build_config.dart';
-import 'package:flutter_app/core/util/logger.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -35,7 +35,7 @@ final class AppInitializer {
     logger.info(buildConfig);
     overrides.addAll([
       sharedPreferencesProvider.overrideWithValue(preferences),
-      buildConfigProvider.overrideWithValue(buildConfig),
+      buildConfigStateProvider.overrideWithValue(buildConfig),
     ]);
     return overrides;
   }

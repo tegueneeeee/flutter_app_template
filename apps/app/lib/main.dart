@@ -1,10 +1,10 @@
 import 'dart:async';
 
+import 'package:core/state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/app_initializer.dart';
-import 'package:flutter_app/core/exception/app_exception_notifier.dart';
 import 'package:flutter_app/core/util/snack_bar_manager.dart';
 import 'package:flutter_app/features/force_update/state/force_update_mode_notifier.dart';
 import 'package:flutter_app/router/router.dart';
@@ -27,12 +27,12 @@ class MainApp extends ConsumerWidget {
     final router = ref.watch(routerProvider);
 
     ref
-      ..listen(appExceptionNotifierProvider, (_, appException) {
+      ..listen(appExceptionStateNotifierProvider, (_, appException) {
         if (appException != null) {
           SnackBarManager.showSnackBar(
             'An error occurred: ${appException.message}',
           );
-          ref.read(appExceptionNotifierProvider.notifier).consume();
+          ref.read(appExceptionStateNotifierProvider.notifier).consume();
         }
       })
       ..listen(forceUpdateModeNotifierProvider, (_, forceUpdateMode) {

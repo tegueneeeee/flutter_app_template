@@ -1,4 +1,4 @@
-import 'package:flutter_app/core/model/build_config.dart';
+import 'package:core/state.dart';
 import 'package:flutter_app/features/force_update/model/force_update_mode.dart';
 import 'package:flutter_app/features/force_update/model/version_string.dart';
 import 'package:flutter_app/features/force_update/state/force_update_target_version_notifier.dart';
@@ -14,7 +14,7 @@ class ForceUpdateModeNotifier extends _$ForceUpdateModeNotifier {
       forceUpdateTargetVersionNotifierProvider,
     );
     final currentVersion = ref.watch(
-      buildConfigProvider.select((value) => value.version),
+      buildConfigStateProvider.select((value) => value.version),
     );
 
     final enabled = ForceUpdateMode.isForceUpdateEnabled(
