@@ -28,12 +28,9 @@ void run(HookContext context) {
     logger: context.logger
   );
 
-  if (useRiverpod || useFreezed) {
-    Process.runSync('melos', ['bootstrap']);
-  }
-
   _addFeatureDependency(featureName: featureName, logger: context.logger);
 
+  Process.runSync('melos', ['bootstrap']);
   Process.runSync('dart', ['fix', '--apply']);
 }
 

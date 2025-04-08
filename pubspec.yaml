@@ -13,7 +13,6 @@ workspace:
   # - packages/cores/model
   # - packages/cores/ui
   # features
-  # - packages/features/authentication
   # utils
   # - packages/utils/pagination
 
