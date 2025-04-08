@@ -5,17 +5,15 @@ import 'package:core/util.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app/app_initializer.dart';
 import 'package:flutter_app/features/force_update/state/force_update_mode_notifier.dart';
 import 'package:flutter_app/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final (overrideProviders: overrideProviders) =
-      await AppInitializer.initialize();
+
   runApp(
-    ProviderScope(overrides: [...overrideProviders], child: const MainApp()),
+    const ProviderScope(child: MainApp()),
   );
 }
 

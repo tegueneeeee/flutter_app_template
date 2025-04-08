@@ -14,7 +14,7 @@ class ForceUpdateModeNotifier extends _$ForceUpdateModeNotifier {
       forceUpdateTargetVersionNotifierProvider,
     );
     final currentVersion = ref.watch(
-      buildConfigStateProvider.select((value) => value.version),
+      appBuildConfigStateProvider.select((value) => value.requireValue.version),
     );
 
     final enabled = ForceUpdateMode.isForceUpdateEnabled(

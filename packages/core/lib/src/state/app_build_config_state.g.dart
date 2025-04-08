@@ -1,28 +1,31 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'shared_preferences.dart';
+// ignore_for_file: type=lint, duplicate_ignore, deprecated_member_use
+
+part of 'app_build_config_state.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sharedPreferencesHash() => r'6bbc55d4dc38d5979ff916112845bcc4a4a3a1ea';
+String _$appBuildConfigStateHash() =>
+    r'25b6a0a2a4ff3d180530cd9ff4d2d72c38829303';
 
-/// See also [sharedPreferences].
-@ProviderFor(sharedPreferences)
-final sharedPreferencesProvider = Provider<SharedPreferences>.internal(
-  sharedPreferences,
-  name: r'sharedPreferencesProvider',
+/// See also [appBuildConfigState].
+@ProviderFor(appBuildConfigState)
+final appBuildConfigStateProvider = FutureProvider<BuildConfig>.internal(
+  appBuildConfigState,
+  name: r'appBuildConfigStateProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product')
           ? null
-          : _$sharedPreferencesHash,
+          : _$appBuildConfigStateHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef SharedPreferencesRef = ProviderRef<SharedPreferences>;
+typedef AppBuildConfigStateRef = FutureProviderRef<BuildConfig>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
