@@ -12,6 +12,6 @@ targets:
       riverpod_generator:
         generate_for:
           include:
-            - lib/{core,**/core}/**.dart
+            - lib/**/*_page.dart
             - lib/{state,**/state}/**.dart
             - lib/router/router.dart

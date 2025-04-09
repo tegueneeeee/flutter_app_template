@@ -7,7 +7,7 @@ part of 'exception_generator_notifier.dart';
 // **************************************************************************
 
 String _$exceptionGeneratorNotifierHash() =>
-    r'91fabe9b7a9dfcb75c3f5bb2f2a7bf0a43a254f2';
+    r'0a4c2e1d7fd634c9d7f0be6d62039ecc138efd26';
 
 /// See also [ExceptionGeneratorNotifier].
 @ProviderFor(ExceptionGeneratorNotifier)

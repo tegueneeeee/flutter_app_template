@@ -1,28 +1,29 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'force_update_mode_notifier.dart';
+part of 'home_page.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$forceUpdateModeNotifierHash() =>
-    r'77a4fbc2a535e9366dde07173f7349ae57808c61';
+String _$homePageNavigatorHash() => r'b6e8cdfb5c80d23d7a120ef927c2a4554efb8727';
 
-/// See also [ForceUpdateModeNotifier].
-@ProviderFor(ForceUpdateModeNotifier)
-final forceUpdateModeNotifierProvider =
-    NotifierProvider<ForceUpdateModeNotifier, ForceUpdateMode>.internal(
-      ForceUpdateModeNotifier.new,
-      name: r'forceUpdateModeNotifierProvider',
+/// See also [homePageNavigator].
+@ProviderFor(homePageNavigator)
+final homePageNavigatorProvider =
+    AutoDisposeProvider<HomePageNavigator>.internal(
+      homePageNavigator,
+      name: r'homePageNavigatorProvider',
       debugGetCreateSourceHash:
           const bool.fromEnvironment('dart.vm.product')
               ? null
-              : _$forceUpdateModeNotifierHash,
+              : _$homePageNavigatorHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
-typedef _$ForceUpdateModeNotifier = Notifier<ForceUpdateMode>;
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef HomePageNavigatorRef = AutoDisposeProviderRef<HomePageNavigator>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

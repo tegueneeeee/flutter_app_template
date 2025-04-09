@@ -10,6 +10,7 @@ workspace:
   - packages/core
   - packages/designsystem
   # features
+  - packages/features/webview
 
 dev_dependencies:
   mason_cli: ^0.1.2
