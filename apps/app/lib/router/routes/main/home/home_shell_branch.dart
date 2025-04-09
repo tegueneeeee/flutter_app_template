@@ -9,15 +9,6 @@ const homeShellBranch = TypedStatefulShellBranch<HomeShellBranch>(
   ],
 );
 
-final class _HomePageNavigatorImpl implements HomePageNavigator {
-  const _HomePageNavigatorImpl();
-
-  @override
-  void navigateToWebPage(BuildContext context) {
-    const WebPageRoute().go(context);
-  }
-}
-
 class HomeShellBranch extends StatefulShellBranchData {
   const HomeShellBranch();
 }
@@ -29,13 +20,28 @@ class HomePageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return ProviderScope(
-      overrides: [
-        homePageNavigatorProvider.overrideWithValue(
-          const _HomePageNavigatorImpl(),
-        ),
-      ],
-      child: const HomePage(),
+    return HomePage(navigateToWebPage: () => const WebPageRoute().go(context));
+  }
+}
+
+class HomePage extends ConsumerWidget {
+  const HomePage({required this.navigateToWebPage, super.key});
+
+  final VoidCallback navigateToWebPage;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('AppBar'),
+        actions: [
+          IconButton(
+            onPressed: navigateToWebPage,
+            icon: const Icon(Icons.web),
+          ),
+        ],
+      ),
+      body: const Center(child: Text('home')),
     );
   }
 }

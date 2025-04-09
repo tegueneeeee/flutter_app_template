@@ -6,7 +6,6 @@ import 'package:flutter_app/features/debug_mode/ui/navigation_debug_page.dart';
 import 'package:flutter_app/features/maintenance/state/maintenance_mode_notifier.dart';
 import 'package:flutter_app/features/maintenance/ui/maintenance_page.dart';
 import 'package:flutter_app/main_page.dart';
-import 'package:flutter_app/ui/home_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
