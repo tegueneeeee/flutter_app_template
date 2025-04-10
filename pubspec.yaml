@@ -12,6 +12,8 @@ workspace:
   # features
   - packages/features/webview
   - packages/features/force_update
+  # shared
+  - packages/shared/config
 
 dev_dependencies:
   mason_cli: ^0.1.2
@@ -65,3 +67,11 @@ melos:
         oderDependents: true
       packageFilters:
         dependsOn: build_runner
+    
+    generate-env:
+      description: Run build_runner in all of the packages that depends on it.
+      run: dart run build_runner build -d
+      exec:
+        oderDependents: true
+      packageFilters:
+        dependsOn: envied_generator

@@ -13,15 +13,15 @@ class ForceUpdateModeNotifier extends _$ForceUpdateModeNotifier {
     final forceUpdateTargetVersion = ref.watch(
       forceUpdateTargetVersionNotifierProvider,
     );
-    final currentVersion = ref.watch(
-      appBuildConfigStateProvider.select((value) => value.requireValue.version),
-    );
+    // final currentVersion = ref.watch(
+    //   appBuildConfigStateProvider.select((value) => value.requireValue.version),
+    // );
 
-    final enabled = ForceUpdateMode.isForceUpdateEnabled(
-      currentVersion: VersionString(currentVersion),
-      forceUpdateTargetVersion: forceUpdateTargetVersion,
-    );
-    return ForceUpdateMode(enabled: enabled);
+    // final enabled = ForceUpdateMode.isForceUpdateEnabled(
+    //   currentVersion: VersionString(currentVersion),
+    //   forceUpdateTargetVersion: forceUpdateTargetVersion,
+    // );
+    return const ForceUpdateMode(enabled: true);
   }
 
   void disable() {

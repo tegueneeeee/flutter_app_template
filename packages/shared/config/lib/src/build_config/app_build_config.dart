@@ -1,9 +1,10 @@
-import 'package:core/src/build_config/build_config.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:shared_config/config.dart';
+import 'package:shared_config/src/build_config/build_config.dart';
 
-part 'app_build_config_state.g.dart';
+part 'app_build_config.g.dart';
 
 @Riverpod(keepAlive: true)
 Future<BuildConfig> appBuildConfigState(Ref ref) async {
@@ -41,7 +42,7 @@ final class AppBuildConfig implements BuildConfig {
     String? installerStore,
   }) {
     return AppBuildConfig(
-      flavor: Flavor.values.byName(appFlavor),
+      flavor: FlavorStatus.values.byName(appFlavor),
       appName: appName,
       packageName: packageName,
       version: version,
@@ -67,7 +68,7 @@ final class AppBuildConfig implements BuildConfig {
   final String buildSignature;
 
   @override
-  final Flavor flavor;
+  final FlavorStatus flavor;
 
   @override
   final String? installerStore;

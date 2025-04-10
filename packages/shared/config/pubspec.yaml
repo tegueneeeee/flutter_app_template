@@ -1,0 +1,28 @@
+name: shared_config
+description: This is package provides config.
+publish_to: none
+version: 0.0.1
+
+environment:
+  sdk: ^3.7.2
+  flutter: ^3.29.2
+
+resolution: workspace
+
+dependencies:
+  envied: ^1.1.1
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.6.1
+  package_info_plus: ^8.3.0
+  riverpod_annotation: ^2.6.1
+
+dev_dependencies:
+  build_runner: ^2.4.15
+  custom_lint: ^0.7.5
+  envied_generator: ^1.1.1
+  flutter_test:
+    sdk: flutter
+  riverpod_generator: ^2.6.5
+  riverpod_lint: ^2.6.5
+  very_good_analysis: ^7.0.0

@@ -1,4 +1,4 @@
-enum Flavor { dev, stg, prod }
+import 'package:shared_config/config.dart';
 
 abstract interface class BuildConfig {
   abstract final String appName;
@@ -6,7 +6,7 @@ abstract interface class BuildConfig {
   abstract final String version;
   abstract final String buildNumber;
   abstract final String buildSignature;
-  abstract final Flavor flavor;
+  abstract final FlavorStatus flavor;
   abstract final String? installerStore;
 }
 
@@ -17,7 +17,7 @@ final class FakeBuildConfig implements BuildConfig {
     this.version = '1.0.0',
     this.buildNumber = '1',
     this.buildSignature = '1',
-    this.flavor = Flavor.dev,
+    this.flavor = FlavorStatus.DEVELOPMENT,
     this.installerStore = 'fake_store',
   });
 
@@ -35,7 +35,7 @@ final class FakeBuildConfig implements BuildConfig {
   @override
   final String buildSignature;
   @override
-  final Flavor flavor;
+  final FlavorStatus flavor;
   @override
   final String? installerStore;
 }
