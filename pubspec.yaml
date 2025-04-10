@@ -11,6 +11,7 @@ workspace:
   - packages/designsystem
   # features
   - packages/features/webview
+  - packages/features/force_update
 
 dev_dependencies:
   mason_cli: ^0.1.2
