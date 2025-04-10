@@ -15,6 +15,7 @@ SRCROOT
 subosito
 Testables
 toplevel
+usecases
 wakuwakulink
 xcconfig
 xcodeproj
