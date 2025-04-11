@@ -18,6 +18,10 @@ workspace:
 dev_dependencies:
   mason_cli: ^0.1.2
   melos: ^7.0.0-dev.7
+  very_good_cli: ^0.25.0
+
+dependency_overrides:
+  analyzer: ^6.0.0
 
 melos:
   sdkPath: .fvm/flutter_sdk
@@ -64,7 +68,7 @@ melos:
       description: Code generation using build_runner
       run: dart run build_runner build -d
       exec:
-        oderDependents: true
+        orderDependents: true
       packageFilters:
         dependsOn: build_runner
     
@@ -72,6 +76,22 @@ melos:
       description: Run build_runner in all of the packages that depends on it.
       run: dart run build_runner build -d
       exec:
-        oderDependents: true
+        orderDependents: true
       packageFilters:
         dependsOn: envied_generator
+
+    test:
+      description: Run tests with coverage and random ordering
+      run: very_good test -j 4 --optimization --coverage --test-randomize-ordering-seed random
+      exec:
+        concurrency: 1
+      packageFilters:
+        dirExists: test
+
+    coverage:
+      description: Run coverage
+      run: very_good test --coverage
+      exec:
+        concurrency: 1
+      packageFilters:
+        dirExists: test

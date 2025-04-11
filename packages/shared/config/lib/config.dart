@@ -1,7 +1,3 @@
-/// {@template config}
-/// Config package for PICO SulTeng.
-/// {@endtemplate}
-library config;
-
+export 'src/build_config/app_build_config.dart';
 export 'src/flavors/flavor.dart';
 export 'src/utils/utils.dart';

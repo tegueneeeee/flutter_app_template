@@ -1,4 +1,4 @@
-import 'package:core/monitoring.dart';
+import 'package:core/log.dart';
 
 extension type VersionString(String value) {
   static final empty = VersionString('');

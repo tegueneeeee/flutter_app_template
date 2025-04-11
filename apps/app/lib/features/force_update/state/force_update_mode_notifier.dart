@@ -1,6 +1,4 @@
-import 'package:core/state.dart';
 import 'package:flutter_app/features/force_update/model/force_update_mode.dart';
-import 'package:flutter_app/features/force_update/model/version_string.dart';
 import 'package:flutter_app/features/force_update/state/force_update_target_version_notifier.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
