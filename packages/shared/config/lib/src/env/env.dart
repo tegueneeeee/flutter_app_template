@@ -2,18 +2,16 @@ import 'package:envied/envied.dart';
 
 part 'env.g.dart';
 
-@Envied(
-  path: '.env',
-  obfuscate: true,
-  useConstantCase: true,
-  name: 'EnvProd',
-)
+@Envied(path: '.env', obfuscate: true, useConstantCase: true, name: 'EnvProd')
 abstract class EnvProd {
   @EnviedField()
   static final String baseUrl = _EnvProd.baseUrl;
 
   @EnviedField()
-  static final String onesignalAppId = _EnvProd.onesignalAppId;
+  static final String iosAppId = _EnvProd.iosAppId;
+
+  @EnviedField()
+  static final String androidPackageId = _EnvProd.androidPackageId;
 
   @EnviedField()
   static final String newsapiApiKey = _EnvProd.newsapiApiKey;
@@ -30,7 +28,10 @@ abstract class EnvDev {
   static final String baseUrl = _EnvDev.baseUrl;
 
   @EnviedField()
-  static final String onesignalAppId = _EnvDev.onesignalAppId;
+  static final String iosAppId = _EnvDev.iosAppId;
+
+  @EnviedField()
+  static final String androidPackageId = _EnvDev.androidPackageId;
 
   @EnviedField()
   static final String newsapiApiKey = _EnvDev.newsapiApiKey;
@@ -47,7 +48,10 @@ abstract class EnvStg {
   static final String baseUrl = _EnvStg.baseUrl;
 
   @EnviedField()
-  static final String onesignalAppId = _EnvStg.onesignalAppId;
+  static final String iosAppId = _EnvStg.iosAppId;
+
+  @EnviedField()
+  static final String androidPackageId = _EnvStg.androidPackageId;
 
   @EnviedField()
   static final String newsapiApiKey = _EnvStg.newsapiApiKey;

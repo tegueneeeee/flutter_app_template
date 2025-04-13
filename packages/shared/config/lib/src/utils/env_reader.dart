@@ -10,11 +10,17 @@ class Env {
     FlavorStatus.PRODUCTION => EnvProd.baseUrl,
     _ => EnvDev.baseUrl,
   };
-  static String onesignalAppID = switch (Flavor.flavor) {
-    FlavorStatus.DEVELOPMENT => EnvDev.onesignalAppId,
-    FlavorStatus.STAGING => EnvStg.onesignalAppId,
-    FlavorStatus.PRODUCTION => EnvProd.onesignalAppId,
-    _ => EnvDev.onesignalAppId,
+  static String iosAppId = switch (Flavor.flavor) {
+    FlavorStatus.DEVELOPMENT => EnvDev.iosAppId,
+    FlavorStatus.STAGING => EnvStg.iosAppId,
+    FlavorStatus.PRODUCTION => EnvProd.iosAppId,
+    _ => EnvDev.iosAppId,
+  };
+  static String androidPackageId = switch (Flavor.flavor) {
+    FlavorStatus.DEVELOPMENT => EnvDev.androidPackageId,
+    FlavorStatus.STAGING => EnvStg.androidPackageId,
+    FlavorStatus.PRODUCTION => EnvProd.androidPackageId,
+    _ => EnvDev.androidPackageId,
   };
   static String newsapiApiKey = switch (Flavor.flavor) {
     FlavorStatus.DEVELOPMENT => EnvDev.newsapiApiKey,

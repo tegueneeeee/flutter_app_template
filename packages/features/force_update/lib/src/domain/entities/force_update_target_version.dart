@@ -1,24 +1,32 @@
-import 'package:equatable/equatable.dart';
+import 'package:features_force_update/src/data/models/force_update_target_version_model.dart'
+    show ForceUpdateTargetVersionModel;
 import 'package:features_force_update/src/domain/value_objects/value_objects.dart';
-import 'package:flutter/foundation.dart';
 
-class ForceUpdateTargetVersion extends Equatable {
+/// Represents the target version information for the force update feature
+class ForceUpdateTargetVersion {
+  /// Constructor
   const ForceUpdateTargetVersion({
     required this.iosVersion,
     required this.androidVersion,
   });
 
-  final Version iosVersion;
-  final Version androidVersion;
+  /// Creates a [ForceUpdateTargetVersion]
+  /// from a [ForceUpdateTargetVersionModel]
+  factory ForceUpdateTargetVersion.fromModel(
+    ForceUpdateTargetVersionModel model,
+  ) => ForceUpdateTargetVersion(
+    iosVersion: Version(model.iosVersion),
+    androidVersion: Version(model.androidVersion),
+  );
 
-  Version? get defaultTargetPlatformVersion {
-    return switch (defaultTargetPlatform) {
-      TargetPlatform.iOS => iosVersion,
-      TargetPlatform.android => androidVersion,
-      _ => null,
-    };
-  }
-  
+  /// The minimum required iOS version
+  final Version iosVersion;
+
+  /// The minimum required Android version
+  final Version androidVersion;
   @override
-  List<Object?> get props => [iosVersion, androidVersion];
+  String toString() =>
+      'ForceUpdateTargetVersion('
+      'iosVersion: $iosVersion, '
+      'androidVersion: $androidVersion)';
 }

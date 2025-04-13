@@ -18,10 +18,6 @@ workspace:
 dev_dependencies:
   mason_cli: ^0.1.2
   melos: ^7.0.0-dev.7
-  very_good_cli: ^0.25.0
-
-dependency_overrides:
-  analyzer: ^6.0.0
 
 melos:
   sdkPath: .fvm/flutter_sdk
@@ -82,16 +78,9 @@ melos:
 
     test:
       description: Run tests with coverage and random ordering
-      run: very_good test -j 4 --optimization --coverage --test-randomize-ordering-seed random
+      run: flutter test
       exec:
         concurrency: 1
       packageFilters:
-        dirExists: test
-
-    coverage:
-      description: Run coverage
-      run: very_good test --coverage
-      exec:
-        concurrency: 1
-      packageFilters:
+        dependsOn: flutter_test
         dirExists: test

@@ -14,7 +14,6 @@ extension type Version._(String value) implements String {
   List<int> get versionParts =>
       value.split('.').map(int.parse).toList(growable: false);
 
-  
   bool operator >(Version other) {
     final selfVersionParts = versionParts;
     final otherVersionParts = other.versionParts;
@@ -33,5 +32,4 @@ extension type Version._(String value) implements String {
   bool operator >=(Version other) => this > other || this == other;
 
   bool operator <=(Version other) => this < other || this == other;
-
 }

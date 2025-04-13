@@ -15,10 +15,6 @@
   ```
 
   ```shell
-  VERY_GOOD_CLI_VERSION=$(cat pubspec.lock | yq ".packages.very_good_cli.version" -r) && dart pub global activate very_good_cli $VERY_GOOD_CLI_VERSION
-  ```
-
-  ```shell
   MASON_VERSION=$(cat pubspec.lock | yq ".packages.mason_cli.version" -r) && dart pub global activate mason_cli $MASON_VERSION
   ```
 

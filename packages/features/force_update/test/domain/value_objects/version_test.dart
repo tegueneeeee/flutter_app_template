@@ -2,7 +2,7 @@ import 'package:features_force_update/force_update.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  group('Version', () {
+  group('Version - Value Object', () {
     test('should create a valid version', () {
       // Arrange
       const versionString = '1.2.3';
@@ -35,7 +35,7 @@ void main() {
     test('should correctly parse version parts', () {
       // Arrange
       const versionString = '1.2.3';
-      const expectedParts = [1, 2, 3];
+      final expectedParts = [1, 2, 3];
 
       // Act
       final version = Version(versionString);

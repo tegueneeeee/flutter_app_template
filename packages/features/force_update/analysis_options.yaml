@@ -8,6 +8,6 @@ analyzer:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
   errors:
+    one_member_abstracts: ignore
     public_member_api_docs: ignore
-    use_setters_to_change_properties: ignore
     invalid_annotation_target: ignore

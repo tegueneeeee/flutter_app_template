@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_config/config.dart';
-import 'package:shared_config/src/build_config/build_config.dart';
 
 part 'app_build_config.g.dart';
 
@@ -41,8 +40,14 @@ final class AppBuildConfig implements BuildConfig {
     required String buildSignature,
     String? installerStore,
   }) {
+    final flavorStatus = switch (appFlavor) {
+      'dev' => FlavorStatus.DEVELOPMENT,
+      'stg' => FlavorStatus.STAGING,
+      'prod' => FlavorStatus.PRODUCTION,
+      _ => FlavorStatus.DEVELOPMENT, // Default to development if unknown
+    };
     return AppBuildConfig(
-      flavor: FlavorStatus.values.byName(appFlavor),
+      flavor: flavorStatus,
       appName: appName,
       packageName: packageName,
       version: version,
