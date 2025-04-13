@@ -8,8 +8,8 @@ part 'open_app_store_use_case.g.dart';
 
 /// Provider for [OpenAppStoreUseCase]
 @riverpod
-Future<OpenAppStoreUseCase> openAppStoreUseCase(Ref ref) async {
-  final repository = await ref.watch(forceUpdateRepositoryProvider.future);
+OpenAppStoreUseCase openAppStoreUseCase(Ref ref) {
+  final repository = ref.watch(forceUpdateRepositoryProvider);
   return OpenAppStoreUseCase(repository: repository);
 }
 

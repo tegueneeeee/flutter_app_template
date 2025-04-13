@@ -6,10 +6,8 @@ part 'check_force_update_needed_use_case.g.dart';
 
 /// Provider for [CheckForceUpdateNeededUseCase]
 @riverpod
-Future<CheckForceUpdateNeededUseCase> checkForceUpdateNeededUseCase(
-  Ref ref,
-) async {
-  final repository = await ref.watch(forceUpdateRepositoryProvider.future);
+CheckForceUpdateNeededUseCase checkForceUpdateNeededUseCase(Ref ref) {
+  final repository = ref.watch(forceUpdateRepositoryProvider);
   return CheckForceUpdateNeededUseCase(repository: repository);
 }
 

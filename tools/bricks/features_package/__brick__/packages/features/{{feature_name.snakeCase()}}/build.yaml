@@ -6,6 +6,7 @@ targets:
           include:
             - lib/{repositories,**/repositories}/**.dart
             - lib/{use_cases,**/use_cases}/**.dart
+            - lib/{states,**/states}/**.dart
             - lib/**/*_page.dart
       freezed:
         # https://github.com/dart-lang/build/blob/master/docs/faq.md#how-do-i-avoid-running-builders-on-unnecessary-inputs

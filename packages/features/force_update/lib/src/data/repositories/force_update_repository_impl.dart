@@ -10,7 +10,7 @@ part 'force_update_repository_impl.g.dart';
 
 /// Provider for [ForceUpdateRepository]
 @riverpod
-Future<ForceUpdateRepository> forceUpdateRepository(Ref ref) async {
+ForceUpdateRepository forceUpdateRepository(Ref ref) {
   final currentVersion = ref.watch(
     appBuildConfigStateProvider.select((config) => config.requireValue.version),
   );

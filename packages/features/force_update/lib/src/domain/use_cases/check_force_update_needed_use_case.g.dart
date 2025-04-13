@@ -9,14 +9,14 @@ part of 'check_force_update_needed_use_case.dart';
 // **************************************************************************
 
 String _$checkForceUpdateNeededUseCaseHash() =>
-    r'd9c18b14f87ba553d307a110635e301805449d7f';
+    r'b80caf54cc06ed9b29861fd801acac8b41f56225';
 
 /// Provider for [CheckForceUpdateNeededUseCase]
 ///
 /// Copied from [checkForceUpdateNeededUseCase].
 @ProviderFor(checkForceUpdateNeededUseCase)
 final checkForceUpdateNeededUseCaseProvider =
-    AutoDisposeFutureProvider<CheckForceUpdateNeededUseCase>.internal(
+    AutoDisposeProvider<CheckForceUpdateNeededUseCase>.internal(
       checkForceUpdateNeededUseCase,
       name: r'checkForceUpdateNeededUseCaseProvider',
       debugGetCreateSourceHash:
@@ -30,6 +30,6 @@ final checkForceUpdateNeededUseCaseProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef CheckForceUpdateNeededUseCaseRef =
-    AutoDisposeFutureProviderRef<CheckForceUpdateNeededUseCase>;
+    AutoDisposeProviderRef<CheckForceUpdateNeededUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

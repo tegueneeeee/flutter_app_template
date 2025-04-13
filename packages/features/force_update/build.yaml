@@ -6,12 +6,14 @@ targets:
           include:
             - lib/{repositories,**/repositories}/**.dart
             - lib/{use_cases,**/use_cases}/**.dart
+            - lib/{states,**/states}/**.dart
             - lib/**/*_page.dart
       freezed:
         # https://github.com/dart-lang/build/blob/master/docs/faq.md#how-do-i-avoid-running-builders-on-unnecessary-inputs
         generate_for:
           include:
             - lib/{models,**/models}/**.dart
+            - lib/{states,**/states}/**.dart
       # https://github.com/google/json_serializable.dart/tree/master/json_serializable#build-configuration
       json_serializable:
         generate_for:

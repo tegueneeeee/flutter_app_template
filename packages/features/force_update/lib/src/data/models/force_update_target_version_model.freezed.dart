@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ForceUpdateTargetVersionModel {
 
-@JsonKey(name: 'ios_version') String get iosVersion;@JsonKey(name: 'android_version') String get androidVersion;
+ String get iosVersion; String get androidVersion;
 /// Create a copy of ForceUpdateTargetVersionModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $ForceUpdateTargetVersionModelCopyWith<$Res>  {
   factory $ForceUpdateTargetVersionModelCopyWith(ForceUpdateTargetVersionModel value, $Res Function(ForceUpdateTargetVersionModel) _then) = _$ForceUpdateTargetVersionModelCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'ios_version') String iosVersion,@JsonKey(name: 'android_version') String androidVersion
+ String iosVersion, String androidVersion
 });
 
 
@@ -81,11 +81,11 @@ as String,
 @JsonSerializable()
 
 class _ForceUpdateTargetVersionModel extends ForceUpdateTargetVersionModel {
-  const _ForceUpdateTargetVersionModel({@JsonKey(name: 'ios_version') required this.iosVersion, @JsonKey(name: 'android_version') required this.androidVersion}): super._();
+  const _ForceUpdateTargetVersionModel({required this.iosVersion, required this.androidVersion}): super._();
   factory _ForceUpdateTargetVersionModel.fromJson(Map<String, dynamic> json) => _$ForceUpdateTargetVersionModelFromJson(json);
 
-@override@JsonKey(name: 'ios_version') final  String iosVersion;
-@override@JsonKey(name: 'android_version') final  String androidVersion;
+@override final  String iosVersion;
+@override final  String androidVersion;
 
 /// Create a copy of ForceUpdateTargetVersionModel
 /// with the given fields replaced by the non-null parameter values.
@@ -120,7 +120,7 @@ abstract mixin class _$ForceUpdateTargetVersionModelCopyWith<$Res> implements $F
   factory _$ForceUpdateTargetVersionModelCopyWith(_ForceUpdateTargetVersionModel value, $Res Function(_ForceUpdateTargetVersionModel) _then) = __$ForceUpdateTargetVersionModelCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'ios_version') String iosVersion,@JsonKey(name: 'android_version') String androidVersion
+ String iosVersion, String androidVersion
 });
 
 
