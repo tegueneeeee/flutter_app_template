@@ -1,7 +1,6 @@
 import 'package:features_force_update/force_update.dart';
 import 'package:flutter/foundation.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:shared_dependencies/dependencies.dart';
 
 part 'check_force_update_needed_use_case.g.dart';
 

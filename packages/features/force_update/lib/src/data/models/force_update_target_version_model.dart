@@ -1,6 +1,6 @@
 import 'package:features_force_update/force_update.dart';
 import 'package:features_force_update/src/domain/entities/force_update_target_version.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:shared_dependencies/dependencies.dart';
 
 part 'force_update_target_version_model.freezed.dart';
 part 'force_update_target_version_model.g.dart';
@@ -11,8 +11,8 @@ abstract class ForceUpdateTargetVersionModel
     with _$ForceUpdateTargetVersionModel {
   /// Creates a new [ForceUpdateTargetVersionModel]
   const factory ForceUpdateTargetVersionModel({
-    @JsonKey(name: 'ios_version') required String iosVersion,
-    @JsonKey(name: 'android_version') required String androidVersion,
+    required String iosVersion,
+    required String androidVersion,
   }) = _ForceUpdateTargetVersionModel;
 
   /// Creates a [ForceUpdateTargetVersionModel]

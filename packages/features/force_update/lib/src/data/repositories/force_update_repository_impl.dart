@@ -3,9 +3,8 @@ import 'dart:async';
 import 'package:features_force_update/src/domain/entities/force_update_target_version.dart';
 import 'package:features_force_update/src/domain/repositories/force_update_repository.dart';
 import 'package:features_force_update/src/domain/value_objects/version.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_config/config.dart';
+import 'package:shared_dependencies/dependencies.dart';
 
 part 'force_update_repository_impl.g.dart';
 

@@ -2,9 +2,7 @@ import 'package:features_force_update/src/data/repositories/force_update_reposit
 import 'package:features_force_update/src/domain/exceptions/force_update_exception.dart';
 import 'package:features_force_update/src/domain/repositories/force_update_repository.dart';
 import 'package:flutter/foundation.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:url_launcher/url_launcher.dart' as url;
+import 'package:shared_dependencies/dependencies.dart';
 
 part 'open_app_store_use_case.g.dart';
 
@@ -43,9 +41,9 @@ class OpenAppStoreUseCase {
       };
 
       // Try to launch the URL
-      final success = await url.launchUrl(
+      final success = await launchUrl(
         uri,
-        mode: url.LaunchMode.externalApplication,
+        mode: LaunchMode.externalApplication,
       );
 
       if (!success) {
