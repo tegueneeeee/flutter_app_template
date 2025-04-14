@@ -3,20 +3,17 @@ import 'package:shared_dependencies/dependencies.dart';
 
 part 'force_update_notifier.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class ForceUpdateNotifier extends _$ForceUpdateNotifier {
   @override
   Future<ForceUpdateState> build() async {
-    return const ForceUpdateState();
+    final useCase = ref.read(checkForceUpdateNeededUseCaseProvider);
+    final isUpdateNeeded = await useCase();
+    return ForceUpdateState(isUpdateNeeded: isUpdateNeeded);
   }
 
-  Future<void> checkUpdateRequired() async {
-    state = const AsyncLoading();
-    state = await AsyncValue.guard(() async {
-      final useCase = ref.read(checkForceUpdateNeededUseCaseProvider);
-      final isUpdateNeeded = await useCase();
-      return ForceUpdateState(isUpdateNeeded: isUpdateNeeded);
-    });
+  void resume() {
+    state = const AsyncData(ForceUpdateState());
   }
 
   Future<void> openAppStore() async {
