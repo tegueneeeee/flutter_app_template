@@ -1,4 +1,4 @@
-import 'package:core/log.dart';
+import 'package:core/core.dart';
 import 'package:features_force_update/force_update.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_dependencies/dependencies.dart';

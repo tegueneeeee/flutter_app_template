@@ -1,9 +1,6 @@
 import 'dart:async';
 
-import 'package:core/exception.dart';
-import 'package:core/keys.dart';
-import 'package:core/state.dart';
-import 'package:core/util.dart';
+import 'package:core/core.dart';
 import 'package:features_force_update/force_update.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:core/state.dart';
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shared_config/config.dart';

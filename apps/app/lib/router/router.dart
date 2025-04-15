@@ -1,4 +1,4 @@
-import 'package:core/keys.dart';
+import 'package:core/core.dart';
 import 'package:features_webview/ui.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

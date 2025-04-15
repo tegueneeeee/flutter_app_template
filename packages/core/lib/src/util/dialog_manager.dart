@@ -1,4 +1,4 @@
-import 'package:core/keys.dart';
+import 'package:core/core.dart';
 import 'package:flutter/material.dart' as material show showDialog;
 import 'package:flutter/material.dart' hide showDialog;
 
@@ -22,7 +22,7 @@ class DialogManager {
   static Future<void> showAlert({
     required String message,
     String title = '',
-    String confirmText = '확인',
+    String confirmText = 'confirm',
     VoidCallback? onConfirm,
   }) {
     return showDialog(
@@ -45,8 +45,8 @@ class DialogManager {
   static Future<bool?> showConfirm({
     required String message,
     String title = '',
-    String confirmText = '확인',
-    String cancelText = '취소',
+    String confirmText = 'confirm',
+    String cancelText = 'cancel',
     VoidCallback? onConfirm,
     VoidCallback? onCancel,
   }) {
