@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:core/exception.dart';
+import 'package:core/keys.dart';
 import 'package:core/state.dart';
 import 'package:core/util.dart';
 import 'package:features_force_update/force_update.dart';
@@ -9,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/app_startup.dart';
 import 'package:flutter_app/router/router.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_dependencies/dependencies.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +32,7 @@ class MainApp extends ConsumerWidget {
     ref
       ..listen(appExceptionStateNotifierProvider, (_, appException) {
         if (appException != null) {
+          DialogManager.showAlert(message: appException.message);
           ref.read(appExceptionStateNotifierProvider.notifier).consume();
         }
       })
@@ -39,12 +41,24 @@ class MainApp extends ConsumerWidget {
           data: (data) {
             final isUpdateNeeded = data.isUpdateNeeded;
             if (isUpdateNeeded) {
-              SnackBarManager.showSnackBar(
-                'isUpdateNeeded: ${data.isUpdateNeeded}',
+              DialogManager.showDialog<void>(
+                dialog: ForceUpdateDialog(
+                  onUpdatePressed: () {
+                    ref
+                        .read(forceUpdateNotifierProvider.notifier)
+                        .openAppStore();
+                  },
+                  onLaterPressed:
+                      isUpdateNeeded
+                          ? () {
+                            GlobalKeys.rootNavigatorKey.currentState?.pop();
+                            ref
+                                .read(forceUpdateNotifierProvider.notifier)
+                                .resume();
+                          }
+                          : null,
+                ),
               );
-              // ForceUpdateDialog.show(context);
-              // print('forceUpdateState: $forceUpdateState');
-              ref.read(forceUpdateNotifierProvider.notifier).resume();
             }
           },
         );
@@ -52,7 +66,7 @@ class MainApp extends ConsumerWidget {
 
     return MaterialApp.router(
       routerConfig: router,
-      scaffoldMessengerKey: SnackBarManager.rootScaffoldMessengerKey,
+      scaffoldMessengerKey: GlobalKeys.rootScaffoldMessengerKey,
       shortcuts:
           kDebugMode
               ? {

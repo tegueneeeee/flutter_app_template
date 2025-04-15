@@ -35,10 +35,7 @@ class HomePage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('AppBar'),
         actions: [
-          IconButton(
-            onPressed: navigateToWebPage,
-            icon: const Icon(Icons.web),
-          ),
+          IconButton(onPressed: navigateToWebPage, icon: const Icon(Icons.web)),
         ],
       ),
       body: const Center(child: Text('home')),

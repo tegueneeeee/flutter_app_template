@@ -49,8 +49,8 @@ class ForceUpdateRepositoryImpl implements ForceUpdateRepository {
 
     // Mock version data - in production, this would be from an API call
     return ForceUpdateTargetVersion(
-      iosVersion: Version('1.0.0'),
-      androidVersion: Version('1.0.0'),
+      iosVersion: Version('1.0.1'),
+      androidVersion: Version('1.0.1'),
     );
   }
 
@@ -62,4 +62,25 @@ class ForceUpdateRepositoryImpl implements ForceUpdateRepository {
 
   @override
   String getAndroidPackageId() => androidPackageId;
+}
+
+/// Fake implementation of [ForceUpdateRepository]
+class FakeForceUpdateRepository implements ForceUpdateRepository {
+  @override
+  Future<ForceUpdateTargetVersion> getTargetVersion() async {
+    await Future<void>.delayed(const Duration(milliseconds: 500));
+    return ForceUpdateTargetVersion(
+      iosVersion: Version('9.9.9'),
+      androidVersion: Version('9.9.9'),
+    );
+  }
+
+  @override
+  Future<Version> getCurrentVersion() => Future.value(Version('1.0.0'));
+
+  @override
+  String getAndroidPackageId() => 'com.example.app';
+
+  @override
+  String getIosAppId() => 'com.example.app';
 }

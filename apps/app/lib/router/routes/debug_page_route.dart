@@ -11,7 +11,7 @@ class DebugPageRoute extends GoRouteData {
 
   static const path = '/debug';
 
-  static final $parentNavigatorKey = _rootNavigatorKey;
+  static final $parentNavigatorKey = GlobalKeys.rootNavigatorKey;
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
@@ -24,7 +24,7 @@ class NavigationDebugPageRoute extends GoRouteData {
 
   static const path = 'navigation_debug';
 
-  static final $parentNavigatorKey = _rootNavigatorKey;
+  static final $parentNavigatorKey = GlobalKeys.rootNavigatorKey;
 
   @override
   Widget build(BuildContext context, GoRouterState state) {

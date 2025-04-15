@@ -1,3 +1,4 @@
+import 'package:core/keys.dart';
 import 'package:features_webview/ui.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -18,13 +19,11 @@ part 'package:flutter_app/router/routes/main/setting/setting_shell_branch.dart';
 part 'package:flutter_app/router/routes/maintenance_page_route.dart';
 part 'router.g.dart';
 
-final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
-
 @Riverpod(keepAlive: true)
 GoRouter router(Ref ref) {
   final maintenanceMode = ref.watch(maintenanceModeNotifierProvider);
   return GoRouter(
-    navigatorKey: _rootNavigatorKey,
+    navigatorKey: GlobalKeys.rootNavigatorKey,
     routes: [
       ...$appRoutes.where((route) {
         if (route is GoRoute) {

@@ -1,3 +1,4 @@
+import 'package:features_force_update/force_update.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/features/debug_mode/state/exception_generator_notifier.dart';
 import 'package:flutter_app/features/maintenance/state/maintenance_mode_notifier.dart';
@@ -29,14 +30,9 @@ class DebugPage extends ConsumerWidget {
               },
             ),
             _FixSizedElevatedButton(
-              title: 'Enable force update',
+              title: 'Force update',
               onPressed: () {
-                // ref
-                //     .read(forceUpdateTargetVersionNotifierProvider.notifier)
-                //     .update(
-                //       androidTargetVersion: VersionString('9.9.9'),
-                //       iosTargetVersion: VersionString('9.9.9'),
-                //     );
+                ref.invalidate(forceUpdateNotifierProvider);
               },
             ),
             _FixSizedElevatedButton(

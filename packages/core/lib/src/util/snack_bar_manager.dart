@@ -1,27 +1,25 @@
+import 'package:core/src/keys/global_keys.dart';
 import 'package:flutter/material.dart';
 
 class SnackBarManager {
   SnackBarManager._();
 
-  static final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey =
-      GlobalKey<ScaffoldMessengerState>();
-
   static void showSnackBar(String message) {
-    if (rootScaffoldMessengerKey.currentState == null) {
+    if (GlobalKeys.rootScaffoldMessengerKey.currentState == null) {
       return;
     }
 
     /// Hide the current snackBar if it is visible
-    rootScaffoldMessengerKey.currentState!.hideCurrentSnackBar();
-    rootScaffoldMessengerKey.currentState!.showSnackBar(
+    GlobalKeys.rootScaffoldMessengerKey.currentState!.hideCurrentSnackBar();
+    GlobalKeys.rootScaffoldMessengerKey.currentState!.showSnackBar(
       SnackBar(content: Text(message)),
     );
   }
 
   static void hideSnackBar() {
-    if (rootScaffoldMessengerKey.currentState == null) {
+    if (GlobalKeys.rootScaffoldMessengerKey.currentState == null) {
       return;
     }
-    rootScaffoldMessengerKey.currentState!.hideCurrentSnackBar();
+    GlobalKeys.rootScaffoldMessengerKey.currentState!.hideCurrentSnackBar();
   }
 }

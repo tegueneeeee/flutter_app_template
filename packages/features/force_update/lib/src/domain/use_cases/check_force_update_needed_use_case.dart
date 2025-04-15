@@ -1,3 +1,4 @@
+import 'package:core/log.dart';
 import 'package:features_force_update/force_update.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_dependencies/dependencies.dart';
@@ -26,6 +27,10 @@ class CheckForceUpdateNeededUseCase {
       // Get current and target versions
       final currentVersion = await repository.getCurrentVersion();
       final targetVersion = await repository.getTargetVersion();
+
+      logger.info(
+        'currentVersion: $currentVersion targetVersion: $targetVersion',
+      );
 
       // Check if current version is older than target version based on platform
       return switch (defaultTargetPlatform) {
