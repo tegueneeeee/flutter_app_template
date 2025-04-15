@@ -1,3 +1,7 @@
+// There are some ignore for the debug mode page.
+// ignore_for_file: invalid_use_of_protected_member
+// ignore_for_file: invalid_use_of_visible_for_testing_member
+
 import 'package:features_force_update/force_update.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/features/debug_mode/state/exception_generator_notifier.dart';
@@ -32,7 +36,9 @@ class DebugPage extends ConsumerWidget {
             _FixSizedElevatedButton(
               title: 'Force update',
               onPressed: () {
-                ref.invalidate(forceUpdateNotifierProvider);
+                ref
+                    .read(forceUpdateNotifierProvider.notifier)
+                    .update((state) => state.copyWith(isUpdateNeeded: true));
               },
             ),
             _FixSizedElevatedButton(
