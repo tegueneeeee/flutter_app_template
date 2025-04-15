@@ -6,7 +6,7 @@ part 'remote_config_state.freezed.dart';
 @freezed
 abstract class RemoteConfigState with _$RemoteConfigState {
   const factory RemoteConfigState({
-    @Default(false) bool isMaintenance,
+    @Default(false) bool maintenance,
     @Default(UpdateType.none) UpdateType updateType,
   }) = _RemoteConfigState;
 }

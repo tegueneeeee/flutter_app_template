@@ -1,10 +1,10 @@
 import 'package:core/core.dart';
+import 'package:features_remote_config/remote_config.dart';
 import 'package:features_webview/ui.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/features/debug_mode/ui/debug_page.dart';
 import 'package:flutter_app/features/debug_mode/ui/navigation_debug_page.dart';
-import 'package:flutter_app/features/maintenance/state/maintenance_mode_notifier.dart';
 import 'package:flutter_app/features/maintenance/ui/maintenance_page.dart';
 import 'package:flutter_app/main_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,7 +21,7 @@ part 'router.g.dart';
 
 @Riverpod(keepAlive: true)
 GoRouter router(Ref ref) {
-  final maintenanceMode = ref.watch(maintenanceModeNotifierProvider);
+  final maintenance = ref.watch(maintenanceProvider);
   return GoRouter(
     navigatorKey: GlobalKeys.rootNavigatorKey,
     routes: [
@@ -36,7 +36,7 @@ GoRouter router(Ref ref) {
     debugLogDiagnostics: kDebugMode,
     initialLocation: HomePageRoute.path,
     redirect: (_, __) {
-      if (maintenanceMode) {
+      if (maintenance) {
         return MaintenancePageRoute.path;
       }
       return null;

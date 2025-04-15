@@ -1,1 +1,1 @@
-export 'force_update_dialog.dart';
+export 'update_dialog.dart';

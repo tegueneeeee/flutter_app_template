@@ -1,7 +1,6 @@
 import 'package:core/core.dart';
 import 'package:features_remote_config/remote_config.dart';
 import 'package:features_remote_config/src/domain/entities/platform_versions_requirements.dart';
-import 'package:features_remote_config/src/presentation/states/update_type.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_dependencies/dependencies.dart';
 
@@ -27,7 +26,7 @@ class DetermineUpdateUseCase
   @override
   Future<UpdateType> call(DetermineUpdateUseCaseParams params) async {
     final currentVersion = repository.getCurrentVersion();
-    final updates = params.updates;
+    final updates = params.platformVersionsRequirements;
 
     final targetPlatformVersions = switch (defaultTargetPlatform) {
       TargetPlatform.iOS => updates.ios,
@@ -45,7 +44,9 @@ class DetermineUpdateUseCase
 }
 
 class DetermineUpdateUseCaseParams {
-  const DetermineUpdateUseCaseParams({required this.updates});
+  const DetermineUpdateUseCaseParams({
+    required this.platformVersionsRequirements,
+  });
 
-  final PlatformVersionsRequirements updates;
+  final PlatformVersionsRequirements platformVersionsRequirements;
 }

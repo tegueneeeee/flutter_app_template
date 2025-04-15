@@ -7,4 +7,7 @@ abstract interface class RemoteConfigRepository {
 
   /// Gets the current version of the app
   Version getCurrentVersion();
+
+  /// Gets the package name of the app
+  String getPackageName();
 }

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$RemoteConfigState {
 
- bool get isMaintenance; UpdateType get updateType;
+ bool get maintenance; UpdateType get updateType;
 /// Create a copy of RemoteConfigState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $RemoteConfigStateCopyWith<RemoteConfigState> get copyWith => _$RemoteConfigStat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RemoteConfigState&&(identical(other.isMaintenance, isMaintenance) || other.isMaintenance == isMaintenance)&&(identical(other.updateType, updateType) || other.updateType == updateType));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RemoteConfigState&&(identical(other.maintenance, maintenance) || other.maintenance == maintenance)&&(identical(other.updateType, updateType) || other.updateType == updateType));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isMaintenance,updateType);
+int get hashCode => Object.hash(runtimeType,maintenance,updateType);
 
 @override
 String toString() {
-  return 'RemoteConfigState(isMaintenance: $isMaintenance, updateType: $updateType)';
+  return 'RemoteConfigState(maintenance: $maintenance, updateType: $updateType)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $RemoteConfigStateCopyWith<$Res>  {
   factory $RemoteConfigStateCopyWith(RemoteConfigState value, $Res Function(RemoteConfigState) _then) = _$RemoteConfigStateCopyWithImpl;
 @useResult
 $Res call({
- bool isMaintenance, UpdateType updateType
+ bool maintenance, UpdateType updateType
 });
 
 
@@ -63,9 +63,9 @@ class _$RemoteConfigStateCopyWithImpl<$Res>
 
 /// Create a copy of RemoteConfigState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isMaintenance = null,Object? updateType = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? maintenance = null,Object? updateType = null,}) {
   return _then(_self.copyWith(
-isMaintenance: null == isMaintenance ? _self.isMaintenance : isMaintenance // ignore: cast_nullable_to_non_nullable
+maintenance: null == maintenance ? _self.maintenance : maintenance // ignore: cast_nullable_to_non_nullable
 as bool,updateType: null == updateType ? _self.updateType : updateType // ignore: cast_nullable_to_non_nullable
 as UpdateType,
   ));
@@ -78,10 +78,10 @@ as UpdateType,
 
 
 class _RemoteConfigState implements RemoteConfigState {
-  const _RemoteConfigState({this.isMaintenance = false, this.updateType = UpdateType.none});
+  const _RemoteConfigState({this.maintenance = false, this.updateType = UpdateType.none});
   
 
-@override@JsonKey() final  bool isMaintenance;
+@override@JsonKey() final  bool maintenance;
 @override@JsonKey() final  UpdateType updateType;
 
 /// Create a copy of RemoteConfigState
@@ -94,16 +94,16 @@ _$RemoteConfigStateCopyWith<_RemoteConfigState> get copyWith => __$RemoteConfigS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RemoteConfigState&&(identical(other.isMaintenance, isMaintenance) || other.isMaintenance == isMaintenance)&&(identical(other.updateType, updateType) || other.updateType == updateType));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RemoteConfigState&&(identical(other.maintenance, maintenance) || other.maintenance == maintenance)&&(identical(other.updateType, updateType) || other.updateType == updateType));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isMaintenance,updateType);
+int get hashCode => Object.hash(runtimeType,maintenance,updateType);
 
 @override
 String toString() {
-  return 'RemoteConfigState(isMaintenance: $isMaintenance, updateType: $updateType)';
+  return 'RemoteConfigState(maintenance: $maintenance, updateType: $updateType)';
 }
 
 
@@ -114,7 +114,7 @@ abstract mixin class _$RemoteConfigStateCopyWith<$Res> implements $RemoteConfigS
   factory _$RemoteConfigStateCopyWith(_RemoteConfigState value, $Res Function(_RemoteConfigState) _then) = __$RemoteConfigStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool isMaintenance, UpdateType updateType
+ bool maintenance, UpdateType updateType
 });
 
 
@@ -131,9 +131,9 @@ class __$RemoteConfigStateCopyWithImpl<$Res>
 
 /// Create a copy of RemoteConfigState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isMaintenance = null,Object? updateType = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? maintenance = null,Object? updateType = null,}) {
   return _then(_RemoteConfigState(
-isMaintenance: null == isMaintenance ? _self.isMaintenance : isMaintenance // ignore: cast_nullable_to_non_nullable
+maintenance: null == maintenance ? _self.maintenance : maintenance // ignore: cast_nullable_to_non_nullable
 as bool,updateType: null == updateType ? _self.updateType : updateType // ignore: cast_nullable_to_non_nullable
 as UpdateType,
   ));

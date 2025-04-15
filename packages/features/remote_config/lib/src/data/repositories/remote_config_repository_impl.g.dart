@@ -9,7 +9,7 @@ part of 'remote_config_repository_impl.dart';
 // **************************************************************************
 
 String _$remoteConfigRepositoryHash() =>
-    r'76a145f1e11c68e5fd0fe3ec47b9b91e2ce59fd7';
+    r'02a9deb4e6b8278e3c805863d75ed03f35068892';
 
 /// Provider for [RemoteConfigRepository]
 ///

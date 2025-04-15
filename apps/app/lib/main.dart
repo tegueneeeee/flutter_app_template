@@ -6,13 +6,19 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/app_startup.dart';
+import 'package:flutter_app/fake_providers.dart';
 import 'package:flutter_app/router/router.dart';
 import 'package:shared_dependencies/dependencies.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final fakeProviders =
+      await (kDebugMode
+          ? FakeProviders.initialize()
+          : Future.value(<Override>[]));
   runApp(
     ProviderScope(
+      overrides: [...fakeProviders],
       observers: [AsyncErrorLogger()],
       child: AppStartupWidget(onLoaded: (_) => const MainApp()),
     ),
@@ -33,31 +39,14 @@ class MainApp extends ConsumerWidget {
           ref.read(appExceptionStateNotifierProvider.notifier).consume();
         }
       })
-      ..listen(forceUpdateNotifierProvider, (_, forceUpdateState) {
-        forceUpdateState.whenOrNull(
-          data: (data) {
-            final isUpdateNeeded = data.isUpdateNeeded;
-            if (isUpdateNeeded) {
-              DialogManager.showDialog<void>(
-                dialog: ForceUpdateDialog(
-                  onUpdatePressed: () {
-                    ref
-                        .read(forceUpdateNotifierProvider.notifier)
-                        .openAppStore();
-                  },
-                  onLaterPressed:
-                      isUpdateNeeded
-                          ? () {
-                            GlobalKeys.rootNavigatorKey.currentState?.pop();
-                            ref
-                                .read(forceUpdateNotifierProvider.notifier)
-                                .resume();
-                          }
-                          : null,
-                ),
-              );
-            }
-          },
+      ..listen(updateTypeProvider, (a, updateType) {
+        if (updateType == UpdateType.none) return;
+        DialogManager.showDialog<void>(
+          dialog: UpdateDialog(
+            onUpdatePressed: () {},
+            onLaterPressed:
+                updateType == UpdateType.recommended ? router.pop : null,
+          ),
         );
       });
 
@@ -72,16 +61,29 @@ class MainApp extends ConsumerWidget {
                       LogicalKeyboardKey.keyD,
                     ):
                     const _DebugIntent(),
+                LogicalKeySet(
+                      LogicalKeyboardKey.shift,
+                      LogicalKeyboardKey.keyZ,
+                    ):
+                    const _PopIntent(),
               }
               : null,
       actions:
           kDebugMode
               ? <Type, Action<Intent>>{
                 _DebugIntent: CallbackAction<_DebugIntent>(
-                  onInvoke:
-                      (_) => unawaited(
-                        router.push(const DebugPageRoute().location),
-                      ),
+                  onInvoke: (_) {
+                    if (router.state.path != const DebugPageRoute().location) {
+                      router.push(const DebugPageRoute().location);
+                    }
+                    return null;
+                  },
+                ),
+                _PopIntent: CallbackAction<_PopIntent>(
+                  onInvoke: (_) {
+                    if (router.canPop()) router.pop();
+                    return null;
+                  },
                 ),
               }
               : null,
@@ -91,4 +93,8 @@ class MainApp extends ConsumerWidget {
 
 class _DebugIntent extends Intent {
   const _DebugIntent();
+}
+
+class _PopIntent extends Intent {
+  const _PopIntent();
 }

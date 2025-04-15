@@ -14,13 +14,33 @@ class RemoteConfigNotifier extends _$RemoteConfigNotifier {
     final remoteConfig = await getRemoteConfig(NoParams());
     final updateType = await determineUpdate(
       DetermineUpdateUseCaseParams(
-        updates: remoteConfig.platformVersionsRequirements,
+        platformVersionsRequirements: remoteConfig.platformVersionsRequirements,
       ),
     );
 
     return RemoteConfigState(
-      isMaintenance: remoteConfig.maintenance,
+      maintenance: remoteConfig.maintenance,
       updateType: updateType,
     );
   }
+
+  void updateMaintenance({required bool value}) {
+    state = state.whenData((data) => data.copyWith(maintenance: value));
+  }
+
+  void updateType(UpdateType value) {
+    state = state.whenData((data) => data.copyWith(updateType: value));
+  }
+}
+
+@riverpod
+bool maintenance(Ref ref) {
+  final remoteConfig = ref.watch(remoteConfigNotifierProvider).valueOrNull;
+  return remoteConfig?.maintenance ?? false;
+}
+
+@riverpod
+UpdateType updateType(Ref ref) {
+  final remoteConfig = ref.watch(remoteConfigNotifierProvider).valueOrNull;
+  return remoteConfig?.updateType ?? UpdateType.none;
 }

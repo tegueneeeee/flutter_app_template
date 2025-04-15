@@ -1,5 +1,5 @@
+import 'package:features_remote_config/remote_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/features/maintenance/state/maintenance_mode_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
@@ -19,8 +19,8 @@ class MaintenancePage extends ConsumerWidget {
             ElevatedButton(
               onPressed: () {
                 ref
-                    .read(maintenanceModeNotifierProvider.notifier)
-                    .update(enabled: false);
+                    .read(remoteConfigNotifierProvider.notifier)
+                    .updateMaintenance(value: false);
               },
               child: const Text('Maintenance Button'),
             ),

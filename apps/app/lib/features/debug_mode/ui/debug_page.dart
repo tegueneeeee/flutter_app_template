@@ -5,7 +5,6 @@
 import 'package:features_remote_config/remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/features/debug_mode/state/exception_generator_notifier.dart';
-import 'package:flutter_app/features/maintenance/state/maintenance_mode_notifier.dart';
 import 'package:flutter_app/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -29,16 +28,32 @@ class DebugPage extends ConsumerWidget {
               title: 'Enable maintenance mode',
               onPressed: () {
                 ref
-                    .read(maintenanceModeNotifierProvider.notifier)
-                    .update(enabled: true);
+                    .read(remoteConfigNotifierProvider.notifier)
+                    .update((state) => state.copyWith(maintenance: true));
+              },
+            ),
+            _FixSizedElevatedButton(
+              title: 'None update',
+              onPressed: () {
+                ref
+                    .read(remoteConfigNotifierProvider.notifier)
+                    .updateType(UpdateType.none);
               },
             ),
             _FixSizedElevatedButton(
               title: 'Force update',
               onPressed: () {
                 ref
-                    .read(forceUpdateNotifierProvider.notifier)
-                    .update((state) => state.copyWith(isUpdateNeeded: true));
+                    .read(remoteConfigNotifierProvider.notifier)
+                    .updateType(UpdateType.force);
+              },
+            ),
+            _FixSizedElevatedButton(
+              title: 'Recommended update',
+              onPressed: () {
+                ref
+                    .read(remoteConfigNotifierProvider.notifier)
+                    .updateType(UpdateType.recommended);
               },
             ),
             _FixSizedElevatedButton(
