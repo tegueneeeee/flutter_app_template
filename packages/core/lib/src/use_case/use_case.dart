@@ -1,6 +1,9 @@
 import 'package:shared_dependencies/dependencies.dart';
 
-abstract class UseCase<Type, Params> {
+abstract class UseCase<Type, Params, Repository> {
+  UseCase({required this.repository});
+  final Repository repository;
+
   Future<Type> call(Params params);
 }
 

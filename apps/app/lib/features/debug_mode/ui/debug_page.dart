@@ -2,7 +2,7 @@
 // ignore_for_file: invalid_use_of_protected_member
 // ignore_for_file: invalid_use_of_visible_for_testing_member
 
-import 'package:features_force_update/force_update.dart';
+import 'package:features_remote_config/remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/features/debug_mode/state/exception_generator_notifier.dart';
 import 'package:flutter_app/features/maintenance/state/maintenance_mode_notifier.dart';

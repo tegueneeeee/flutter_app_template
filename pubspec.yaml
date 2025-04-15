@@ -11,7 +11,7 @@ workspace:
   - packages/designsystem
   # features
   - packages/features/webview
-  - packages/features/force_update
+  - packages/features/remote_config
   # shared
   - packages/shared/config
   - packages/shared/dependencies
