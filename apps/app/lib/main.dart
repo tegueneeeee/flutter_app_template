@@ -73,7 +73,9 @@ class MainApp extends ConsumerWidget {
               ? <Type, Action<Intent>>{
                 _DebugIntent: CallbackAction<_DebugIntent>(
                   onInvoke: (_) {
-                    if (router.state.path != const DebugPageRoute().location) {
+                    if (!router.state.matchedLocation.startsWith(
+                      const DebugPageRoute().location,
+                    )) {
                       router.push(const DebugPageRoute().location);
                     }
                     return null;
