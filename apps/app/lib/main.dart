@@ -39,7 +39,7 @@ class MainApp extends ConsumerWidget {
           ref.read(appExceptionStateNotifierProvider.notifier).consume();
         }
       })
-      ..listen(updateTypeProvider, (a, updateType) {
+      ..listen(updateTypeProvider, (_, updateType) {
         if (updateType == UpdateType.none) return;
         DialogManager.showDialog<void>(
           dialog: UpdateDialog(

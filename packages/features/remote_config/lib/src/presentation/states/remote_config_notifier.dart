@@ -35,12 +35,20 @@ class RemoteConfigNotifier extends _$RemoteConfigNotifier {
 
 @riverpod
 bool maintenance(Ref ref) {
-  final remoteConfig = ref.watch(remoteConfigNotifierProvider).valueOrNull;
-  return remoteConfig?.maintenance ?? false;
+  final maintenance = ref.watch(
+    remoteConfigNotifierProvider.select(
+      (value) => value.valueOrNull?.maintenance,
+    ),
+  );
+  return maintenance ?? false;
 }
 
 @riverpod
 UpdateType updateType(Ref ref) {
-  final remoteConfig = ref.watch(remoteConfigNotifierProvider).valueOrNull;
-  return remoteConfig?.updateType ?? UpdateType.none;
+  final updateType = ref.watch(
+    remoteConfigNotifierProvider.select(
+      (value) => value.valueOrNull?.updateType,
+    ),
+  );
+  return updateType ?? UpdateType.none;
 }
