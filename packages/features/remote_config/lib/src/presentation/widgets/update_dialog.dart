@@ -1,9 +1,10 @@
+import 'package:features_remote_config/remote_config.dart';
+import 'package:features_remote_config/src/presentation/states/app_store_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_dependencies/dependencies.dart';
 
-class UpdateDialog extends StatelessWidget {
+class UpdateDialog extends ConsumerWidget {
   const UpdateDialog({
-    required this.onUpdatePressed,
-    this.onLaterPressed,
     super.key,
     this.title = 'Update Required',
     this.message =
@@ -16,13 +17,9 @@ class UpdateDialog extends StatelessWidget {
   final String message;
   final String updateButtonText;
   final String laterButtonText;
-  final VoidCallback onUpdatePressed;
-  final VoidCallback? onLaterPressed;
 
   static Future<void> show(
     BuildContext context, {
-    required VoidCallback onUpdatePressed,
-    VoidCallback? onLaterPressed,
     String title = 'Update Required',
     String message =
         'Please update to the latest version to continue using the app.',
@@ -38,14 +35,13 @@ class UpdateDialog extends StatelessWidget {
             message: message,
             updateButtonText: updateButtonText,
             laterButtonText: laterText,
-            onUpdatePressed: onUpdatePressed,
-            onLaterPressed: onLaterPressed,
           ),
     );
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final updateType = ref.watch(updateTypeProvider);
     return PopScope(
       canPop: false,
       child: AlertDialog(
@@ -59,10 +55,15 @@ class UpdateDialog extends StatelessWidget {
           ],
         ),
         actions: [
-          if (onLaterPressed != null)
-            TextButton(onPressed: onLaterPressed, child: Text(laterButtonText)),
+          if (updateType == UpdateType.recommended)
+            TextButton(
+              onPressed: () => context.pop(),
+              child: Text(laterButtonText),
+            ),
           ElevatedButton(
-            onPressed: onUpdatePressed,
+            onPressed: () {
+              ref.read(appStoreNotifierProvider.notifier).openAppStore();
+            },
             child: Text(updateButtonText),
           ),
         ],

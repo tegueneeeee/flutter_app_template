@@ -35,19 +35,13 @@ class MainApp extends ConsumerWidget {
     ref
       ..listen(appExceptionStateNotifierProvider, (_, appException) {
         if (appException != null) {
-          DialogManager.showAlert(message: appException.message);
+          SnackBarManager.showSnackBar(appException.message);
           ref.read(appExceptionStateNotifierProvider.notifier).consume();
         }
       })
       ..listen(updateTypeProvider, (_, updateType) {
         if (updateType == UpdateType.none) return;
-        DialogManager.showDialog<void>(
-          dialog: UpdateDialog(
-            onUpdatePressed: () {},
-            onLaterPressed:
-                updateType == UpdateType.recommended ? router.pop : null,
-          ),
-        );
+        DialogManager.showDialog<void>(dialog: const UpdateDialog());
       });
 
     return MaterialApp.router(

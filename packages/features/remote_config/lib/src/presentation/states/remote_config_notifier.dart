@@ -8,8 +8,8 @@ part 'remote_config_notifier.g.dart';
 class RemoteConfigNotifier extends _$RemoteConfigNotifier {
   @override
   Future<RemoteConfigState> build() async {
-    final getRemoteConfig = ref.watch(getRemoteConfigUseCaseProvider);
-    final determineUpdate = ref.watch(determineUpdateUseCaseProvider);
+    final getRemoteConfig = ref.read(getRemoteConfigUseCaseProvider);
+    final determineUpdate = ref.read(determineUpdateUseCaseProvider);
 
     final remoteConfig = await getRemoteConfig(NoParams());
     final updateType = await determineUpdate(

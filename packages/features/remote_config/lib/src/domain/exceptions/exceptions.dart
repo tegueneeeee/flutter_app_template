@@ -1,1 +1,1 @@
-export 'force_update_exception.dart';
+export 'remote_config_exception.dart';

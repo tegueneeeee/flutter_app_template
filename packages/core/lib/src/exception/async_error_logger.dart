@@ -1,5 +1,4 @@
-import 'package:core/src/exception/app_exception.dart';
-import 'package:core/src/exception/error_logger.dart';
+import 'package:core/src/exception/exception.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AsyncErrorLogger extends ProviderObserver {
@@ -11,14 +10,18 @@ class AsyncErrorLogger extends ProviderObserver {
     ProviderContainer container,
   ) {
     final errorLogger = container.read(errorLoggerProvider);
-    final error = _findError(newValue);
-    if (error != null) {
-      if (error.error is AppException) {
+    final asyncError = _findError(newValue);
+    if (asyncError != null) {
+      final error = asyncError.error;
+      if (error is AppException) {
         // only prints the AppException data
-        errorLogger.logAppException(error.error as AppException);
+        container
+            .read(appExceptionStateNotifierProvider.notifier)
+            .notify(error);
+        errorLogger.logAppException(error);
       } else {
         // prints everything including the stack trace
-        errorLogger.logError(error.error, error.stackTrace);
+        errorLogger.logError(error, asyncError.stackTrace);
       }
     }
   }

@@ -8,7 +8,7 @@ part of 'remote_config_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$maintenanceHash() => r'7215bc2d70a19a824cadf2139cbf5e13eb3a369d';
+String _$maintenanceHash() => r'02a144d8e21f402ac1e12d50d2a096cd138b355c';
 
 /// See also [maintenance].
 @ProviderFor(maintenance)
@@ -24,7 +24,7 @@ final maintenanceProvider = AutoDisposeProvider<bool>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef MaintenanceRef = AutoDisposeProviderRef<bool>;
-String _$updateTypeHash() => r'b0bf082b3c8ef7d356bc3ca34b3c403a66c7bf32';
+String _$updateTypeHash() => r'59b499e4f0931f19ed310d5295717be2502ee6dc';
 
 /// See also [updateType].
 @ProviderFor(updateType)
@@ -41,7 +41,7 @@ final updateTypeProvider = AutoDisposeProvider<UpdateType>.internal(
 // ignore: unused_element
 typedef UpdateTypeRef = AutoDisposeProviderRef<UpdateType>;
 String _$remoteConfigNotifierHash() =>
-    r'9b38dcaf82b742a09bb2e080e06baaa5921235c2';
+    r'b7002d2ea4b17d0b77251fa73a8624ac9db30e4e';
 
 /// See also [RemoteConfigNotifier].
 @ProviderFor(RemoteConfigNotifier)
