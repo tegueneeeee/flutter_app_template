@@ -5,6 +5,7 @@ import 'package:shared_config/config.dart';
 
 part 'app_build_config.g.dart';
 
+/// Provider for accessing BuildConfig information throughout the app
 @Riverpod(keepAlive: true)
 Future<BuildConfig> appBuildConfigState(Ref ref) async {
   final packageInfo = await PackageInfo.fromPlatform();
@@ -19,8 +20,10 @@ Future<BuildConfig> appBuildConfigState(Ref ref) async {
   );
 }
 
+/// Implementation of BuildConfig that contains actual build configuration
 final class AppBuildConfig implements BuildConfig {
-  AppBuildConfig({
+  /// Creates a new AppBuildConfig instance
+  const AppBuildConfig({
     required this.flavor,
     required this.appName,
     required this.packageName,
@@ -30,7 +33,8 @@ final class AppBuildConfig implements BuildConfig {
     this.installerStore,
   });
 
-  // Alternative constructor that takes a string flavor name
+  /// Alternative constructor that takes a string flavor name
+  /// and maps it to the appropriate FlavorStatus
   factory AppBuildConfig.withFlavorName({
     required String appFlavor,
     required String appName,
