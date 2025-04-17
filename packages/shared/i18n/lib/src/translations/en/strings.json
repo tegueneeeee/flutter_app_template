@@ -1,0 +1,47 @@
+{
+  "app": {
+    "title": "Flutter App Template",
+    "welcome": "Welcome to Flutter App Template"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "ok": "OK",
+    "yes": "Yes",
+    "no": "No",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "loading": "Loading...",
+    "search": "Search"
+  },
+  "home": {
+    "title": "Home",
+    "welcome": "Welcome to the app"
+  },
+  "settings": {
+    "title": "Settings",
+    "theme": "Theme",
+    "language": "Language",
+    "darkMode": "Dark Mode",
+    "notifications": "Notifications",
+    "about": "About",
+    "version": "Version"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "createAccount": "Create Account"
+  },
+  "errors": {
+    "unknown": "Unknown error occurred",
+    "connection": "Connection error",
+    "timeout": "Request timeout",
+    "invalidCredentials": "Invalid email or password",
+    "required": "{field} is required"
+  }
+} 

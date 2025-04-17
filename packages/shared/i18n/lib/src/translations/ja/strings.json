@@ -1,0 +1,47 @@
+{
+  "app": {
+    "title": "Flutter アプリテンプレート",
+    "welcome": "Flutter アプリテンプレートへようこそ"
+  },
+  "common": {
+    "cancel": "キャンセル",
+    "confirm": "確認",
+    "ok": "OK",
+    "yes": "はい",
+    "no": "いいえ",
+    "save": "保存",
+    "delete": "削除",
+    "edit": "編集",
+    "loading": "読み込み中...",
+    "search": "検索"
+  },
+  "home": {
+    "title": "ホーム",
+    "welcome": "アプリへようこそ"
+  },
+  "settings": {
+    "title": "設定",
+    "theme": "テーマ",
+    "language": "言語",
+    "darkMode": "ダークモード",
+    "notifications": "通知",
+    "about": "アプリについて",
+    "version": "バージョン"
+  },
+  "auth": {
+    "login": "ログイン",
+    "logout": "ログアウト",
+    "register": "登録",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "createAccount": "アカウント作成"
+  },
+  "errors": {
+    "unknown": "不明なエラーが発生しました",
+    "connection": "接続エラー",
+    "timeout": "リクエストタイムアウト",
+    "invalidCredentials": "メールアドレスまたはパスワードが無効です",
+    "required": "{field}は必須です"
+  }
+} 

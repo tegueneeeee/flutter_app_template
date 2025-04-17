@@ -15,6 +15,7 @@ workspace:
   # shared
   - packages/shared/config
   - packages/shared/dependencies
+  - packages/shared/i18n
 
 dev_dependencies:
   mason_cli: ^0.1.2
@@ -85,3 +86,31 @@ melos:
       packageFilters:
         dependsOn: flutter_test
         dirExists: test
+        
+    # I18n specific scripts
+    gen:i18n:
+      description: Generate internationalization files
+      run: dart run build_runner build -d
+      exec:
+        concurrency: 1
+      packageFilters:
+        scope: i18n
+        dependsOn: slang_build_runner
+        
+    gen:i18n:watch:
+      description: Watch for changes and regenerate internationalization files
+      run: dart run build_runner watch -d
+      exec:
+        concurrency: 1
+      packageFilters:
+        scope: i18n
+        dependsOn: slang_build_runner
+        
+    i18n:analyze:
+      description: Analyze translations for missing entries
+      run: dart run build_runner build -d --define slang_build_runner:analyze=true
+      exec:
+        concurrency: 1
+      packageFilters:
+        scope: i18n
+        dependsOn: slang_build_runner
