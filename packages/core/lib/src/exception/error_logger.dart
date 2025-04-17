@@ -11,10 +11,10 @@ ErrorLogger errorLogger(Ref ref) {
 
 class ErrorLogger {
   void logError(Object error, StackTrace? stackTrace) {
-    logger.severe('$error, $stackTrace');
+    CoreLogger.error('$error, $stackTrace');
   }
 
   void logAppException(AppException exception) {
-    logger.severe('$exception');
+    CoreLogger.error('$exception');
   }
 }

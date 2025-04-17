@@ -1,5 +1,5 @@
 /// Common utilities and helpers for the Flutter app
-library common;
+library;
 
 // Constants
 export 'src/constants/app_constants.dart';
@@ -8,7 +8,6 @@ export 'src/constants/storage_keys.dart';
 export 'src/extensions/context_extensions.dart';
 export 'src/extensions/date_extensions.dart';
 export 'src/extensions/int_extensions.dart';
-export 'src/extensions/iterable_extensions.dart';
 export 'src/extensions/num_extensions.dart';
 export 'src/extensions/string_extensions.dart';
 export 'src/extensions/validation_extensions.dart';

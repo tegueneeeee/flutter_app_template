@@ -12,6 +12,7 @@ resolution: workspace
 dependencies:
   flutter:
     sdk: flutter
+  connectivity_plus: ^5.0.2
   flutter_riverpod: ^2.6.1
   freezed_annotation: ^3.0.0
   package_info_plus: ^8.3.0

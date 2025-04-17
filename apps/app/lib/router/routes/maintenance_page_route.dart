@@ -8,6 +8,6 @@ class MaintenancePageRoute extends GoRouteData {
 
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) {
-    return const NoTransitionPage<Page<dynamic>>(child: MaintenancePage());
+    return NoTransitionPage<Page<dynamic>>(child: Container());
   }
 }

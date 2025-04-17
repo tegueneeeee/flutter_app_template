@@ -15,7 +15,7 @@ class DebugPageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const DebugPage();
+    return Container();
   }
 }
 
@@ -28,6 +28,6 @@ class NavigationDebugPageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const NavigationDebugPage();
+    return Container();
   }
 }

@@ -1,4 +1,3 @@
-import 'package:core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shared_config/config.dart';
@@ -10,15 +9,10 @@ part 'app_startup.g.dart';
 Future<void> appStartup(Ref ref) async {
   ref.onDispose(() {
     // ensure we invalidate all the providers we depend on
-    ref
-      ..invalidate(appBuildConfigStateProvider)
-      ..invalidate(sharedPreferencesStateProvider);
+    ref.invalidate(appBuildConfigStateProvider);
   });
   // all asynchronous app initialization code should belong here:
-  await Future.wait([
-    ref.watch(appBuildConfigStateProvider.future),
-    ref.watch(sharedPreferencesStateProvider.future),
-  ]);
+  await Future.wait([ref.watch(appBuildConfigStateProvider.future)]);
 }
 
 class AppStartupWidget extends ConsumerWidget {
