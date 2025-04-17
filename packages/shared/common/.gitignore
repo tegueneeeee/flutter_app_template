@@ -51,7 +51,3 @@ pubspec_overrides.yaml
 *.gr.dart
 *.freezed.dart
 *.config.dart
-
-.env
-.env.dev
-.env.stg
