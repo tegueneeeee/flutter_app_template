@@ -13,6 +13,7 @@ workspace:
   - packages/features/webview
   - packages/features/remote_config
   # shared
+  - packages/shared/common
   - packages/shared/config
   - packages/shared/dependencies
   - packages/shared/i18n
