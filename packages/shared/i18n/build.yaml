@@ -9,3 +9,8 @@ targets:
           locale_handling: true
           string_interpolation: dart-style
           namespaces: true
+      
+      riverpod_generator:
+        generate_for:
+          include:
+            - lib/**/*_provider.dart

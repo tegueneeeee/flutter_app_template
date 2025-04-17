@@ -441,4 +441,8 @@ packages/shared/i18n/
 *   **DRY:** Avoid code duplication.
 *   **Prefer Feature-Specific:** Prioritize feature-level placement.
 
+## Lint Principles
+*   **Avoid Catches Without On Clauses:** Catch clause should use 'on' to specify the type of exception being caught. Try adding an 'on' clause before the 'catch'
+
+
 Please adhere to the above content when executing tasks.

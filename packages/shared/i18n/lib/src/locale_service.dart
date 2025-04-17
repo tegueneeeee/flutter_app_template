@@ -12,6 +12,7 @@ class LocaleService {
   static const List<Locale> supportedLocales = [
     Locale('en'), // English
     Locale('ja'), // Japanese
+    Locale('ko'), // Korean
   ];
 
   /// Default locale for the application
@@ -33,7 +34,7 @@ class LocaleService {
       } else if (localeParts.length > 1) {
         return Locale(localeParts[0], localeParts[1]);
       }
-    } catch (_) {
+    } on Exception catch (_) {
       // Return default locale on error
     }
 
@@ -58,6 +59,8 @@ class LocaleService {
         return 'English';
       case 'ja':
         return '日本語';
+      case 'ko':
+        return '한국어';
       default:
         return 'English';
     }

@@ -1,0 +1,47 @@
+{
+  "app": {
+    "title": "Flutter 앱 템플릿",
+    "welcome": "Flutter 앱 템플릿에 오신 것을 환영합니다"
+  },
+  "common": {
+    "cancel": "취소",
+    "confirm": "확인",
+    "ok": "확인",
+    "yes": "예",
+    "no": "아니오",
+    "save": "저장",
+    "delete": "삭제",
+    "edit": "편집",
+    "loading": "로딩 중...",
+    "search": "검색"
+  },
+  "home": {
+    "title": "홈",
+    "welcome": "앱에 오신 것을 환영합니다"
+  },
+  "settings": {
+    "title": "설정",
+    "theme": "테마",
+    "language": "언어",
+    "darkMode": "다크 모드",
+    "notifications": "알림",
+    "about": "앱 정보",
+    "version": "버전"
+  },
+  "auth": {
+    "login": "로그인",
+    "logout": "로그아웃",
+    "register": "회원가입",
+    "email": "이메일",
+    "password": "비밀번호",
+    "forgotPassword": "비밀번호를 잊으셨나요?",
+    "createAccount": "계정 만들기"
+  },
+  "errors": {
+    "unknown": "알 수 없는 오류가 발생했습니다",
+    "connection": "연결 오류",
+    "timeout": "요청 시간 초과",
+    "invalidCredentials": "이메일 또는 비밀번호가 잘못되었습니다",
+    "required": "{field}은(는) 필수입니다"
+  }
+} 

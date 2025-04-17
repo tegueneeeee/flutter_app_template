@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:i18n/src/locale_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import 'locale_service.dart';
 
 part 'locale_provider.g.dart';
 
@@ -20,7 +19,7 @@ class AppLocale extends _$AppLocale {
     try {
       await LocaleService.setLocale(locale);
       state = AsyncValue.data(locale);
-    } catch (error, stackTrace) {
+    } on Exception catch (error, stackTrace) {
       state = AsyncValue.error(error, stackTrace);
     }
   }
@@ -33,5 +32,10 @@ class AppLocale extends _$AppLocale {
   /// Convenience method to set Japanese locale
   Future<void> setJapanese() async {
     await setLocale(const Locale('ja'));
+  }
+
+  /// Convenience method to set Korean locale
+  Future<void> setKorean() async {
+    await setLocale(const Locale('ko'));
   }
 }
