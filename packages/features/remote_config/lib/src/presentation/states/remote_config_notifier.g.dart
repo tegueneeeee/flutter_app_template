@@ -41,7 +41,7 @@ final updateTypeProvider = AutoDisposeProvider<UpdateType>.internal(
 // ignore: unused_element
 typedef UpdateTypeRef = AutoDisposeProviderRef<UpdateType>;
 String _$remoteConfigNotifierHash() =>
-    r'b7002d2ea4b17d0b77251fa73a8624ac9db30e4e';
+    r'69bc82cf989aaa70ffb5f205f6c9b2f8ded79854';
 
 /// See also [RemoteConfigNotifier].
 @ProviderFor(RemoteConfigNotifier)

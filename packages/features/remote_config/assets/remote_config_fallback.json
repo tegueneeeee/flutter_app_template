@@ -1,0 +1,11 @@
+{
+  "maintenance": false,
+  "ios": {
+    "min_version": "1.0.0",
+    "target_version": "1.0.0"
+  },
+  "android": {
+    "min_version": "1.0.0",
+    "target_version": "1.0.0"
+  }
+} 
