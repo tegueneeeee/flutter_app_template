@@ -343,10 +343,6 @@ packages/shared/common/
 └── lib/
     ├── src/
     │   ├── utils/
-    │   │   ├── date_utils.dart
-    │   │   ├── string_utils.dart
-    │   │   ├── validation_utils.dart
-    │   │   └── format_utils.dart
     │   │
     │   ├── logging/
     │   │   ├── app_logger.dart
@@ -360,25 +356,12 @@ packages/shared/common/
     │   │   ├── app_constants.dart
     │   │   └── storage_keys.dart
     │   │
-    │   ├── extensions/
-    │   │   ├── context_extensions.dart
-    │   │   ├── iterable_extensions.dart
-    │   │   ├── string_extensions.dart
-    │   │   └── date_extensions.dart
-    │   │
-    │   └── helpers/
-    │       ├── debouncer.dart
-    │       ├── pair.dart
-    │       └── result.dart
+    │   └── extensions/
     │
     └── common.dart
 
 
 *   **utils/**: Common utility functions.
-    *   **date_utils.dart**: Date manipulation and formatting.
-    *   **string_utils.dart**: String manipulation and processing.
-    *   **validation_utils.dart**: Form and input validation.
-    *   **format_utils.dart**: Data formatting for display.
 *   **logging/**: Logging infrastructure.
     *   **app_logger.dart**: Logger configuration and setup.
     *   **log_service.dart**: Logging service with different log levels.
@@ -389,14 +372,6 @@ packages/shared/common/
     *   **app_constants.dart**: General application constants.
     *   **storage_keys.dart**: Keys used for local storage.
 *   **extensions/**: Dart extension methods.
-    *   **context_extensions.dart**: Flutter BuildContext extensions.
-    *   **iterable_extensions.dart**: List/Map/Set extensions.
-    *   **string_extensions.dart**: String manipulation extensions.
-    *   **date_extensions.dart**: DateTime extensions.
-*   **helpers/**: Dart extension methods.
-    *   **debouncer.dart**: Debounce functionality for UI interactions.
-    *   **pair.dart**: Simple tuple/pair class.
-    *   **result.dart**: Result type for error handling.
 *   **common.dart**: Package entry point.
 
 #### Shared Config package Structure
