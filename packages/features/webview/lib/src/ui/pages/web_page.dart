@@ -32,6 +32,12 @@ class WebPage extends HookWidget {
                   isLoading.value = false;
                 },
                 onWebResourceError: (error) {
+                  print(error);
+                  isLoading.value = false;
+                  hasError.value = true;
+                },
+                onHttpError: (error) {
+                  print(error);
                   isLoading.value = false;
                   hasError.value = true;
                 },
@@ -39,7 +45,7 @@ class WebPage extends HookWidget {
             )
             ..loadRequest(initialUri);
       return controller;
-    }, [],);
+    }, []);
     return PopScope(
       canPop: canPop.value,
       onPopInvokedWithResult: (didPop, _) async {
@@ -54,6 +60,7 @@ class WebPage extends HookWidget {
         }
       },
       child: Scaffold(
+        key: GlobalKey(),
         appBar: AppBar(title: const Text('Webview')),
         body: Stack(
           children: [

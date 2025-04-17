@@ -60,6 +60,11 @@ class MainApp extends ConsumerWidget {
                       LogicalKeyboardKey.keyZ,
                     ):
                     const _PopIntent(),
+                LogicalKeySet(
+                      LogicalKeyboardKey.shift,
+                      LogicalKeyboardKey.keyM,
+                    ):
+                    const _MaintenanceIntent(),
               }
               : null,
       actions:
@@ -81,6 +86,14 @@ class MainApp extends ConsumerWidget {
                     return null;
                   },
                 ),
+                _MaintenanceIntent: CallbackAction<_MaintenanceIntent>(
+                  onInvoke: (_) {
+                    ref
+                        .read(remoteConfigNotifierProvider.notifier)
+                        .toggleMaintenance();
+                    return null;
+                  },
+                ),
               }
               : null,
     );
@@ -93,4 +106,8 @@ class _DebugIntent extends Intent {
 
 class _PopIntent extends Intent {
   const _PopIntent();
+}
+
+class _MaintenanceIntent extends Intent {
+  const _MaintenanceIntent();
 }

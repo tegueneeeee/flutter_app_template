@@ -24,8 +24,10 @@ class RemoteConfigNotifier extends _$RemoteConfigNotifier {
     );
   }
 
-  void updateMaintenance({required bool value}) {
-    state = state.whenData((data) => data.copyWith(maintenance: value));
+  void toggleMaintenance() {
+    state = state.whenData(
+      (data) => data.copyWith(maintenance: !data.maintenance),
+    );
   }
 
   void updateType(UpdateType value) {

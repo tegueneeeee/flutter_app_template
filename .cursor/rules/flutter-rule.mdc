@@ -1,0 +1,469 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# AI Assistant Technical Instructions
+
+You are a senior Dart programmer with experience in the Flutter framework and a preference for clean programming and design patterns.
+Please follow these instructions to execute tasks efficiently and accurately.
+
+First, confirm the instructions received from the user:
+
+<instructions>
+{{instructions}}
+</instructions>
+
+Please proceed with the following process based on these instructions:
+
+---
+
+## 1. Instruction Analysis and Planning
+
+<Task Analysis>
+- Summarize the main tasks concisely
+- Review the specified tech stack and consider implementation methods within those constraints  
+  **Note: Do not change versions listed in the tech stack without approval**
+- Identify key requirements and constraints
+- List potential challenges
+- Enumerate specific steps for task execution in detail
+- Determine the optimal execution order for these steps
+
+### Preventing Duplicate Implementation
+
+Before implementation, verify:
+- Existence of similar functionality
+- Functions or components with identical or similar names
+- Duplicate API endpoints
+- Identification of processes that can be shared
+
+Take sufficient time for this section as it guides the entire subsequent process. Conduct thorough and comprehensive analysis.
+</Task Analysis>
+
+---
+
+## 2. Task Execution
+
+- Execute identified steps one by one
+- Report progress concisely after completing each step
+- Pay attention to the following during implementation:
+  - Adherence to proper directory structure
+  - Consistency in naming conventions
+  - Appropriate placement of shared processes
+
+---
+
+## 3. Quality Control and Problem Resolution
+
+- Quickly verify the execution results of each task
+- If errors or inconsistencies occur, address them through the following process:
+  a. Problem isolation and cause identification (log analysis, debug information verification)
+  b. Creation and implementation of countermeasures
+  c. Post-fix operation verification
+  d. Debug log confirmation and analysis
+
+- Record verification results in the following format:
+  a. Verification items and expected results
+  b. Actual results and discrepancies
+  c. Required countermeasures (if applicable)
+
+---
+
+## 4. Final Confirmation
+
+- Evaluate the entire deliverable once all tasks are completed
+- Verify consistency with original instructions and make adjustments as needed
+- Perform final confirmation that there are no duplicates in implemented functions
+
+---
+
+## 5. Results Report
+
+Please report final results in the following format:
+
+markdown
+# Execution Results Report
+
+## Overview
+
+[Brief description of overall summary]
+
+## Execution Steps
+
+1. [Step 1 description and results]
+2. [Step 2 description and results]
+...
+
+## Final Deliverables
+
+[Details of deliverables, links if applicable]
+
+## Issue Resolution (if applicable)
+
+- Problems encountered and responses
+- Future considerations
+
+## Notes & Improvement Suggestions
+
+- [List any observations or suggestions for improvement]
+
+---
+
+## Important Notes
+
+- Always confirm any unclear points before beginning work
+- Report and obtain approval for any important decisions as they arise
+- Report unexpected problems immediately and propose solutions
+- **Do not make changes that are not explicitly instructed.** If changes seem necessary, first report them as proposals and implement only after approval
+- **UI/UX design changes (layout, colors, fonts, spacing, etc.) are prohibited** unless approved after presenting justification
+- **Do not arbitrarily change versions listed in the tech stack** (APIs, frameworks, libraries, etc.). If changes are necessary, clearly explain the reason and wait for approval before making any changes
+
+---
+
+# Tech Stack
+
+## Core Technologies
+
+- **AI Model: claude-3.7-sonnet**
+
+## Frontend
+
+- Flutter: ^3.29.2
+
+### State Management
+
+- Riverpod: ^2.6.1
+
+## BaaS
+
+- Firebase
+
+---
+
+## Project Structure
+
+Please implement following this directory structure:
+
+flutter_app_template/
+├── apps/
+│   └── app/
+├── packages/
+│   ├── core/
+│   ├── designsystem/
+│   ├── features/
+│   └── shared/
+│
+├── scripts/
+├── tools/
+└── pubspec.yaml
+
+## Placement Rules
+
+### Flutter Project Structure Placement Rules
+
+This document outlines the placement rules for files and folders within the recommended Flutter project structure, focusing on scalability, maintainability, and adherence to Clean Architecture principles.
+
+#### App Structure
+
+lib/
+├── router/
+├── app_startup.dart/
+├── fake_providers.dart
+├── main_page.dart
+└── main.dart
+
+*   **lib/**: Contains app Dart code.
+*   **router/**: App navigation.
+*   **fake_providers/**: A collection of test providers that supply mock data for development and testing purposes.
+*   **app_startup.dart**: App initialization logic.
+*   **main_page.dart**: Root widget.
+*   **main.dart**: Entry point.
+
+#### Core package Structure
+
+packages/core/
+└── lib/
+    ├── src/
+    │   ├── data/
+    │   │   ├── api/
+    │   │   │   ├── api_client.dart
+    │   │   │   └── interceptors/
+    │   │   └── cache/
+    │   │       └── cache_manager.dart
+    │   │
+    │   ├── exception/
+    │   │   ├── app_exception.dart
+    │   │   └── error_handler.dart
+    │   │
+    │   ├── use_case/
+    │   │   ├── use_case.dart
+    │   │   └── stream_use_case.dart
+    │   │
+    │   ├── network/
+    │   │   └── connectivity_service.dart
+    │   │
+    │   ├── auth/
+    │   │   └── auth_service.dart
+    │   │
+    │   ├── monitoring/
+    │   │   ├── app_monitoring.dart
+    │   │   └── crash_reporter.dart
+    │   │
+    │   └── analytics/
+    │       ├── analytics_service.dart
+    │       └── event_tracker.dart
+    │
+    └── core.dart
+
+*   **data/**: Data access.
+    *   **models/**: Data Transfer Objects (DTOs).
+    *   **repositories/**: Data access logic.
+*   **domain/**: Business logic.
+    *   **entities/**: Core business objects.
+    *   **exceptions/**: Domain-specific error types.
+
+*   **data/**: Data handling layer.
+    *   **api/**: HTTP client and API communication.
+    *   **cache/**: Data caching management.
+*   **exception/**: Application-wide exception handling system.
+*   **use_case/**: Base use case interfaces.
+*   **network/**: Network state and connectivity management.
+*   **auth/**: Authentication core services.
+*   **monitoring/**: Application performance monitoring and crash reporting.
+*   **analytics/**: User behavior tracking and analytics.
+*   **core.dart/**: Package entry point.
+
+#### Designsystem package Structure
+
+packages/designsystem/
+└── lib/
+    ├── src/
+    │   ├── colors/
+    │   │   ├── app_colors.dart
+    │   │   └── color_extensions.dart
+    │   │
+    │   ├── typography/
+    │   │   ├── app_typography.dart
+    │   │   └── font_extensions.dart
+    │   │
+    │   ├── spacing/
+    │   │   └── app_spacing.dart  # Defines Gap constants
+    │   │
+    │   ├── themes/
+    │   │   ├── app_theme.dart
+    │   │   ├── light_theme.dart
+    │   │   └── dark_theme.dart
+    │   │
+    │   ├── icons/
+    │   │   └── app_icons.dart
+    │   │
+    │   ├── components/
+    │   │   ├── buttons/
+    │   │   ├── cards/
+    │   │   ├── inputs/
+    │   │   ├── feedback/
+    │   │   └── layout/
+    │   │
+    │   ├── managers/
+    │   │   ├── dialog_manager.dart
+    │   │   └── snack_bar_manager.dart
+    │   │
+    │   └── extensions/
+    │       └── widget_extensions.dart
+    │
+    └── designsystem.dart
+
+*   **colors/**: Color palette and schemes.
+    *   **app_colors.dart**: Core color definitions.
+    *   **color_extensions.dart**: Color utility extensions.
+*   **typography/**: Text styles system.
+    *   **app_typography.dart**: Font styles and sizes.
+    *   **font_extensions.dart**: Typography utilities.
+*   **spacing/**: Layout spacing constants.
+*   **themes/**: Theme configurations.
+    *   **app_theme.dart**: Base theme definition.
+    *   **light_theme.dart**: Light Theme definition.
+    *   **dark_theme.dart**: Dark Theme definition.
+*   **icons/**: Custom icons and icon utilities.
+*   **components/**: Reusable UI components.
+    *   **buttons/**: Button variants and styles.
+    *   **cards/**: Card components.
+    *   **inputs/**: Form input elements.
+    *   **feedback/**: Loading and status indicators.
+    *   **layout/**: Structural layout components.
+*   **managers/**: UI interaction services.
+*   **extensions/**: Widget utility extensions.
+*   **designsystem.dart**: Package entry point.
+
+#### Features package Structure
+
+packages/features/<feature_name>/
+└── lib/
+    ├── src/
+    │   ├── data/
+    │   │   ├── models/
+    │   │   ├── repositories/
+    │   │   └── data.dart
+    │   │
+    │   ├── domain/
+    │   │   ├── entities/
+    │   │   ├── exceptions/
+    │   │   ├── repositories/
+    │   │   ├── use_cases/
+    │   │   ├── value_objects/
+    │   │   └── domain.dart
+    │   │
+    │   ├── presentation/
+    │   │   ├── pages/    
+    │   │   ├── states/
+    │   │   ├── widgets/
+    │   │   └── presentation.dart
+    │   │
+    └── <feature_name>.dart
+
+*   **<feature_name>/**: A feature (e.g., authentication, products).
+*   **data/**: Data access.
+    *   **models/**: Data Transfer Objects (DTOs).
+    *   **repositories/**: Data access logic.
+*   **domain/**: Business logic.
+    *   **entities/**: Core business objects.
+    *   **exceptions/**: Domain-specific error types.
+    *   **repositories/:** Repository interfaces.
+    *   **use_cases/:** Business logic operations.
+    *   **value_objects/**: Self-validating domain primitives.
+*   **presentation/**: UI.
+    *   **pages/**: UI pages
+    *   **states/**: State management
+    *   **widgets/**: Feature-specific widgets 
+*   **<feature_name>.dart**: Main barrel file that exports the feature's public API.
+
+#### Shared Common package Structure
+
+packages/shared/common/
+└── lib/
+    ├── src/
+    │   ├── utils/
+    │   │   ├── date_utils.dart
+    │   │   ├── string_utils.dart
+    │   │   ├── validation_utils.dart
+    │   │   └── format_utils.dart
+    │   │
+    │   ├── logging/
+    │   │   ├── app_logger.dart
+    │   │   └── log_service.dart
+    │   │
+    │   ├── storage/
+    │   │   ├── preferences.dart
+    │   │   └── secure_storage.dart
+    │   │
+    │   ├── constants/
+    │   │   ├── app_constants.dart
+    │   │   └── storage_keys.dart
+    │   │
+    │   ├── extensions/
+    │   │   ├── context_extensions.dart
+    │   │   ├── iterable_extensions.dart
+    │   │   ├── string_extensions.dart
+    │   │   └── date_extensions.dart
+    │   │
+    │   └── helpers/
+    │       ├── debouncer.dart
+    │       ├── pair.dart
+    │       └── result.dart
+    │
+    └── common.dart
+
+
+*   **utils/**: Common utility functions.
+    *   **date_utils.dart**: Date manipulation and formatting.
+    *   **string_utils.dart**: String manipulation and processing.
+    *   **validation_utils.dart**: Form and input validation.
+    *   **format_utils.dart**: Data formatting for display.
+*   **logging/**: Logging infrastructure.
+    *   **app_logger.dart**: Logger configuration and setup.
+    *   **log_service.dart**: Logging service with different log levels.
+*   **storage/**: Local data persistence.
+    *   **preferences.dart**: User preferences and settings storage.
+    *   **secure_storage.dart**: Encrypted storage for sensitive data.
+*   **constants/**: Application constants.
+    *   **app_constants.dart**: General application constants.
+    *   **storage_keys.dart**: Keys used for local storage.
+*   **extensions/**: Dart extension methods.
+    *   **context_extensions.dart**: Flutter BuildContext extensions.
+    *   **iterable_extensions.dart**: List/Map/Set extensions.
+    *   **string_extensions.dart**: String manipulation extensions.
+    *   **date_extensions.dart**: DateTime extensions.
+*   **helpers/**: Dart extension methods.
+    *   **debouncer.dart**: Debounce functionality for UI interactions.
+    *   **pair.dart**: Simple tuple/pair class.
+    *   **result.dart**: Result type for error handling.
+*   **common.dart**: Package entry point.
+
+#### Shared Config package Structure
+
+packages/shared/config/
+└── lib/
+    ├── src/
+    │   ├── app_config.dart
+    │   ├── environment.dart
+    │   ├── env/
+    │   │   ├── env_config.dart
+    │   │   ├── dev_env.dart
+    │   │   ├── staging_env.dart
+    │   │   └── prod_env.dart
+    │   ├── flavors/
+    │   │   ├── flavor_config.dart
+    │   │   └── flavor_values.dart
+    ├── config.dart
+    └── .env
+
+*   **app_config.dart**: Main application configuration class.
+*   **environment.dart**: Environment detection and handling..
+*   **env/**: environment-specific configurations.
+    *   **env_config.dart**: Base environment configuration interface.
+    *   **dev_env.dart**: Development environment settings.
+    *   **stg_env.dart**: Staging environment settings.
+    *   **prod_env.dart**: Production environment settings.
+*   **flavors/**: App flavor configurations (dev, stg, prod).
+    *   **flavor_config.dart:**: Flavor configuration class.
+    *   **flavor_values.dart**: Values specific to each flavor.ㄱ
+*   **config.dart**: Main barrel file exporting configuration components.
+*   **.env**: Environment variables file (not stored in version control).
+
+#### Shared i18n package Structure
+
+packages/shared/i18n/
+└── lib/
+    ├── src/
+    │   ├── translations/
+    │   │   ├── app_translations.i18n.json
+    │   │   ├── app_translations_en.i18n.json
+    │   │   ├── app_translations_ko.i18n.json
+    │   │   └── app_translations_ja.i18n.json
+    │   │
+    │   ├── generated/
+    │   │   ├── app_translations.g.dart
+    │   │   └── translations_enums.g.dart
+    │   │
+    │   ├── locale_service.dart
+    │   └── locale_provider.dart
+    │
+    ├── i18n.dart
+    └── pubspec.yaml
+
+## Naming Conventions
+
+*   **Files:** snake_case (e.g., product_list_screen.dart).
+*   **Classes:** PascalCase (e.g., ProductListScreen).
+*   **Variables/Functions:** camelCase (e.g., productList).
+
+## Key Principles
+
+*   **Using English:** Use English for all code and documentation.
+*   **Feature Isolation:** Self-contained feature code.
+*   **Separation of Concerns:** Separate data, logic, and UI.
+*   **Single Responsibility:** One purpose per class/file.
+*   **DRY:** Avoid code duplication.
+*   **Prefer Feature-Specific:** Prioritize feature-level placement.
+
+Please adhere to the above content when executing tasks.
