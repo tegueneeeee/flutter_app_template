@@ -31,12 +31,12 @@ class Preferences {
 
   /// Clear all preferences.
   static Future<bool> clear() async {
-    return await instance.clear();
+    return instance.clear();
   }
 
   /// Remove a preference by key.
   static Future<bool> remove(String key) async {
-    return await instance.remove(key);
+    return instance.remove(key);
   }
 
   /// Check if a preference exists.
@@ -56,7 +56,7 @@ class Preferences {
 
   /// Set a string preference.
   static Future<bool> setString(String key, String value) async {
-    return await instance.setString(key, value);
+    return instance.setString(key, value);
   }
 
   /// Get a boolean preference.
@@ -66,7 +66,7 @@ class Preferences {
 
   /// Set a boolean preference.
   static Future<bool> setBool(String key, bool value) async {
-    return await instance.setBool(key, value);
+    return instance.setBool(key, value);
   }
 
   /// Get an integer preference.
@@ -76,7 +76,7 @@ class Preferences {
 
   /// Set an integer preference.
   static Future<bool> setInt(String key, int value) async {
-    return await instance.setInt(key, value);
+    return instance.setInt(key, value);
   }
 
   /// Get a double preference.
@@ -86,7 +86,7 @@ class Preferences {
 
   /// Set a double preference.
   static Future<bool> setDouble(String key, double value) async {
-    return await instance.setDouble(key, value);
+    return instance.setDouble(key, value);
   }
 
   /// Get a string list preference.
@@ -96,12 +96,12 @@ class Preferences {
 
   /// Set a string list preference.
   static Future<bool> setStringList(String key, List<String> value) async {
-    return await instance.setStringList(key, value);
+    return instance.setStringList(key, value);
   }
 
   /// Get a preference as a Map. This will decode a JSON string.
   static Map<String, dynamic>? getMap(String key) {
-    final String? value = instance.getString(key);
+    final value = instance.getString(key);
     if (value == null) return null;
 
     try {
@@ -113,12 +113,12 @@ class Preferences {
 
   /// Set a Map preference. This will encode the Map as a JSON string.
   static Future<bool> setMap(String key, Map<String, dynamic> value) async {
-    return await instance.setString(key, json.encode(value));
+    return instance.setString(key, json.encode(value));
   }
 
   /// Get a preference as a List. This will decode a JSON string.
   static List<dynamic>? getList(String key) {
-    final String? value = instance.getString(key);
+    final value = instance.getString(key);
     if (value == null) return null;
 
     try {
@@ -130,7 +130,7 @@ class Preferences {
 
   /// Set a List preference. This will encode the List as a JSON string.
   static Future<bool> setList(String key, List<dynamic> value) async {
-    return await instance.setString(key, json.encode(value));
+    return instance.setString(key, json.encode(value));
   }
 
   /// Get a preference as a typed object. This requires a fromJson function.
@@ -154,7 +154,7 @@ class Preferences {
     T value,
     Map<String, dynamic> Function(T) toJson,
   ) async {
-    return await setMap(key, toJson(value));
+    return setMap(key, toJson(value));
   }
 
   /// Get a preference as a typed list. This requires a fromJson function.
@@ -182,6 +182,6 @@ class Preferences {
     Map<String, dynamic> Function(T) toJson,
   ) async {
     final list = value.map((item) => toJson(item)).toList();
-    return await setList(key, list);
+    return setList(key, list);
   }
 }

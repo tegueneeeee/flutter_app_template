@@ -9,9 +9,6 @@ class WebPageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return WebPage(
-      initialUri: Uri.parse('https://flutter.dev'),
-      pop: context.pop,
-    );
+    return WebPage(initialUrl: 'https://flutter.dev', onPop: context.pop);
   }
 }

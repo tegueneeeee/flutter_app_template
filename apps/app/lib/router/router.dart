@@ -1,6 +1,6 @@
 import 'package:core/core.dart';
 import 'package:features_remote_config/remote_config.dart';
-import 'package:features_webview/ui.dart';
+import 'package:features_webview/webview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/main_page.dart';
