@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:core/core.dart';
-import 'package:designsystem/components.dart';
+import 'package:designsystem/designsystem.dart';
 import 'package:features_remote_config/remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,6 @@ void main() async {
   runApp(
     ProviderScope(
       overrides: [...fakeProviders],
-      observers: [AsyncErrorLogger()],
       child: AppStartupWidget(onLoaded: (_) => const MainApp()),
     ),
   );
@@ -34,10 +33,10 @@ class MainApp extends ConsumerWidget {
     final router = ref.watch(routerProvider);
 
     ref
-      ..listen(appExceptionStateNotifierProvider, (_, appException) {
+      ..listen(appExceptionNotifierProvider, (_, appException) {
         if (appException != null) {
           SnackBarManager.showSnackBar(appException.message);
-          ref.read(appExceptionStateNotifierProvider.notifier).consume();
+          ref.read(appExceptionNotifierProvider.notifier).consume();
         }
       })
       ..listen(updateTypeProvider, (_, updateType) {

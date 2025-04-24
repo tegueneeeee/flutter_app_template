@@ -64,24 +64,7 @@ extension $NavigationDebugPageRouteExtension on NavigationDebugPageRoute {
 RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
   factory: $MainPageShellRouteExtension._fromState,
   branches: [
-    StatefulShellBranchData.$branch(
-      routes: [
-        GoRouteData.$route(
-          path: '/',
-
-          factory: $HomePageRouteExtension._fromState,
-          routes: [
-            GoRouteData.$route(
-              path: 'web',
-
-              parentNavigatorKey: WebPageRoute.$parentNavigatorKey,
-
-              factory: $WebPageRouteExtension._fromState,
-            ),
-          ],
-        ),
-      ],
-    ),
+    StatefulShellBranchData.$branch(),
     StatefulShellBranchData.$branch(
       routes: [
         GoRouteData.$route(
@@ -97,36 +80,6 @@ RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
 extension $MainPageShellRouteExtension on MainPageShellRoute {
   static MainPageShellRoute _fromState(GoRouterState state) =>
       const MainPageShellRoute();
-}
-
-extension $HomePageRouteExtension on HomePageRoute {
-  static HomePageRoute _fromState(GoRouterState state) => const HomePageRoute();
-
-  String get location => GoRouteData.$location('/');
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
-
-extension $WebPageRouteExtension on WebPageRoute {
-  static WebPageRoute _fromState(GoRouterState state) => const WebPageRoute();
-
-  String get location => GoRouteData.$location('/web');
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $SettingPageRouteExtension on SettingPageRoute {
@@ -171,7 +124,7 @@ extension $MaintenancePageRouteExtension on MaintenancePageRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'694662a324b06655bd64cc4744cfbe90b9d5e681';
+String _$routerHash() => r'1ee4ea52065d510392d5b1f1a00691cfb3587243';
 
 /// See also [router].
 @ProviderFor(router)

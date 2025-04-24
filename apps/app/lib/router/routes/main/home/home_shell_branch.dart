@@ -1,13 +1,6 @@
 part of 'package:flutter_app/router/router.dart';
 
-const homeShellBranch = TypedStatefulShellBranch<HomeShellBranch>(
-  routes: <TypedRoute<RouteData>>[
-    TypedGoRoute<HomePageRoute>(
-      path: HomePageRoute.path,
-      routes: [TypedGoRoute<WebPageRoute>(path: WebPageRoute.path)],
-    ),
-  ],
-);
+const homeShellBranch = TypedStatefulShellBranch<HomeShellBranch>();
 
 class HomeShellBranch extends StatefulShellBranchData {
   const HomeShellBranch();
@@ -20,24 +13,17 @@ class HomePageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return HomePage(navigateToWebPage: () => const WebPageRoute().go(context));
+    return const HomePage();
   }
 }
 
 class HomePage extends ConsumerWidget {
-  const HomePage({required this.navigateToWebPage, super.key});
-
-  final VoidCallback navigateToWebPage;
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('AppBar'),
-        actions: [
-          IconButton(onPressed: navigateToWebPage, icon: const Icon(Icons.web)),
-        ],
-      ),
+      appBar: AppBar(title: const Text('AppBar')),
       body: const Center(child: Text('home')),
     );
   }
