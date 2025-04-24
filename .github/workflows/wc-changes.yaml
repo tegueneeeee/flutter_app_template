@@ -1,0 +1,83 @@
+name: Check for changes in paths
+
+on:
+  workflow_call:
+    outputs:
+      gen:
+        value: ${{ jobs.changes.outputs.gen }}
+      lint:
+        value: ${{ jobs.changes.outputs.lint }}
+      any:
+        value: ${{ jobs.changes.outputs.any }}
+      actions:
+        value: ${{ jobs.changes.outputs.actions }}
+      markdown:
+        value: ${{ jobs.changes.outputs.markdown }}
+      src:
+        value: ${{ jobs.changes.outputs.src }}
+      dependencies:
+        value: ${{ jobs.changes.outputs.dependencies }}
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  changes:
+    runs-on: ubuntu-22.04
+    outputs:
+      any: ${{ steps.filter.outputs.changes != '[]' }}
+      actions: ${{ steps.filter.outputs.actions }}
+      gen: ${{ steps.filter.outputs.gen }}
+      lint: ${{ steps.filter.outputs.lint }}
+      markdown: ${{ steps.filter.outputs.markdown }}
+      src: ${{ steps.filter.outputs.src }}
+      dependencies: ${{ steps.needs.outputs.dependencies }}
+    steps:
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      # https://github.com/marketplace/actions/paths-changes-filter
+      - name: Paths changes filter
+        uses: dorny/paths-filter@v3.0.2
+        id: filter
+        with:
+          filters: |
+            actions:
+              - '.github/actions/**/action.yml'
+              - '.github/actions/**/action.yaml'
+              - '.github/workflows/*.yml'
+              - '.github/workflows/*.yaml'
+            gen:
+              - "**.dart"
+              - "**.yaml"
+              - "**/pubspec.lock"
+            lint:
+              - "**.dart"
+              - "**.yaml"
+              - "**/pubspec.lock"
+              - "scripts/report-custom-lint-ci.sh"
+            markdown:
+              - "**.md"
+            src:
+              - "**.dart"
+              - "**.yaml"
+              - "**/pubspec.lock"
+              - "scripts/**"
+
+      # https://github.com/actions/github-script
+      - name: Check for dependencies changes
+        uses: actions/github-script@v7.0.1
+        id: needs
+        with:
+          script: |
+            const changes = ${{ steps.filter.outputs.changes }};
+            
+            // Check if any of the changes are in the dependencies array
+            const dependencies = [
+              'gen',
+              'lint',
+              'src',
+            ];
+            core.setOutput('dependencies', changes.some(value => dependencies.includes(value)));

@@ -1,0 +1,165 @@
+name: check-pr
+
+on:
+  pull_request:
+
+concurrency:
+  group: check-pr-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  changes:
+    uses: ./.github/workflows/wc-changes.yaml
+
+  skip-comment:
+    runs-on: ubuntu-22.04
+    needs: changes
+    if: ${{ needs.changes.outputs.any == 'false'}}
+    permissions:
+      pull-requests: write
+    timeout-minutes: 5
+
+    steps:
+      # https://github.com/peter-evans/create-or-update-comment
+      - name: Comment
+        uses: peter-evans/create-or-update-comment@v4.0.0
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            This PR has no changes.
+
+  check-actions:
+    runs-on: ubuntu-22.04
+    needs: changes
+    if: ${{ needs.changes.outputs.any == 'true'}}
+    timeout-minutes: 10
+    
+    steps:
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      # https://github.com/marketplace/actions/actionlint-with-reviewdog
+      - name: Actionlint
+        uses: reviewdog/actionlint-with-reviewdog@v1.65.2
+        with:
+          actionlint_flags: -ignore 'SC2153'
+          fail_on_error: true
+          filter_mode: nofilter
+          level: error
+          reporter: github-pr-review
+
+  cache-dependencies:
+    runs-on: ubuntu-22.04
+    needs: changes
+    if: ${{ needs.changes.outputs.any == 'true'}}
+    timeout-minutes: 10
+    
+    steps:
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
+
+  check:
+    needs:
+      - changes
+      - cache-dependencies
+    if: ${{ needs.changes.outputs.any == 'true'}}
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+
+    steps:
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
+
+      # https://github.com/invertase/github-action-dart-analyzer
+      - name: Dart Analyzer
+        uses: invertase/github-action-dart-analyzer@v3.0.0
+        with:
+          fatal-infos: true
+
+      - name: Check format
+        run: melos format --output none --set-exit-if-changed
+
+      - name: Check for circular dependencies
+        run: melos list --cycles
+
+      - name: Run test
+        run: melos run report:test --no-select
+        continue-on-error: true
+
+      # https://github.com/andstor/file-existence-action
+      - name: Check file existence
+        id: check-files
+        uses: andstor/file-existence-action@v3.0.0
+        with:
+          files: "**/test_report.log"
+
+        # https://github.com/dorny/test-reporter
+      - name: Report test
+        if: ${{ steps.check_files.outputs.files_exist == 'true' }}
+        uses: dorny/test-reporter@v2.0.0
+        with:
+          name: "flutter test"
+          path: "(apps|packages)/**/test_report.log"
+          reporter: "flutter-json"
+          fail-on-error: "true"
+
+  custom-lint:
+    needs:
+      - changes
+      - cache-dependencies
+    if: ${{ needs.changes.outputs.lint == 'true'}}
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
+
+      - name: Report custom_lint result
+        run: |
+          echo "::add-matcher::.github/problem_matchers/custom_lint.json"
+          melos run ci:report:custom_lint --no-select || result=$?
+          echo "::remove-matcher owner=custom_lint::"
+
+          if [ -n "$result" ]; then
+            exit 1
+          fi
+
+  diff-gen:
+    needs:
+      - changes
+      - cache-dependencies
+    if: ${{ needs.changes.outputs.gen == 'true'}}
+    uses: ./.github/workflows/wc-check-diff.yaml
+
+  markdown:
+    needs:
+      - changes
+    if: ${{ needs.changes.outputs.markdown == 'true'}}
+    uses: ./.github/workflows/wc-markdown.yaml
+
+  status-check:
+    runs-on: ubuntu-22.04
+    needs:
+      - check-actions
+      - check
+      - custom-lint
+      - diff-gen
+      - markdown
+    permissions: { }
+    if: failure()
+    steps:
+      - run: exit 1

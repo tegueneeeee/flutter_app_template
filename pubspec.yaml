@@ -55,11 +55,6 @@ melos:
         - gen:labeler
         - gen:labels
 
-    fix:
-      description:
-
-    fix:custom:
-      description:
 
     gen:
       description: Code generation using build_runner
@@ -85,7 +80,37 @@ melos:
       packageFilters:
         dependsOn: flutter_test
         dirExists: test
-        
+
+    report:test:
+      description: Generate test coverage report
+      steps:
+        - report:test:flutter
+        - report:test:dart
+
+    report:test:flutter:
+      description: Generate flutter test report
+      run: flutter test --no-pub --machine > test_report.log
+      exec:
+        concurrency: 1
+      packageFilters:
+        dependsOn: flutter_test
+        dirExists: test
+    
+    report:test:dart:
+      description: Generate dart test report
+      run: dart test --file-reporter="json:test_report.log"
+      exec:
+        concurrency: 1
+      packageFilters:
+        dependsOn: test
+        dirExists: test
+
+    ci:report:custom_lint:
+      description: Report custom_lint result
+      exec: bash "$MELOS_ROOT_PATH/scripts/report-custom-lint-ci.sh"
+      packageFilters:
+        dependsOn: custom_lint
+
     # I18n specific scripts
     gen:i18n:
       description: Generate internationalization files
