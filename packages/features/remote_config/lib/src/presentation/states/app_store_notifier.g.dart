@@ -8,7 +8,7 @@ part of 'app_store_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appStoreNotifierHash() => r'4347f29c3bcaec517b30ed8104da10d59084d16e';
+String _$appStoreNotifierHash() => r'3fdbc3e4140f3e68c6e2b2048c4ea9780a8dc560';
 
 /// See also [AppStoreNotifier].
 @ProviderFor(AppStoreNotifier)

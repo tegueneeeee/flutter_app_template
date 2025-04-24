@@ -12,6 +12,7 @@ class AppStoreNotifier extends _$AppStoreNotifier {
   }
 
   Future<void> openAppStore() async {
+    state = const AsyncLoading();
     state = await AsyncValue.guard(
       () => ref.read(openAppStoreUseCaseProvider)(NoParams()),
     );

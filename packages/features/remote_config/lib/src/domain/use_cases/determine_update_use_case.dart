@@ -2,6 +2,7 @@ import 'package:core/core.dart';
 import 'package:features_remote_config/remote_config.dart';
 import 'package:features_remote_config/src/domain/entities/platform_versions_requirements.dart';
 import 'package:flutter/foundation.dart';
+import 'package:shared_config/config.dart';
 import 'package:shared_dependencies/dependencies.dart';
 
 part 'determine_update_use_case.g.dart';
@@ -10,22 +11,19 @@ part 'determine_update_use_case.g.dart';
 @riverpod
 DetermineUpdateUseCase determineUpdateUseCase(Ref ref) {
   return DetermineUpdateUseCase(
-    repository: ref.watch(remoteConfigRepositoryProvider),
+    buildConfig: ref.watch(appBuildConfigStateProvider).requireValue,
   );
 }
 
 class DetermineUpdateUseCase
-    extends
-        UseCase<
-          UpdateType,
-          DetermineUpdateUseCaseParams,
-          RemoteConfigRepository
-        > {
-  DetermineUpdateUseCase({required super.repository});
+    extends UseCase<Future<UpdateType>, DetermineUpdateUseCaseParams> {
+  DetermineUpdateUseCase({required this.buildConfig});
+
+  final BuildConfig buildConfig;
 
   @override
   Future<UpdateType> call(DetermineUpdateUseCaseParams params) async {
-    final currentVersion = repository.getCurrentVersion();
+    final currentVersion = Version(buildConfig.version);
     final updates = params.platformVersionsRequirements;
 
     final targetPlatformVersions = switch (defaultTargetPlatform) {

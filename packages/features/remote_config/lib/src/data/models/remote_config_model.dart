@@ -10,6 +10,9 @@ abstract class RemoteConfigModel with _$RemoteConfigModel {
     @Default(false) bool maintenance,
     @Default(PlatformVersionsRequirementsModel())
     PlatformVersionsRequirementsModel platformVersionsRequirements,
+    @Default('https://apps.apple.com/app/id') String iosStoreUrl,
+    @Default('https://play.google.com/store/apps/details?id=')
+    String androidStoreUrl,
   }) = _RemoteConfigModel;
 
   factory RemoteConfigModel.fromJson(Map<String, Object?> json) =>

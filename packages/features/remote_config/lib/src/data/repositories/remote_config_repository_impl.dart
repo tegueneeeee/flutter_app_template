@@ -12,7 +12,7 @@ part 'remote_config_repository_impl.g.dart';
 
 /// Provider for [RemoteConfigRepository]
 @riverpod
-RemoteConfigRepository remoteConfigRepository(RemoteConfigRepositoryRef ref) {
+RemoteConfigRepository remoteConfigRepository(Ref ref) {
   final appConfig = ref.watch(appBuildConfigStateProvider).requireValue;
   return RemoteConfigRepositoryImpl(
     currentVersion: appConfig.version,
@@ -41,6 +41,13 @@ class RemoteConfigRepositoryImpl implements RemoteConfigRepository {
   /// Fetch period for remote config (defaults to 12 hours)
   static const Duration fetchPeriod = Duration(hours: 12);
 
+  /// Default iOS store URL format
+  static const String defaultIosStoreUrl = 'https://apps.apple.com/app/id';
+
+  /// Default Android store URL format
+  static const String defaultAndroidStoreUrl =
+      'https://play.google.com/store/apps/details?id=';
+
   @override
   Future<RemoteConfig> getRemoteConfig() async {
     try {
@@ -58,6 +65,40 @@ class RemoteConfigRepositoryImpl implements RemoteConfigRepository {
       // If any error occurs, use local fallback
       final model = await _getLocalFallbackConfig();
       return _mapModelToEntity(model);
+    }
+  }
+
+  @override
+  Future<String> getIosStoreUrlFormat() async {
+    try {
+      if (firebaseRemoteConfig != null) {
+        await _initializeFirebaseRemoteConfig();
+        final storeUrl = firebaseRemoteConfig!.getString(
+          'ios_store_url_format',
+        );
+        return storeUrl.isNotEmpty ? storeUrl : defaultIosStoreUrl;
+      }
+      final model = await _getLocalFallbackConfig();
+      return model.iosStoreUrl;
+    } catch (e) {
+      return defaultIosStoreUrl;
+    }
+  }
+
+  @override
+  Future<String> getAndroidStoreUrlFormat() async {
+    try {
+      if (firebaseRemoteConfig != null) {
+        await _initializeFirebaseRemoteConfig();
+        final storeUrl = firebaseRemoteConfig!.getString(
+          'android_store_url_format',
+        );
+        return storeUrl.isNotEmpty ? storeUrl : defaultAndroidStoreUrl;
+      }
+      final model = await _getLocalFallbackConfig();
+      return model.androidStoreUrl;
+    } catch (e) {
+      return defaultAndroidStoreUrl;
     }
   }
 
@@ -115,6 +156,8 @@ class RemoteConfigRepositoryImpl implements RemoteConfigRepository {
       platformVersionsRequirements: _mapPlatformVersionsRequirements(
         model.platformVersionsRequirements,
       ),
+      iosStoreUrl: model.iosStoreUrl,
+      androidStoreUrl: model.androidStoreUrl,
     );
   }
 
@@ -135,10 +178,4 @@ class RemoteConfigRepositoryImpl implements RemoteConfigRepository {
       targetVersion: Version(model.targetVersion),
     );
   }
-
-  @override
-  Version getCurrentVersion() => Version(currentVersion);
-
-  @override
-  String getPackageName() => packageName;
 }

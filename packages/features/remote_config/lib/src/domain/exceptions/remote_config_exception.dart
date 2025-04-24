@@ -1,7 +1,8 @@
+import 'package:core/core.dart';
 import 'package:flutter/foundation.dart';
 
 /// Exception for when version information cannot be retrieved
-class VersionInfoUnavailableException extends AppException {
+class VersionInfoUnavailableException extends RemoteConfigException {
   /// Constructor
   const VersionInfoUnavailableException({this.cause})
     : super('Could not retrieve version information: $cause');

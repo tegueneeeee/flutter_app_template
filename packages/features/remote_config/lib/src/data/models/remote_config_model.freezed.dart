@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$RemoteConfigModel {
 
- bool get maintenance; PlatformVersionsRequirementsModel get platformVersionsRequirements;
+ bool get maintenance; PlatformVersionsRequirementsModel get platformVersionsRequirements; String get iosStoreUrl; String get androidStoreUrl;
 /// Create a copy of RemoteConfigModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,16 +29,16 @@ $RemoteConfigModelCopyWith<RemoteConfigModel> get copyWith => _$RemoteConfigMode
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is RemoteConfigModel&&(identical(other.maintenance, maintenance) || other.maintenance == maintenance)&&(identical(other.platformVersionsRequirements, platformVersionsRequirements) || other.platformVersionsRequirements == platformVersionsRequirements));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RemoteConfigModel&&(identical(other.maintenance, maintenance) || other.maintenance == maintenance)&&(identical(other.platformVersionsRequirements, platformVersionsRequirements) || other.platformVersionsRequirements == platformVersionsRequirements)&&(identical(other.iosStoreUrl, iosStoreUrl) || other.iosStoreUrl == iosStoreUrl)&&(identical(other.androidStoreUrl, androidStoreUrl) || other.androidStoreUrl == androidStoreUrl));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,maintenance,platformVersionsRequirements);
+int get hashCode => Object.hash(runtimeType,maintenance,platformVersionsRequirements,iosStoreUrl,androidStoreUrl);
 
 @override
 String toString() {
-  return 'RemoteConfigModel(maintenance: $maintenance, platformVersionsRequirements: $platformVersionsRequirements)';
+  return 'RemoteConfigModel(maintenance: $maintenance, platformVersionsRequirements: $platformVersionsRequirements, iosStoreUrl: $iosStoreUrl, androidStoreUrl: $androidStoreUrl)';
 }
 
 
@@ -49,7 +49,7 @@ abstract mixin class $RemoteConfigModelCopyWith<$Res>  {
   factory $RemoteConfigModelCopyWith(RemoteConfigModel value, $Res Function(RemoteConfigModel) _then) = _$RemoteConfigModelCopyWithImpl;
 @useResult
 $Res call({
- bool maintenance, PlatformVersionsRequirementsModel platformVersionsRequirements
+ bool maintenance, PlatformVersionsRequirementsModel platformVersionsRequirements, String iosStoreUrl, String androidStoreUrl
 });
 
 
@@ -66,11 +66,13 @@ class _$RemoteConfigModelCopyWithImpl<$Res>
 
 /// Create a copy of RemoteConfigModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? maintenance = null,Object? platformVersionsRequirements = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? maintenance = null,Object? platformVersionsRequirements = null,Object? iosStoreUrl = null,Object? androidStoreUrl = null,}) {
   return _then(_self.copyWith(
 maintenance: null == maintenance ? _self.maintenance : maintenance // ignore: cast_nullable_to_non_nullable
 as bool,platformVersionsRequirements: null == platformVersionsRequirements ? _self.platformVersionsRequirements : platformVersionsRequirements // ignore: cast_nullable_to_non_nullable
-as PlatformVersionsRequirementsModel,
+as PlatformVersionsRequirementsModel,iosStoreUrl: null == iosStoreUrl ? _self.iosStoreUrl : iosStoreUrl // ignore: cast_nullable_to_non_nullable
+as String,androidStoreUrl: null == androidStoreUrl ? _self.androidStoreUrl : androidStoreUrl // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 /// Create a copy of RemoteConfigModel
@@ -90,11 +92,13 @@ $PlatformVersionsRequirementsModelCopyWith<$Res> get platformVersionsRequirement
 @JsonSerializable()
 
 class _RemoteConfigModel implements RemoteConfigModel {
-  const _RemoteConfigModel({this.maintenance = false, this.platformVersionsRequirements = const PlatformVersionsRequirementsModel()});
+  const _RemoteConfigModel({this.maintenance = false, this.platformVersionsRequirements = const PlatformVersionsRequirementsModel(), this.iosStoreUrl = 'https://apps.apple.com/app/id', this.androidStoreUrl = 'https://play.google.com/store/apps/details?id='});
   factory _RemoteConfigModel.fromJson(Map<String, dynamic> json) => _$RemoteConfigModelFromJson(json);
 
 @override@JsonKey() final  bool maintenance;
 @override@JsonKey() final  PlatformVersionsRequirementsModel platformVersionsRequirements;
+@override@JsonKey() final  String iosStoreUrl;
+@override@JsonKey() final  String androidStoreUrl;
 
 /// Create a copy of RemoteConfigModel
 /// with the given fields replaced by the non-null parameter values.
@@ -109,16 +113,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RemoteConfigModel&&(identical(other.maintenance, maintenance) || other.maintenance == maintenance)&&(identical(other.platformVersionsRequirements, platformVersionsRequirements) || other.platformVersionsRequirements == platformVersionsRequirements));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RemoteConfigModel&&(identical(other.maintenance, maintenance) || other.maintenance == maintenance)&&(identical(other.platformVersionsRequirements, platformVersionsRequirements) || other.platformVersionsRequirements == platformVersionsRequirements)&&(identical(other.iosStoreUrl, iosStoreUrl) || other.iosStoreUrl == iosStoreUrl)&&(identical(other.androidStoreUrl, androidStoreUrl) || other.androidStoreUrl == androidStoreUrl));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,maintenance,platformVersionsRequirements);
+int get hashCode => Object.hash(runtimeType,maintenance,platformVersionsRequirements,iosStoreUrl,androidStoreUrl);
 
 @override
 String toString() {
-  return 'RemoteConfigModel(maintenance: $maintenance, platformVersionsRequirements: $platformVersionsRequirements)';
+  return 'RemoteConfigModel(maintenance: $maintenance, platformVersionsRequirements: $platformVersionsRequirements, iosStoreUrl: $iosStoreUrl, androidStoreUrl: $androidStoreUrl)';
 }
 
 
@@ -129,7 +133,7 @@ abstract mixin class _$RemoteConfigModelCopyWith<$Res> implements $RemoteConfigM
   factory _$RemoteConfigModelCopyWith(_RemoteConfigModel value, $Res Function(_RemoteConfigModel) _then) = __$RemoteConfigModelCopyWithImpl;
 @override @useResult
 $Res call({
- bool maintenance, PlatformVersionsRequirementsModel platformVersionsRequirements
+ bool maintenance, PlatformVersionsRequirementsModel platformVersionsRequirements, String iosStoreUrl, String androidStoreUrl
 });
 
 
@@ -146,11 +150,13 @@ class __$RemoteConfigModelCopyWithImpl<$Res>
 
 /// Create a copy of RemoteConfigModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? maintenance = null,Object? platformVersionsRequirements = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? maintenance = null,Object? platformVersionsRequirements = null,Object? iosStoreUrl = null,Object? androidStoreUrl = null,}) {
   return _then(_RemoteConfigModel(
 maintenance: null == maintenance ? _self.maintenance : maintenance // ignore: cast_nullable_to_non_nullable
 as bool,platformVersionsRequirements: null == platformVersionsRequirements ? _self.platformVersionsRequirements : platformVersionsRequirements // ignore: cast_nullable_to_non_nullable
-as PlatformVersionsRequirementsModel,
+as PlatformVersionsRequirementsModel,iosStoreUrl: null == iosStoreUrl ? _self.iosStoreUrl : iosStoreUrl // ignore: cast_nullable_to_non_nullable
+as String,androidStoreUrl: null == androidStoreUrl ? _self.androidStoreUrl : androidStoreUrl // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 

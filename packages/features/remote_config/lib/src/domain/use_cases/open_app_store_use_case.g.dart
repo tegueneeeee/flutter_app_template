@@ -9,7 +9,7 @@ part of 'open_app_store_use_case.dart';
 // **************************************************************************
 
 String _$openAppStoreUseCaseHash() =>
-    r'bfec915fcebf24f3bf5c211e41fa736a945e7b77';
+    r'a1a0f410ab6ce0163c013dcd0713379c59d11c1f';
 
 /// See also [openAppStoreUseCase].
 @ProviderFor(openAppStoreUseCase)

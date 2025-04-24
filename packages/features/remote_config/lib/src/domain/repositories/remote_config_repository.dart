@@ -5,9 +5,9 @@ abstract interface class RemoteConfigRepository {
   /// Gets the remote config information from remote source
   Future<RemoteConfig> getRemoteConfig();
 
-  /// Gets the current version of the app
-  Version getCurrentVersion();
+  /// Gets the iOS App Store URL format
+  Future<String> getIosStoreUrlFormat();
 
-  /// Gets the package name of the app
-  String getPackageName();
+  /// Gets the Android Play Store URL format
+  Future<String> getAndroidStoreUrlFormat();
 }

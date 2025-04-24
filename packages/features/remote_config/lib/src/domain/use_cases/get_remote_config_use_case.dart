@@ -12,12 +12,20 @@ GetRemoteConfigUseCase getRemoteConfigUseCase(Ref ref) {
   );
 }
 
-class GetRemoteConfigUseCase
-    extends UseCase<RemoteConfig, NoParams, RemoteConfigRepository> {
-  GetRemoteConfigUseCase({required super.repository});
+/// UseCase to get the remote configuration
+class GetRemoteConfigUseCase extends UseCase<Future<RemoteConfig>, NoParams> {
+  /// Constructor
+  GetRemoteConfigUseCase({required this.repository});
+
+  /// Repository for remote config
+  final RemoteConfigRepository repository;
 
   @override
   Future<RemoteConfig> call(NoParams params) async {
-    return repository.getRemoteConfig();
+    try {
+      return repository.getRemoteConfig();
+    } catch (e) {
+      throw VersionInfoUnavailableException(cause: e);
+    }
   }
 }
