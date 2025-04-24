@@ -11,14 +11,11 @@ resolution: workspace
 
 dependencies:
   core:
-    path: ../../packages/core
+    path: ../../packages/cores/core
   designsystem:
-    path: ../../packages/designsystem
-  dio: 5.8.0+1
+    path: ../../packages/cores/designsystem
   features_remote_config:
     path: ../../packages/features/remote_config
-  features_webview:
-    path: ../../packages/features/webview
   flutter:
     sdk: flutter
   flutter_hooks: ^0.21.2
