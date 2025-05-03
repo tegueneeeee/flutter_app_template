@@ -24,7 +24,9 @@ runs:
         MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r)
         dart pub global activate melos $MELOS_VERSION
         pwd
-        la -al
+        ls -al
         cd $GITHUB_WORKSPACE
+        pwd
+        ls -al
         melos bootstrap
       shell: bash
