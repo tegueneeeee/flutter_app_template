@@ -48,6 +48,8 @@ jobs:
       # https://github.com/actions/checkout
       - name: Fetch sources
         uses: actions/checkout@v4.2.2
+        with:
+          submodules: true
 
       - name: Remove unnecessary files
         uses: ./.github/actions/remove-unnecessary-files
