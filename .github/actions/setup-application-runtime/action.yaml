@@ -21,6 +21,9 @@ runs:
       run: |
         cd $GITHUB_WORKSPACE/packages/cores
         git pull
+        ls -al
+        cd core
+        ls -al
       shell: bash
 
     - name: Setup melos
