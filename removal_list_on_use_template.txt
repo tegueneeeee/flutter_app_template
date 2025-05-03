@@ -3,7 +3,6 @@ removal_list_on_use_template.txt
 
 .github/actions/remove-unnecessary-files
 .github/actions/create-issue-at-initialization
-.github/actions/fill-project-name
 
 .github/workflows/initialization.yaml
 
