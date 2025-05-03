@@ -17,6 +17,12 @@ runs:
         channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
         cache: true
 
+    - name: Git pull cores
+      run: |
+        cd $GITHUB_WORKSPACE/packages/cores
+        git pull
+      shell: bash
+
     - name: Setup melos
       run: |
         mkdir -p .fvm
@@ -24,9 +30,5 @@ runs:
         MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r)
         dart pub global activate melos $MELOS_VERSION
         pwd
-        ls -al
-        cd $GITHUB_WORKSPACE
-        pwd
-        ls -al
         melos bootstrap
       shell: bash
