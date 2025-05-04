@@ -13,27 +13,6 @@ class Env {
     prod: EnvProd.baseUrl,
   );
 
-  /// Returns the iOS app ID for the current flavor
-  static String get iosAppId => _getEnvValue(
-    dev: EnvDev.iosAppId,
-    stg: EnvStg.iosAppId,
-    prod: EnvProd.iosAppId,
-  );
-
-  /// Returns the Android package ID for the current flavor
-  static String get androidPackageId => _getEnvValue(
-    dev: EnvDev.androidPackageId,
-    stg: EnvStg.androidPackageId,
-    prod: EnvProd.androidPackageId,
-  );
-
-  /// Returns the NewsAPI API key for the current flavor
-  static String get newsapiApiKey => _getEnvValue(
-    dev: EnvDev.newsapiApiKey,
-    stg: EnvStg.newsapiApiKey,
-    prod: EnvProd.newsapiApiKey,
-  );
-
   /// Helper method to get the appropriate environment value
   /// based on the current flavor
   static T _getEnvValue<T>({required T dev, required T stg, required T prod}) {

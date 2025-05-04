@@ -45,17 +45,15 @@ melos:
         riverpod_lint: ^2.6.5
         test: ^1.25.15
         flutter_gen_runner: ^5.10.0
-      hooks:
-      #  post: melos run bootstrap:post
 
   scripts:
-    bootstrap:post:
-      description: bootstrap post hooks
-      steps:
-        - gen:labeler
-        - gen:labels
-
-
+    gen:all:
+      description: Generate all codes
+      run: dart run build_runner build -d
+      exec:
+        orderDependents: true
+      packageFilters:
+        dependsOn: build_runner
     gen:
       description: Code generation using build_runner
       run: dart run build_runner build -d
@@ -63,14 +61,23 @@ melos:
         orderDependents: true
       packageFilters:
         dependsOn: build_runner
-    
-    generate-env:
+        ignore:
+          - packages/shared/**
+    gen:env:
       description: Run build_runner in all of the packages that depends on it.
       run: dart run build_runner build -d
       exec:
         orderDependents: true
       packageFilters:
         dependsOn: envied_generator
+    gen:i18n:
+      description: Generate internationalization files
+      run: dart run build_runner build -d
+      exec:
+        concurrency: 1
+      packageFilters:
+        scope: i18n
+        dependsOn: slang_build_runner
 
     test:
       description: Run tests with coverage and random ordering
@@ -86,7 +93,6 @@ melos:
       steps:
         - report:test:flutter
         - report:test:dart
-
     report:test:flutter:
       description: Generate flutter test report
       run: flutter test --no-pub --machine > test_report.log
@@ -95,7 +101,6 @@ melos:
       packageFilters:
         dependsOn: flutter_test
         dirExists: test
-    
     report:test:dart:
       description: Generate dart test report
       run: dart test --file-reporter="json:test_report.log"
@@ -104,37 +109,8 @@ melos:
       packageFilters:
         dependsOn: test
         dirExists: test
-
     ci:report:custom_lint:
       description: Report custom_lint result
       exec: bash "$MELOS_ROOT_PATH/scripts/report-custom-lint-ci.sh"
       packageFilters:
         dependsOn: custom_lint
-
-    # I18n specific scripts
-    gen:i18n:
-      description: Generate internationalization files
-      run: dart run build_runner build -d
-      exec:
-        concurrency: 1
-      packageFilters:
-        scope: i18n
-        dependsOn: slang_build_runner
-        
-    gen:i18n:watch:
-      description: Watch for changes and regenerate internationalization files
-      run: dart run build_runner watch -d
-      exec:
-        concurrency: 1
-      packageFilters:
-        scope: i18n
-        dependsOn: slang_build_runner
-        
-    i18n:analyze:
-      description: Analyze translations for missing entries
-      run: dart run build_runner build -d --define slang_build_runner:analyze=true
-      exec:
-        concurrency: 1
-      packageFilters:
-        scope: i18n
-        dependsOn: slang_build_runner

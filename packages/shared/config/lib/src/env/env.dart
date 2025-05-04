@@ -6,18 +6,6 @@ part 'env.g.dart';
 abstract class EnvProd {
   @EnviedField()
   static final String baseUrl = _EnvProd.baseUrl;
-
-  @EnviedField()
-  static final String iosAppId = _EnvProd.iosAppId;
-
-  @EnviedField()
-  static final String androidPackageId = _EnvProd.androidPackageId;
-
-  @EnviedField()
-  static final String newsapiApiKey = _EnvProd.newsapiApiKey;
-
-  @EnviedField()
-  static final String appName = _EnvProd.appName;
 }
 
 @Envied(
@@ -29,18 +17,6 @@ abstract class EnvProd {
 abstract class EnvDev {
   @EnviedField()
   static final String baseUrl = _EnvDev.baseUrl;
-
-  @EnviedField()
-  static final String iosAppId = _EnvDev.iosAppId;
-
-  @EnviedField()
-  static final String androidPackageId = _EnvDev.androidPackageId;
-
-  @EnviedField()
-  static final String newsapiApiKey = _EnvDev.newsapiApiKey;
-
-  @EnviedField()
-  static final String appName = _EnvDev.appName;
 }
 
 @Envied(
@@ -52,16 +28,4 @@ abstract class EnvDev {
 abstract class EnvStg {
   @EnviedField()
   static final String baseUrl = _EnvStg.baseUrl;
-
-  @EnviedField()
-  static final String iosAppId = _EnvStg.iosAppId;
-
-  @EnviedField()
-  static final String androidPackageId = _EnvStg.androidPackageId;
-
-  @EnviedField()
-  static final String newsapiApiKey = _EnvStg.newsapiApiKey;
-
-  @EnviedField()
-  static final String appName = _EnvStg.appName;
 }
