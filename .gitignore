@@ -23,3 +23,8 @@
 
 # FVM Version Cache
 /.fvm
+
+# generated files
+*.g.dart
+*.freezed.dart
+*.gen.dart
