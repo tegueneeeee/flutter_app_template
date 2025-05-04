@@ -10,6 +10,10 @@
   ```
 
   ```shell
+  git submodule update --init
+  ```
+
+  ```shell
   fvm use --force
   FLUTTER_VERSION=$(cat .fvmrc | yq ".flutter" -r) && fvm global $FLUTTER_VERSION
   ```
