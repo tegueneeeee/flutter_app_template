@@ -21,10 +21,6 @@
 - The following table includes specific icons. There is a border on the image, but it was added to make it visible; however, the border is not necessary when adding icons.
 - For a detailed explanation, please check [adaptive icon guide].
 
-|`adaptive_icon_foreground` | `adaptive_icon_background`|
-|:--------------------------:|:--------------------------:|
-| <img src="https://github.com/yumemi-inc/flutter-mobile-project-template/assets/67954894/0d1e1559-1600-4c12-aea6-2b4b234c7f41" width="300" /> | <img src="https://github.com/yumemi-inc/flutter-mobile-project-template/assets/67954894/521be3f1-945c-4c08-9c81-6f612679801c" width="300" /> |
-
 <!-- Links -->
 
 [flutter_launcher_icons]: https://pub.dev/packages/flutter_launcher_icons
