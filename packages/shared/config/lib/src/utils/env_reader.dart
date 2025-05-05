@@ -1,26 +1,21 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_config/config.dart';
 import 'package:shared_config/src/env/env.dart';
 
-/// Env class provides convenient access to environment variables
-/// based on the current flavor
+@Riverpod(keepAlive: true)
+Env env(Ref ref) {
+  final buildConfig = ref.watch(appBuildConfigStateProvider).requireValue;
+
+  return switch (buildConfig.flavor) {
+    FlavorStatus.STAGING => Env(baseUrl: EnvStg.baseUrl),
+    FlavorStatus.PRODUCTION => Env(baseUrl: EnvProd.baseUrl),
+    // Fallback to development
+    _ => Env(baseUrl: EnvDev.baseUrl),
+  };
+}
+
 class Env {
-  const Env._();
-
-  /// Returns the API base URL for the current flavor
-  static String get apiBaseUrl => _getEnvValue(
-    dev: EnvDev.baseUrl,
-    stg: EnvStg.baseUrl,
-    prod: EnvProd.baseUrl,
-  );
-
-  /// Helper method to get the appropriate environment value
-  /// based on the current flavor
-  static T _getEnvValue<T>({required T dev, required T stg, required T prod}) {
-    return switch (Flavor.flavor) {
-      FlavorStatus.DEVELOPMENT => dev,
-      FlavorStatus.STAGING => stg,
-      FlavorStatus.PRODUCTION => prod,
-      _ => dev, // Fallback to development
-    };
-  }
+  const Env({required this.baseUrl});
+  final String baseUrl;
 }
