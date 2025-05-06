@@ -8,4 +8,5 @@ analyzer:
     # https://pub.dev/packages/freezed#install
     invalid_annotation_target: ignore
     public_member_api_docs: ignore
+    unused_element_parameter: ignore
     use_setters_to_change_properties: ignore

@@ -91,13 +91,7 @@ ref.read(appLocaleProvider.notifier).setJapanese();
 Run the following command to generate translation files:
 
 ```bash
-dart run melos gen:i18n
-```
-
-or watch for changes:
-
-```bash
-dart run melos gen:i18n:watch
+melos gen:i18n
 ```
 
 ## Adding New Translations

@@ -74,7 +74,7 @@ melos:
       description: Generate internationalization files
       run: dart run build_runner build -d
       exec:
-        concurrency: 1
+        orderDependents: true
       packageFilters:
         scope: i18n
         dependsOn: slang_build_runner
