@@ -1,6 +1,8 @@
 part of 'package:flutter_app/router/router.dart';
 
-const homeShellBranch = TypedStatefulShellBranch<HomeShellBranch>();
+const homeShellBranch = TypedStatefulShellBranch<HomeShellBranch>(
+  routes: [TypedGoRoute<HomePageRoute>(path: HomePageRoute.path)],
+);
 
 class HomeShellBranch extends StatefulShellBranchData {
   const HomeShellBranch();
