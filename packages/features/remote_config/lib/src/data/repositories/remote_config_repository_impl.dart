@@ -13,7 +13,7 @@ part 'remote_config_repository_impl.g.dart';
 /// Provider for [RemoteConfigRepository]
 @riverpod
 RemoteConfigRepository remoteConfigRepository(Ref ref) {
-  final appConfig = ref.watch(appBuildConfigStateProvider).requireValue;
+  final appConfig = ref.watch(appBuildConfigStateProvider);
   return RemoteConfigRepositoryImpl(
     currentVersion: appConfig.version,
     packageName: appConfig.packageName,

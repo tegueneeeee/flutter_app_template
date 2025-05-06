@@ -5,7 +5,7 @@ import 'package:shared_config/src/env/env.dart';
 
 @Riverpod(keepAlive: true)
 Env env(Ref ref) {
-  final buildConfig = ref.watch(appBuildConfigStateProvider).requireValue;
+  final buildConfig = ref.watch(appBuildConfigStateProvider);
 
   return switch (buildConfig.flavor) {
     FlavorStatus.STAGING => Env(baseUrl: EnvStg.baseUrl),

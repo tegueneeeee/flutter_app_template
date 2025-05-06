@@ -7,18 +7,7 @@ part 'app_build_config.g.dart';
 
 /// Provider for accessing BuildConfig information throughout the app
 @Riverpod(keepAlive: true)
-Future<BuildConfig> appBuildConfigState(Ref ref) async {
-  final packageInfo = await PackageInfo.fromPlatform();
-  return AppBuildConfig.withFlavorName(
-    appFlavor: const String.fromEnvironment('flavor'),
-    appName: packageInfo.appName,
-    packageName: packageInfo.packageName,
-    version: packageInfo.version,
-    buildNumber: packageInfo.buildNumber,
-    buildSignature: packageInfo.buildSignature,
-    installerStore: packageInfo.installerStore,
-  );
-}
+BuildConfig appBuildConfigState(Ref ref) => throw UnimplementedError();
 
 /// Implementation of BuildConfig that contains actual build configuration
 final class AppBuildConfig implements BuildConfig {

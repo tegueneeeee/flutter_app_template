@@ -11,7 +11,7 @@ OpenAppStoreUseCase openAppStoreUseCase(Ref ref) {
   return OpenAppStoreUseCase(
     repository: ref.watch(remoteConfigRepositoryProvider),
     packageName:
-        ref.watch(appBuildConfigStateProvider).requireValue.packageName,
+        ref.watch(appBuildConfigStateProvider).packageName,
   );
 }
 

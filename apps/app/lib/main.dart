@@ -6,6 +6,7 @@ import 'package:features_remote_config/remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app/app_providers.dart';
 import 'package:flutter_app/app_startup.dart';
 import 'package:flutter_app/fake_providers.dart';
 import 'package:flutter_app/router/router.dart';
@@ -17,9 +18,10 @@ void main() async {
       await (kDebugMode
           ? FakeProviders.initialize()
           : Future.value(<Override>[]));
+  final appProviders = await AppProviders.initialize();
   runApp(
     ProviderScope(
-      overrides: [...fakeProviders],
+      overrides: [...fakeProviders, ...appProviders],
       child: AppStartupWidget(onLoaded: (_) => const MainApp()),
     ),
   );

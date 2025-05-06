@@ -11,7 +11,7 @@ part 'determine_update_use_case.g.dart';
 @riverpod
 DetermineUpdateUseCase determineUpdateUseCase(Ref ref) {
   return DetermineUpdateUseCase(
-    buildConfig: ref.watch(appBuildConfigStateProvider).requireValue,
+    buildConfig: ref.watch(appBuildConfigStateProvider),
   );
 }
 
