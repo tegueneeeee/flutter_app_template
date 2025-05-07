@@ -76,7 +76,7 @@ melos:
       exec:
         orderDependents: true
       packageFilters:
-        scope: i18n
+        scope: shared_i18n
         dependsOn: slang_build_runner
 
     test:
