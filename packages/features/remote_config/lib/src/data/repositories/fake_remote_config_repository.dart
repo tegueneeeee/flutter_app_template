@@ -12,27 +12,15 @@ class FakeRemoteConfigRepository implements RemoteConfigRepository {
       platformVersionsRequirements: PlatformVersionsRequirements(
         ios: VersionRequirements(
           minVersion: Version('1.0.0'),
-          targetVersion: Version('1.0.1'),
+          targetVersion: Version('1.0.0'),
         ),
         android: VersionRequirements(
           minVersion: Version('1.0.0'),
-          targetVersion: Version('1.0.1'),
+          targetVersion: Version('1.0.0'),
         ),
       ),
       iosStoreUrl: 'https://apps.apple.com/app/id',
       androidStoreUrl: 'https://play.google.com/store/apps/details?id=',
     );
-  }
-
-  @override
-  Future<String> getAndroidStoreUrlFormat() {
-    // TODO: implement getAndroidStoreUrlFormat
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<String> getIosStoreUrlFormat() {
-    // TODO: implement getIosStoreUrlFormat
-    throw UnimplementedError();
   }
 }

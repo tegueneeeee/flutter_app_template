@@ -1,7 +1,6 @@
 import 'package:core/core.dart';
 import 'package:features_remote_config/remote_config.dart';
 import 'package:flutter/foundation.dart';
-import 'package:shared_config/config.dart';
 import 'package:shared_dependencies/dependencies.dart';
 
 part 'open_app_store_use_case.g.dart';
@@ -10,21 +9,16 @@ part 'open_app_store_use_case.g.dart';
 OpenAppStoreUseCase openAppStoreUseCase(Ref ref) {
   return OpenAppStoreUseCase(
     repository: ref.watch(remoteConfigRepositoryProvider),
-    packageName:
-        ref.watch(appBuildConfigStateProvider).packageName,
   );
 }
 
 /// UseCase to open the appropriate app store based on platform
 class OpenAppStoreUseCase extends UseCase<Future<void>, NoParams> {
   /// Constructor
-  OpenAppStoreUseCase({required this.repository, required this.packageName});
+  OpenAppStoreUseCase({required this.repository});
 
   /// Repository for remote config
   final RemoteConfigRepository repository;
-
-  /// Package name of the app
-  final String packageName;
 
   @override
   Future<void> call(NoParams params) async {
@@ -34,12 +28,11 @@ class OpenAppStoreUseCase extends UseCase<Future<void>, NoParams> {
 
   /// Get the store URL based on current platform
   Future<String> _getStoreUrl() async {
+    final remoteConfig = await repository.getRemoteConfig();
     try {
       return switch (defaultTargetPlatform) {
-        TargetPlatform.iOS =>
-          '${await repository.getIosStoreUrlFormat()}$packageName',
-        TargetPlatform.android =>
-          '${await repository.getAndroidStoreUrlFormat()}$packageName',
+        TargetPlatform.iOS => remoteConfig.iosStoreUrl,
+        TargetPlatform.android => remoteConfig.androidStoreUrl,
         _ => throw UnSupportedPlatformException(),
       };
     } catch (e) {

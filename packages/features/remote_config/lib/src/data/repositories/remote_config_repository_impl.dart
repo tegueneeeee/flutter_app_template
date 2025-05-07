@@ -68,40 +68,6 @@ class RemoteConfigRepositoryImpl implements RemoteConfigRepository {
     }
   }
 
-  @override
-  Future<String> getIosStoreUrlFormat() async {
-    try {
-      if (firebaseRemoteConfig != null) {
-        await _initializeFirebaseRemoteConfig();
-        final storeUrl = firebaseRemoteConfig!.getString(
-          'ios_store_url_format',
-        );
-        return storeUrl.isNotEmpty ? storeUrl : defaultIosStoreUrl;
-      }
-      final model = await _getLocalFallbackConfig();
-      return model.iosStoreUrl;
-    } catch (e) {
-      return defaultIosStoreUrl;
-    }
-  }
-
-  @override
-  Future<String> getAndroidStoreUrlFormat() async {
-    try {
-      if (firebaseRemoteConfig != null) {
-        await _initializeFirebaseRemoteConfig();
-        final storeUrl = firebaseRemoteConfig!.getString(
-          'android_store_url_format',
-        );
-        return storeUrl.isNotEmpty ? storeUrl : defaultAndroidStoreUrl;
-      }
-      final model = await _getLocalFallbackConfig();
-      return model.androidStoreUrl;
-    } catch (e) {
-      return defaultAndroidStoreUrl;
-    }
-  }
-
   Future<void> _initializeFirebaseRemoteConfig() async {
     if (firebaseRemoteConfig == null) return;
 
@@ -131,7 +97,7 @@ class RemoteConfigRepositoryImpl implements RemoteConfigRepository {
     try {
       final jsonMap = jsonDecode(configString) as Map<String, dynamic>;
       return RemoteConfigModel.fromJson(jsonMap);
-    } catch (e) {
+    } on Exception catch (_) {
       return _getLocalFallbackConfig();
     }
   }
@@ -143,7 +109,7 @@ class RemoteConfigRepositoryImpl implements RemoteConfigRepository {
       );
       final jsonMap = jsonDecode(jsonString) as Map<String, dynamic>;
       return RemoteConfigModel.fromJson(jsonMap);
-    } catch (e) {
+    } on Exception catch (_) {
       // Return absolute minimum safe default
       return const RemoteConfigModel();
     }

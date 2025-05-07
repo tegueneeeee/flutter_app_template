@@ -1,6 +1,5 @@
 import 'package:designsystem/designsystem.dart';
 import 'package:features_remote_config/remote_config.dart';
-import 'package:features_remote_config/src/presentation/states/app_store_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_dependencies/dependencies.dart';
 
@@ -95,7 +94,7 @@ class UpdateDialog extends ConsumerWidget {
           AppButton.primary(
             label: updateButtonText,
             onPressed: () {
-              ref.read(appStoreNotifierProvider.notifier).openAppStore();
+              ref.read(openAppStoreNotifierProvider.notifier).openAppStore();
             },
             fullWidth: true,
           ),
