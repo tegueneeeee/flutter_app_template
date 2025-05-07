@@ -54,45 +54,17 @@ class MainApp extends ConsumerWidget {
               ? {
                 LogicalKeySet(
                       LogicalKeyboardKey.shift,
-                      LogicalKeyboardKey.keyD,
-                    ):
-                    const _DebugIntent(),
-                LogicalKeySet(
-                      LogicalKeyboardKey.shift,
                       LogicalKeyboardKey.keyZ,
                     ):
                     const _PopIntent(),
-                LogicalKeySet(
-                      LogicalKeyboardKey.shift,
-                      LogicalKeyboardKey.keyM,
-                    ):
-                    const _MaintenanceIntent(),
               }
               : null,
       actions:
           kDebugMode
               ? <Type, Action<Intent>>{
-                _DebugIntent: CallbackAction<_DebugIntent>(
-                  onInvoke: (_) {
-                    if (!router.state.matchedLocation.startsWith(
-                      const DebugPageRoute().location,
-                    )) {
-                      router.push(const DebugPageRoute().location);
-                    }
-                    return null;
-                  },
-                ),
                 _PopIntent: CallbackAction<_PopIntent>(
                   onInvoke: (_) {
                     if (router.canPop()) router.pop();
-                    return null;
-                  },
-                ),
-                _MaintenanceIntent: CallbackAction<_MaintenanceIntent>(
-                  onInvoke: (_) {
-                    ref
-                        .read(remoteConfigNotifierProvider.notifier)
-                        .toggleMaintenance();
                     return null;
                   },
                 ),
@@ -102,14 +74,6 @@ class MainApp extends ConsumerWidget {
   }
 }
 
-class _DebugIntent extends Intent {
-  const _DebugIntent();
-}
-
 class _PopIntent extends Intent {
   const _PopIntent();
-}
-
-class _MaintenanceIntent extends Intent {
-  const _MaintenanceIntent();
 }

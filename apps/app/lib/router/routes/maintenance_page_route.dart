@@ -8,6 +8,11 @@ class MaintenancePageRoute extends GoRouteData {
 
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) {
-    return NoTransitionPage<Page<dynamic>>(child: Container());
+    return NoTransitionPage<Page<dynamic>>(
+      child: Scaffold(
+        appBar: AppBar(),
+        body: const Center(child: Text('Maintenance')),
+      ),
+    );
   }
 }

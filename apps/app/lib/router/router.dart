@@ -7,7 +7,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'package:flutter_app/router/routes/debug_page_route.dart';
 part 'package:flutter_app/router/routes/main/home/home_shell_branch.dart';
 part 'package:flutter_app/router/routes/main/main_page_shell_route.dart';
 part 'package:flutter_app/router/routes/main/setting/setting_shell_branch.dart';
@@ -19,15 +18,7 @@ GoRouter router(Ref ref) {
   final maintenance = ref.watch(maintenanceProvider);
   return GoRouter(
     navigatorKey: GlobalKeys.rootNavigatorKey,
-    routes: [
-      ...$appRoutes.where((route) {
-        if (route is GoRoute) {
-          return route.path != DebugPageRoute.path;
-        }
-        return true;
-      }),
-      if (kDebugMode) $debugPageRoute,
-    ],
+    routes: [...$appRoutes],
     debugLogDiagnostics: kDebugMode,
     initialLocation: HomePageRoute.path,
     redirect: (_, __) {
